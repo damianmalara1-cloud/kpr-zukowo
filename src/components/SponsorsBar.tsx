@@ -120,6 +120,19 @@ export default function SponsorsBar() {
           </li>
           <li className="relative flex h-8 items-center justify-center">
             <a
+              className="block text-gray-400 hover:text-gray-900 transition-colors duration-200"
+              href="https://www.tiktok.com/@kprzukovo"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.18 8.18 0 005.58 2.18V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z" />
+              </svg>
+            </a>
+          </li>
+          <li className="relative flex h-8 items-center justify-center">
+            <a
               className="block text-gray-400 hover:text-red transition-colors duration-200"
               href="mailto:kontakt@kprzukovo.pl"
               aria-label="Email"
