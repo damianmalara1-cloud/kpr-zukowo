@@ -8,6 +8,15 @@
       "content": "Z przyjemnością prezentujemy nową stronę internetową KPR Fitdieta Żukowo!\n\nTo nowy rozdział w historii naszego klubu. Strona została stworzona, aby ułatwić kibicom dostęp do informacji o meczach, poznać naszą drużynę i dowiedzieć się więcej o możliwościach współpracy.\n\nZapraszamy do regularnego odwiedzania i śledzenia nas w mediach społecznościowych!",
       "image": null,
       "category": "Klub"
+    },
+    {
+      "id": "2",
+      "title": "Testowy mecz KPR",
+      "date": "2026-01-27",
+      "excerpt": "To był super mecz!",
+      "content": "Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super \ntest testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest",
+      "image": null,
+      "category": "Mecz"
     }
   ]
 }
