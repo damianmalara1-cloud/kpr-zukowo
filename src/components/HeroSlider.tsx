@@ -36,7 +36,7 @@ export default function HeroSlider() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Images */}
       {heroImages.map((image, index) => (
         <div
@@ -49,7 +49,7 @@ export default function HeroSlider() {
             src={image}
             alt={`KPR Żukowo - zdjęcie ${index + 1}`}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority={index === 0}
             quality={85}
           />

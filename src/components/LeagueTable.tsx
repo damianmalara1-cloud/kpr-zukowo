@@ -34,18 +34,18 @@ export default function LeagueTable({ teams }: LeagueTableProps) {
           I Liga Mężczyzn — Sezon 2025/2026
         </p>
 
-        <div className="overflow-x-auto rounded-2xl shadow-lg">
-          <table className="w-full text-sm">
+        <div className="overflow-hidden rounded-2xl shadow-lg">
+          <table className="w-full text-xs sm:text-sm">
             <thead>
               <tr className="bg-navy text-white text-left">
-                <th className="py-3 px-4 text-center w-12">#</th>
-                <th className="py-3 px-4">Drużyna</th>
-                <th className="py-3 px-4 text-center">M</th>
-                <th className="py-3 px-4 text-center">Z</th>
-                <th className="py-3 px-4 text-center">R</th>
-                <th className="py-3 px-4 text-center">P</th>
-                <th className="py-3 px-4 text-center hidden sm:table-cell">Bramki</th>
-                <th className="py-3 px-4 text-center font-bold">Pkt</th>
+                <th className="py-2.5 px-2 sm:px-4 text-center w-9 sm:w-12">#</th>
+                <th className="py-2.5 px-2 sm:px-4">Drużyna</th>
+                <th className="py-2.5 px-1.5 sm:px-4 text-center">M</th>
+                <th className="py-2.5 px-1.5 sm:px-4 text-center">Z</th>
+                <th className="py-2.5 px-1.5 sm:px-4 text-center hidden sm:table-cell">R</th>
+                <th className="py-2.5 px-1.5 sm:px-4 text-center hidden sm:table-cell">P</th>
+                <th className="py-2.5 px-1.5 sm:px-4 text-center hidden md:table-cell">Bramki</th>
+                <th className="py-2.5 px-2 sm:px-4 text-center font-bold">Pkt</th>
               </tr>
             </thead>
             <tbody>
@@ -64,34 +64,34 @@ export default function LeagueTable({ teams }: LeagueTableProps) {
                           : "bg-white hover:bg-gray-50"
                     }`}
                   >
-                    <td className="py-3 px-4 text-center">
+                    <td className="py-2.5 px-2 sm:px-4 text-center">
                       <span
-                        className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold ${
+                        className={`inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full text-xs font-bold ${
                           isLeader
                             ? "bg-amber-400 text-white"
                             : "bg-gray-100 text-gray-600"
                         }`}
                       >
                         {isLeader ? (
-                          <TrophyIcon className="w-4 h-4" />
+                          <TrophyIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         ) : (
                           team.position
                         )}
                       </span>
                     </td>
-                    <td className={`py-3 px-4 ${isClub ? "text-navy" : "text-gray-800"}`}>
+                    <td className={`py-2.5 px-2 sm:px-4 max-w-[120px] sm:max-w-none truncate ${isClub ? "text-navy" : "text-gray-800"}`}>
                       {team.name}
                     </td>
-                    <td className="py-3 px-4 text-center text-gray-600">{team.played}</td>
-                    <td className="py-3 px-4 text-center text-green-600">{team.wins}</td>
-                    <td className="py-3 px-4 text-center text-gray-500">{team.draws}</td>
-                    <td className="py-3 px-4 text-center text-red">{team.losses}</td>
-                    <td className="py-3 px-4 text-center text-gray-500 hidden sm:table-cell">
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-600">{team.played}</td>
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-green-600">{team.wins}</td>
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-500 hidden sm:table-cell">{team.draws}</td>
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-red hidden sm:table-cell">{team.losses}</td>
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-500 hidden md:table-cell">
                       {team.goalsFor}:{team.goalsAgainst}
                     </td>
-                    <td className="py-3 px-4 text-center">
+                    <td className="py-2.5 px-2 sm:px-4 text-center">
                       <span
-                        className={`inline-block min-w-[2rem] py-0.5 rounded font-bold ${
+                        className={`inline-block min-w-[1.75rem] sm:min-w-[2rem] py-0.5 rounded font-bold ${
                           isLeader
                             ? "bg-amber-400 text-white"
                             : isClub
