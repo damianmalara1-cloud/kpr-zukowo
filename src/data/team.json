@@ -1,0 +1,109 @@
+{
+  "season": "2025/2026",
+  "staff": [
+    {
+      "id": "s1",
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "role": "Trener główny",
+      "photo": null
+    },
+    {
+      "id": "s2",
+      "firstName": "Piotr",
+      "lastName": "Nowak",
+      "role": "Asystent trenera",
+      "photo": null
+    },
+    {
+      "id": "s3",
+      "firstName": "Marek",
+      "lastName": "Wiśniewski",
+      "role": "Fizjoterapeuta",
+      "photo": null
+    }
+  ],
+  "players": [
+    {
+      "id": "1",
+      "firstName": "Zawodnik",
+      "lastName": "Pierwszy",
+      "number": 1,
+      "position": "Bramkarz",
+      "positionGroup": "Bramkarze",
+      "photo": null
+    },
+    {
+      "id": "2",
+      "firstName": "Zawodnik",
+      "lastName": "Drugi",
+      "number": 16,
+      "position": "Bramkarz",
+      "positionGroup": "Bramkarze",
+      "photo": null
+    },
+    {
+      "id": "3",
+      "firstName": "Zawodnik",
+      "lastName": "Trzeci",
+      "number": 5,
+      "position": "Rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": null
+    },
+    {
+      "id": "4",
+      "firstName": "Zawodnik",
+      "lastName": "Czwarty",
+      "number": 8,
+      "position": "Lewy rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": null
+    },
+    {
+      "id": "5",
+      "firstName": "Zawodnik",
+      "lastName": "Piąty",
+      "number": 13,
+      "position": "Prawy rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": null
+    },
+    {
+      "id": "6",
+      "firstName": "Zawodnik",
+      "lastName": "Szósty",
+      "number": 7,
+      "position": "Lewe skrzydło",
+      "positionGroup": "Skrzydłowi",
+      "photo": null
+    },
+    {
+      "id": "7",
+      "firstName": "Zawodnik",
+      "lastName": "Siódmy",
+      "number": 9,
+      "position": "Prawe skrzydło",
+      "positionGroup": "Skrzydłowi",
+      "photo": null
+    },
+    {
+      "id": "8",
+      "firstName": "Zawodnik",
+      "lastName": "Ósmy",
+      "number": 11,
+      "position": "Obrotowy",
+      "positionGroup": "Obrotowi",
+      "photo": null
+    },
+    {
+      "id": "9",
+      "firstName": "Zawodnik",
+      "lastName": "Dziewiąty",
+      "number": 19,
+      "position": "Obrotowy",
+      "positionGroup": "Obrotowi",
+      "photo": null
+    }
+  ]
+}
