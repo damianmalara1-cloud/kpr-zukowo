@@ -1,15 +1,13 @@
 import Link from "next/link";
 
 const mainSponsors = [
-  { name: "Fitdieta", href: "#" },
-  { name: "Gmina Żukowo", href: "#" },
+  { name: "Gmina Żukowo", href: "#", logo: "/images/logo/gmina_zukowo.png" },
+  { name: "Fitdieta", href: "#", logo: "/images/logo/fitdietaa.png" },
 ];
 
 const partners = [
-  { name: "Partner 1", href: "#" },
-  { name: "Partner 2", href: "#" },
-  { name: "Partner 3", href: "#" },
-  { name: "Partner 4", href: "#" },
+  { name: "BOTERM", href: "#", logo: "/images/logo/mecenasi/BOTERM.png" },
+  { name: "CWP", href: "#", logo: "/images/logo/mecenasi/CWP.jpg" },
 ];
 
 export default function SponsorsBar() {
@@ -31,12 +29,11 @@ export default function SponsorsBar() {
                 className="flex items-center transition-transform duration-300 hover:scale-110"
                 aria-label={sponsor.name}
               >
-                {/* Placeholder - replace with real logos */}
-                <div className="h-10 md:h-12 px-6 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <span className="text-sm md:text-base font-bold text-navy whitespace-nowrap">
-                    {sponsor.name}
-                  </span>
-                </div>
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="h-20 md:h-28 w-auto object-contain"
+                />
               </a>
             ))}
           </div>
@@ -58,11 +55,11 @@ export default function SponsorsBar() {
               className="flex items-center transition-transform duration-300 hover:scale-110"
               aria-label={partner.name}
             >
-              <div className="h-8 md:h-10 px-4 bg-gray-50 rounded flex items-center justify-center">
-                <span className="text-xs md:text-sm font-medium text-gray-400 whitespace-nowrap">
-                  {partner.name}
-                </span>
-              </div>
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="h-14 md:h-18 w-auto object-contain"
+              />
             </a>
           ))}
         </div>
@@ -126,8 +123,8 @@ export default function SponsorsBar() {
               rel="noopener noreferrer"
               aria-label="TikTok"
             >
-              <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.18 8.18 0 005.58 2.18V11.7a4.83 4.83 0 01-3.77-1.24V6.69h3.77z" />
+              <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 448 512">
+                <path d="M448 209.91a210.06 210.06 0 01-122.77-39.25v178.72A162.55 162.55 0 11185 188.31v89.89a74.62 74.62 0 1052.23 71.18V0h88a121.18 121.18 0 001.86 22.17A122.18 122.18 0 00381 102.39a121.43 121.43 0 0067 20.14z" />
               </svg>
             </a>
           </li>

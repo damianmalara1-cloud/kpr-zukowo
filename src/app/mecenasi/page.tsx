@@ -47,7 +47,8 @@ const packages = [
 ];
 
 const currentPatrons = [
-  { name: "Zostań pierwszym Mecenasem!", type: "placeholder" },
+  { name: "BOTERM", logo: "/images/logo/mecenasi/BOTERM.png" },
+  { name: "CWP", logo: "/images/logo/mecenasi/CWP.jpg" },
 ];
 
 export default function MecenasiPage() {
@@ -178,18 +179,18 @@ export default function MecenasiPage() {
           </p>
 
           <div className="bg-gray-50 rounded-2xl p-8 mb-8">
-            <p className="text-red font-semibold mb-4">Liczba miejsc ograniczona</p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <p className="text-red font-semibold mb-6">Liczba miejsc ograniczona</p>
+            <div className="flex flex-wrap justify-center items-center gap-8">
               {currentPatrons.map((patron, index) => (
                 <div
                   key={index}
-                  className={`px-6 py-3 rounded-lg transition-all ${
-                    patron.type === "placeholder"
-                      ? "bg-gray-200 text-gray-400 border-2 border-dashed border-gray-300 hover:border-navy/30"
-                      : "bg-navy text-white"
-                  }`}
+                  className="bg-white px-6 py-4 rounded-xl shadow-md hover:shadow-lg transition-all"
                 >
-                  {patron.name}
+                  <img
+                    src={patron.logo}
+                    alt={patron.name}
+                    className="h-16 md:h-20 w-auto object-contain"
+                  />
                 </div>
               ))}
             </div>

@@ -5,9 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const heroImages = [
-  "/images/Grupa-1.jpg",
-  "/images/Grupa-2.jpg",
-  "/images/Grupa-4.jpg",
   "/images/Grupa-6.jpg",
   "/images/Grupa-7.jpg",
 ];

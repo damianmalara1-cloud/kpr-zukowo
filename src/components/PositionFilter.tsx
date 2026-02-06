@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserIcon } from "@/components/Icons";
 
 interface Player {
@@ -11,6 +11,7 @@ interface Player {
   position: string;
   positionGroup: string;
   photo: string | null;
+  onLoan?: boolean;
 }
 
 interface Staff {
@@ -19,6 +20,16 @@ interface Staff {
   lastName: string;
   role: string;
   photo: string | null;
+}
+
+interface SelectedPerson {
+  photo: string;
+  firstName: string;
+  lastName: string;
+  role?: string;
+  number?: number;
+  position?: string;
+  onLoan?: boolean;
 }
 
 interface PositionFilterProps {
@@ -36,6 +47,22 @@ const POSITION_GROUPS = [
 
 export default function PositionFilter({ players, staff }: PositionFilterProps) {
   const [activeFilter, setActiveFilter] = useState("Wszyscy");
+  const [selectedPerson, setSelectedPerson] = useState<SelectedPerson | null>(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedPerson(null);
+    };
+    if (selectedPerson) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [selectedPerson]);
 
   const filteredPlayers =
     activeFilter === "Wszyscy"
@@ -53,15 +80,21 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
           {staff.map((person, index) => (
             <div
               key={person.id}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
+              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all ${person.photo ? "cursor-pointer" : ""}`}
               style={{ animationDelay: `${index * 80}ms` }}
+              onClick={() => person.photo && setSelectedPerson({
+                photo: person.photo,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                role: person.role,
+              })}
             >
               <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative">
                 {person.photo ? (
                   <img
                     src={person.photo}
                     alt={`${person.firstName} ${person.lastName}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : (
                   <UserIcon className="w-20 h-20 text-gray-300" />
@@ -114,21 +147,38 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
           {filteredPlayers.map((player, index) => (
             <div
               key={player.id}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all group animate-fade-in"
+              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all group animate-fade-in ${player.photo ? "cursor-pointer" : ""}`}
               style={{ animationDelay: `${index * 60}ms` }}
+              onClick={() => player.photo && setSelectedPerson({
+                photo: player.photo,
+                firstName: player.firstName,
+                lastName: player.lastName,
+                number: player.number,
+                position: player.position,
+                onLoan: player.onLoan,
+              })}
             >
               {/* Photo area */}
-              <div className="aspect-square bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center relative overflow-hidden">
+              <div className={`aspect-square bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center relative overflow-hidden ${player.onLoan ? "grayscale" : ""}`}>
                 {player.photo ? (
                   <img
                     src={player.photo}
                     alt={`${player.firstName} ${player.lastName}`}
-                    className="w-full h-full object-contain relative z-10 group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover object-top relative z-10 group-hover:scale-105 transition-transform duration-300"
                   />
                 ) : (
                   <span className="text-white/10 text-[8rem] font-black leading-none select-none group-hover:scale-110 transition-transform duration-300">
                     {player.number}
                   </span>
+                )}
+
+                {/* On loan badge */}
+                {player.onLoan && (
+                  <div className="absolute top-3 right-3 z-30">
+                    <span className="bg-gray-700 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide shadow-lg">
+                      Wypożyczony
+                    </span>
+                  </div>
                 )}
 
                 {/* Number badge - mobile */}
@@ -173,6 +223,62 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
           </div>
         )}
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedPerson && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedPerson(null)}
+        >
+          {/* Backdrop with blur */}
+          <div className="absolute inset-0 bg-navy/80 backdrop-blur-md" />
+
+          {/* Modal content */}
+          <div
+            className="relative z-10 max-w-lg w-full animate-fade-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedPerson(null)}
+              className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Photo */}
+            <div className={`rounded-2xl overflow-hidden shadow-2xl ${selectedPerson.onLoan ? "grayscale" : ""}`}>
+              <img
+                src={selectedPerson.photo}
+                alt={`${selectedPerson.firstName} ${selectedPerson.lastName}`}
+                className="w-full h-auto"
+              />
+            </div>
+
+            {/* Info */}
+            <div className="mt-4 text-center text-white">
+              {selectedPerson.number && (
+                <span className="inline-block bg-red text-white text-lg font-bold w-10 h-10 rounded-full leading-10 mb-2">
+                  {selectedPerson.number}
+                </span>
+              )}
+              <h3 className="text-2xl font-bold">
+                {selectedPerson.firstName} {selectedPerson.lastName}
+              </h3>
+              <p className="text-gray-300 mt-1">
+                {selectedPerson.position || selectedPerson.role}
+              </p>
+              {selectedPerson.onLoan && (
+                <span className="inline-block mt-2 bg-gray-700 text-white text-xs font-bold px-3 py-1 rounded uppercase">
+                  Wypożyczony
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -3,107 +3,180 @@
   "staff": [
     {
       "id": "s1",
-      "firstName": "Jan",
-      "lastName": "Kowalski",
+      "firstName": "Adam",
+      "lastName": "Lisiewicz",
       "role": "Trener główny",
-      "photo": null
+      "photo": "/images/staff/1trener_Adam_Lisiewicz.jpg"
     },
     {
       "id": "s2",
-      "firstName": "Piotr",
-      "lastName": "Nowak",
+      "firstName": "Szymon",
+      "lastName": "Bednarski",
       "role": "Asystent trenera",
-      "photo": null
+      "photo": "/images/staff/2trener_Szymon_Bednarski.jpg"
     },
     {
       "id": "s3",
-      "firstName": "Marek",
-      "lastName": "Wiśniewski",
-      "role": "Fizjoterapeuta",
-      "photo": null
+      "firstName": "Dorota",
+      "lastName": "Domalewska",
+      "role": "Fizjoterapeutka",
+      "photo": "/images/staff/fizjoterapeutka_Dorota_Domalewska.jpg"
     }
   ],
   "players": [
     {
-      "id": "1",
-      "firstName": "Zawodnik",
-      "lastName": "Pierwszy",
-      "number": 1,
+      "id": "p1",
+      "firstName": "Jakub",
+      "lastName": "Skonieczny",
+      "number": 22,
       "position": "Bramkarz",
       "positionGroup": "Bramkarze",
-      "photo": null
+      "photo": "/images/players/bramkarze/22_Jakub_Skonieczny.jpg"
     },
     {
-      "id": "2",
-      "firstName": "Zawodnik",
-      "lastName": "Drugi",
-      "number": 16,
+      "id": "p2",
+      "firstName": "Adam",
+      "lastName": "Zakrzewski",
+      "number": 33,
       "position": "Bramkarz",
       "positionGroup": "Bramkarze",
-      "photo": null
+      "photo": "/images/players/bramkarze/33_Adam_Zakrzewski.jpg"
     },
     {
-      "id": "3",
-      "firstName": "Zawodnik",
-      "lastName": "Trzeci",
-      "number": 5,
+      "id": "p3",
+      "firstName": "Dawid",
+      "lastName": "Wodziński",
+      "number": 99,
+      "position": "Bramkarz",
+      "positionGroup": "Bramkarze",
+      "photo": "/images/players/bramkarze/99_Dawid_Wodziński.jpg"
+    },
+    {
+      "id": "p4",
+      "firstName": "Tomasz",
+      "lastName": "Kiejdo",
+      "number": 3,
       "position": "Rozgrywający",
       "positionGroup": "Rozgrywający",
-      "photo": null
+      "photo": "/images/players/rozgrywajacy/3_Tomasz_Kiejdo.jpg"
     },
     {
-      "id": "4",
-      "firstName": "Zawodnik",
-      "lastName": "Czwarty",
+      "id": "p5",
+      "firstName": "Gracjan",
+      "lastName": "Wysokiński",
+      "number": 4,
+      "position": "Rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": "/images/players/rozgrywajacy/4_Gracjan_Wysokiński.jpg"
+    },
+    {
+      "id": "p6",
+      "firstName": "Antoni",
+      "lastName": "Łangowski",
       "number": 8,
-      "position": "Lewy rozgrywający",
+      "position": "Rozgrywający",
       "positionGroup": "Rozgrywający",
-      "photo": null
+      "photo": "/images/players/rozgrywajacy/8_Antoni_Łangowski.jpg"
     },
     {
-      "id": "5",
-      "firstName": "Zawodnik",
-      "lastName": "Piąty",
-      "number": 13,
-      "position": "Prawy rozgrywający",
+      "id": "p7",
+      "firstName": "Alan",
+      "lastName": "Benkowski",
+      "number": 42,
+      "position": "Rozgrywający",
       "positionGroup": "Rozgrywający",
-      "photo": null
+      "photo": "/images/players/rozgrywajacy/42_Alan_Benkowski.jpg"
     },
     {
-      "id": "6",
-      "firstName": "Zawodnik",
-      "lastName": "Szósty",
+      "id": "p8",
+      "firstName": "Igor",
+      "lastName": "Helwak",
+      "number": 48,
+      "position": "Rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": "/images/players/rozgrywajacy/48_Igor_Helwak.jpg"
+    },
+    {
+      "id": "p9",
+      "firstName": "Eryk",
+      "lastName": "Pstrąg",
+      "number": 88,
+      "position": "Rozgrywający",
+      "positionGroup": "Rozgrywający",
+      "photo": "/images/players/rozgrywajacy/88_Eryk_Pstrąg.jpg"
+    },
+    {
+      "id": "p10",
+      "firstName": "Grzegorz",
+      "lastName": "Dorsz",
       "number": 7,
-      "position": "Lewe skrzydło",
+      "position": "Skrzydłowy",
       "positionGroup": "Skrzydłowi",
-      "photo": null
+      "photo": "/images/players/skrzydlowi/7_Grzegorz_Dorsz.jpg"
     },
     {
-      "id": "7",
-      "firstName": "Zawodnik",
-      "lastName": "Siódmy",
-      "number": 9,
-      "position": "Prawe skrzydło",
+      "id": "p11",
+      "firstName": "Marcin",
+      "lastName": "Matyjasik",
+      "number": 10,
+      "position": "Skrzydłowy",
       "positionGroup": "Skrzydłowi",
-      "photo": null
+      "photo": "/images/players/skrzydlowi/10_Marcin_Matyjasik.jpg"
     },
     {
-      "id": "8",
-      "firstName": "Zawodnik",
-      "lastName": "Ósmy",
-      "number": 11,
+      "id": "p12",
+      "firstName": "Mateusz",
+      "lastName": "Porębski",
+      "number": 13,
+      "position": "Skrzydłowy",
+      "positionGroup": "Skrzydłowi",
+      "photo": "/images/players/skrzydlowi/13_Mateusz_Porębski.jpg",
+      "onLoan": true
+    },
+    {
+      "id": "p13",
+      "firstName": "Szymon",
+      "lastName": "Maćkowiak",
+      "number": 18,
+      "position": "Skrzydłowy",
+      "positionGroup": "Skrzydłowi",
+      "photo": "/images/players/skrzydlowi/18_Szymon_Maćkowiak.jpg"
+    },
+    {
+      "id": "p14",
+      "firstName": "Paweł",
+      "lastName": "Miklikowski",
+      "number": 23,
+      "position": "Skrzydłowy",
+      "positionGroup": "Skrzydłowi",
+      "photo": "/images/players/skrzydlowi/23_Paweł_Miklikowski.jpg"
+    },
+    {
+      "id": "p15",
+      "firstName": "Jan",
+      "lastName": "Lewandowski",
+      "number": 5,
       "position": "Obrotowy",
       "positionGroup": "Obrotowi",
-      "photo": null
+      "photo": "/images/players/obrotowi/5_Jan_Lewandowski.jpg"
     },
     {
-      "id": "9",
-      "firstName": "Zawodnik",
-      "lastName": "Dziewiąty",
+      "id": "p16",
+      "firstName": "Kacper",
+      "lastName": "Lorbiecki",
+      "number": 6,
+      "position": "Obrotowy",
+      "positionGroup": "Obrotowi",
+      "photo": "/images/players/obrotowi/6_Kacper_Lorbiecki.jpg"
+    },
+    {
+      "id": "p17",
+      "firstName": "Szymon",
+      "lastName": "Gajdziński",
       "number": 19,
       "position": "Obrotowy",
       "positionGroup": "Obrotowi",
-      "photo": null
+      "photo": "/images/players/obrotowi/19_Szymon_Gajdziński.jpg"
     }
   ]
 }

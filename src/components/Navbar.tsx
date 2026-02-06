@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 interface NavItem {
@@ -76,7 +77,7 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className="flex items-center gap-1 px-3 py-2 text-sm font-medium hover:bg-navy-light rounded-md transition-colors"
+        className="flex items-center gap-1 px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -160,17 +161,33 @@ function MobileDropdown({ item, onClose }: { item: NavItem; onClose: () => void 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const closeMenu = () => setIsOpen(false);
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    closeMenu();
+  };
 
   return (
     <nav className="bg-navy text-white sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-xl font-bold group-hover:text-gray-200 transition-colors">KPR Fitdieta</span>
-            <span className="text-red font-bold group-hover:text-red-light transition-colors">Żukowo</span>
+          <Link
+            href="/"
+            className="flex items-center"
+            onClick={handleHomeClick}
+          >
+            <img
+              src="/images/logo/kpr_zukowo_beztla.png"
+              alt="KPR Żukowo"
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
@@ -182,7 +199,8 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href!}
-                  className="px-3 py-2 text-sm font-medium hover:bg-navy-light rounded-md transition-colors"
+                  className="px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+                  onClick={item.href === "/" ? handleHomeClick : undefined}
                 >
                   {item.label}
                 </Link>
@@ -231,7 +249,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href!}
                 className="block px-3 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
-                onClick={closeMenu}
+                onClick={item.href === "/" ? handleHomeClick : closeMenu}
               >
                 {item.label}
               </Link>

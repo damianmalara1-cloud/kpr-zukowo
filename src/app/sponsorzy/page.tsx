@@ -160,17 +160,25 @@ export default function SponsorzyPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-navy mb-8">Nasi partnerzy</h2>
 
-          <div className="bg-gray-50 rounded-2xl p-12 border-2 border-dashed border-gray-200 hover:border-navy/30 transition-colors">
-            <p className="text-gray-400 mb-4">
-              Tu pojawią się logotypy firm współpracujących z KPR Żukowo
-            </p>
-            <Link
-              href="/kontakt"
-              className="text-red hover:text-red-dark font-semibold transition-colors"
-            >
-              Dołącz do grona partnerów →
-            </Link>
+          <div className="flex flex-wrap justify-center items-center gap-16 mb-8">
+            <img
+              src="/images/logo/fitdietaa.png"
+              alt="Fitdieta"
+              className="h-24 md:h-32 w-auto object-contain"
+            />
+            <img
+              src="/images/logo/gmina_zukowo.png"
+              alt="Gmina Żukowo"
+              className="h-24 md:h-32 w-auto object-contain"
+            />
           </div>
+
+          <Link
+            href="/kontakt"
+            className="text-red hover:text-red-dark font-semibold transition-colors"
+          >
+            Dołącz do grona partnerów →
+          </Link>
         </div>
       </section>
 
