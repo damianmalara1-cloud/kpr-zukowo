@@ -142,40 +142,74 @@ export default async function Home() {
                 </div>
 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                  {/* KPR */}
-                  <div className="text-center group">
-                    <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
-                      <Image
-                        src="/images/logo/kpr_zukowo_beztla.png"
-                        alt="KPR Żukowo"
-                        fill
-                        className="object-contain"
-                      />
+                  {/* Gospodarz (pierwszy) */}
+                  {nextMatch.isHome ? (
+                    <div className="text-center group">
+                      <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
+                        <Image
+                          src="/images/logo/kpr_zukowo_beztla.png"
+                          alt="KPR Żukowo"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
                     </div>
-                    <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
-                  </div>
+                  ) : (
+                    <div className="text-center group">
+                      <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
+                        {opponentLogo ? (
+                          <Image
+                            src={opponentLogo}
+                            alt={nextMatch.opponent}
+                            fill
+                            className="object-contain"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center shadow-lg">
+                            <span className="text-gray-500 font-bold text-sm">LOGO</span>
+                          </div>
+                        )}
+                      </div>
+                      <p className="font-semibold text-gray-700">{nextMatch.opponent}</p>
+                    </div>
+                  )}
 
                   {/* VS */}
                   <div className="text-5xl font-bold text-red">vs</div>
 
-                  {/* Opponent */}
-                  <div className="text-center group">
-                    <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
-                      {opponentLogo ? (
+                  {/* Gość (drugi) */}
+                  {nextMatch.isHome ? (
+                    <div className="text-center group">
+                      <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
+                        {opponentLogo ? (
+                          <Image
+                            src={opponentLogo}
+                            alt={nextMatch.opponent}
+                            fill
+                            className="object-contain"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center shadow-lg">
+                            <span className="text-gray-500 font-bold text-sm">LOGO</span>
+                          </div>
+                        )}
+                      </div>
+                      <p className="font-semibold text-gray-700">{nextMatch.opponent}</p>
+                    </div>
+                  ) : (
+                    <div className="text-center group">
+                      <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
                         <Image
-                          src={opponentLogo}
-                          alt={nextMatch.opponent}
+                          src="/images/logo/kpr_zukowo_beztla.png"
+                          alt="KPR Żukowo"
                           fill
                           className="object-contain"
                         />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center shadow-lg">
-                          <span className="text-gray-500 font-bold text-sm">LOGO</span>
-                        </div>
-                      )}
+                      </div>
+                      <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
                     </div>
-                    <p className="font-semibold text-gray-700">{nextMatch.opponent}</p>
-                  </div>
+                  )}
                 </div>
 
                 {/* Match details */}
@@ -192,10 +226,12 @@ export default async function Home() {
                     <LocationIcon className="w-5 h-5 text-navy" />
                     <span>{nextMatch.venue}</span>
                   </p>
-                  <p className="flex items-center justify-center gap-3 text-green-600 font-semibold mt-4">
-                    <TicketIcon className="w-5 h-5" />
-                    <span>Wstęp wolny</span>
-                  </p>
+                  {nextMatch.isHome && (
+                    <p className="flex items-center justify-center gap-3 text-green-600 font-semibold mt-4">
+                      <TicketIcon className="w-5 h-5" />
+                      <span>Wstęp wolny</span>
+                    </p>
+                  )}
                 </div>
 
                 <div className="mt-8 text-center">
