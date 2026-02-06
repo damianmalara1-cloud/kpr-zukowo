@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import matches from "@/data/matches.json";
+import fs from "fs";
+import path from "path";
 import HeroSlider from "@/components/HeroSlider";
 import MatchCountdown from "@/components/MatchCountdown";
 import LeagueTable from "@/components/LeagueTable";
@@ -12,6 +15,32 @@ function getNextMatch() {
     .filter((match) => new Date(match.date) >= now)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   return upcomingMatches[0] || null;
+}
+
+// Znajdź logo przeciwnika
+function getOpponentLogo(opponentName: string): string | null {
+  const opponentsDir = path.join(process.cwd(), "public", "images", "opponents");
+
+  // Sprawdź czy folder istnieje
+  if (!fs.existsSync(opponentsDir)) {
+    return null;
+  }
+
+  // Szukaj pliku z nazwą przeciwnika (różne rozszerzenia)
+  const extensions = [".png", ".jpg", ".jpeg", ".webp", ".svg"];
+  const files = fs.readdirSync(opponentsDir);
+
+  for (const file of files) {
+    const fileName = path.parse(file).name.toLowerCase();
+    const opponentLower = opponentName.toLowerCase();
+
+    // Sprawdź czy nazwa pliku zawiera nazwę przeciwnika lub odwrotnie
+    if (fileName.includes(opponentLower) || opponentLower.includes(fileName)) {
+      return `/images/opponents/${file}`;
+    }
+  }
+
+  return null;
 }
 
 async function fetchLeagueTable() {
@@ -83,6 +112,7 @@ function formatDate(dateString: string) {
 export default async function Home() {
   const nextMatch = getNextMatch();
   const leagueTable = await fetchLeagueTable();
+  const opponentLogo = nextMatch ? getOpponentLogo(nextMatch.opponent) : null;
 
   return (
     <div>
@@ -114,8 +144,13 @@ export default async function Home() {
                 <div className="flex flex-col md:flex-row items-center justify-center gap-8">
                   {/* KPR */}
                   <div className="text-center group">
-                    <div className="w-24 h-24 md:w-28 md:h-28 bg-navy rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg group-hover:scale-105 transition-transform">
-                      <span className="text-white font-bold text-lg">KPR</span>
+                    <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
+                      <Image
+                        src="/images/logo/kpr_zukowo_beztla.png"
+                        alt="KPR Żukowo"
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                     <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
                   </div>
@@ -125,8 +160,19 @@ export default async function Home() {
 
                   {/* Opponent */}
                   <div className="text-center group">
-                    <div className="w-24 h-24 md:w-28 md:h-28 bg-gray-200 rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg group-hover:scale-105 transition-transform">
-                      <span className="text-gray-500 font-bold text-sm">LOGO</span>
+                    <div className="w-24 h-24 md:w-28 md:h-28 relative mb-3 mx-auto group-hover:scale-105 transition-transform">
+                      {opponentLogo ? (
+                        <Image
+                          src={opponentLogo}
+                          alt={nextMatch.opponent}
+                          fill
+                          className="object-contain"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center shadow-lg">
+                          <span className="text-gray-500 font-bold text-sm">LOGO</span>
+                        </div>
+                      )}
                     </div>
                     <p className="font-semibold text-gray-700">{nextMatch.opponent}</p>
                   </div>
