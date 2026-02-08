@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
 import matches from "@/data/matches.json";
 
 interface PageProps {
@@ -30,6 +33,21 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+function getOpponentLogo(opponentName: string): string | null {
+  const opponentsDir = path.join(process.cwd(), "public", "images", "opponents");
+  if (!fs.existsSync(opponentsDir)) return null;
+  const extensions = [".png", ".jpg", ".jpeg", ".webp", ".svg"];
+  const files = fs.readdirSync(opponentsDir);
+  for (const file of files) {
+    const fileName = path.parse(file).name.toLowerCase();
+    const opponentLower = opponentName.toLowerCase();
+    if (fileName.includes(opponentLower) || opponentLower.includes(fileName)) {
+      return `/images/opponents/${file}`;
+    }
+  }
+  return null;
+}
+
 export async function generateStaticParams() {
   return matches.matches.map((match) => ({
     id: match.id,
@@ -45,6 +63,7 @@ export default async function MatchPage({ params }: PageProps) {
   }
 
   const isPast = new Date(match.date) < new Date();
+  const opponentLogo = getOpponentLogo(match.opponent);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -69,12 +88,20 @@ export default async function MatchPage({ params }: PageProps) {
             </span>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-              {/* KPR */}
+              {/* Gospodarz */}
               <div className="text-center">
-                <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-2 mx-auto">
-                  <span className="text-white font-bold">KPR</span>
+                <div className="w-20 h-20 relative mb-2 mx-auto">
+                  {match.isHome ? (
+                    <Image src="/images/logo/kpr_zukowo_beztla.png" alt="KPR Żukowo" fill className="object-contain" />
+                  ) : opponentLogo ? (
+                    <Image src={opponentLogo} alt={match.opponent} fill className="object-contain" />
+                  ) : (
+                    <div className="w-full h-full bg-white/10 rounded-full flex items-center justify-center">
+                      <span className="text-white/50 text-xs">LOGO</span>
+                    </div>
+                  )}
                 </div>
-                <p className="font-semibold">KPR Fitdieta Żukowo</p>
+                <p className="font-semibold">{match.isHome ? "KPR Fitdieta Żukowo" : match.opponent}</p>
               </div>
 
               {/* Score or VS */}
@@ -86,12 +113,22 @@ export default async function MatchPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* Opponent */}
+              {/* Gość */}
               <div className="text-center">
-                <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-2 mx-auto">
-                  <span className="text-white/50 text-xs">LOGO</span>
+                <div className="w-20 h-20 relative mb-2 mx-auto">
+                  {match.isHome ? (
+                    opponentLogo ? (
+                      <Image src={opponentLogo} alt={match.opponent} fill className="object-contain" />
+                    ) : (
+                      <div className="w-full h-full bg-white/10 rounded-full flex items-center justify-center">
+                        <span className="text-white/50 text-xs">LOGO</span>
+                      </div>
+                    )
+                  ) : (
+                    <Image src="/images/logo/kpr_zukowo_beztla.png" alt="KPR Żukowo" fill className="object-contain" />
+                  )}
                 </div>
-                <p className="font-semibold">{match.opponent}</p>
+                <p className="font-semibold">{match.isHome ? match.opponent : "KPR Fitdieta Żukowo"}</p>
               </div>
             </div>
           </div>
@@ -99,7 +136,7 @@ export default async function MatchPage({ params }: PageProps) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="space-y-8">
           {/* Informacje o meczu */}
           <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-xl font-bold text-navy mb-4">Informacje</h2>
@@ -116,11 +153,18 @@ export default async function MatchPage({ params }: PageProps) {
                 <div>
                   <p className="font-semibold">{match.venue}</p>
                   {match.isHome && (
-                    <p className="text-gray-500">ul. Sportowa, 83-330 Żukowo</p>
+                    <a
+                      href="https://maps.app.goo.gl/XM1XMa5zmbcCc6tq5"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red hover:text-red-dark transition-colors underline text-sm"
+                    >
+                      Zobacz na mapie
+                    </a>
                   )}
                 </div>
               </div>
-              {!isPast && (
+              {!isPast && match.isHome && (
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">🎟️</span>
                   <div>

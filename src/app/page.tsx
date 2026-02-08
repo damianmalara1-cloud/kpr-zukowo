@@ -6,6 +6,7 @@ import path from "path";
 import HeroSlider from "@/components/HeroSlider";
 import MatchCountdown from "@/components/MatchCountdown";
 import LeagueTable from "@/components/LeagueTable";
+import TopScorers from "@/components/TopScorers";
 import { CalendarIcon, ClockIcon, LocationIcon, TicketIcon } from "@/components/Icons";
 
 // Znajdź najbliższy mecz
@@ -99,6 +100,50 @@ async function fetchLeagueTable() {
   }
 }
 
+async function fetchTopScorers() {
+  try {
+    const res = await fetch(
+      "https://rozgrywki.zprp.pl/?Sezon=194&Rozgrywki=11601&Tabela3=1",
+      { next: { revalidate: 3600 } }
+    );
+    const html = await res.text();
+
+    const scorers: {
+      position: number;
+      name: string;
+      club: string;
+      matches: number;
+      goals: number;
+    }[] = [];
+
+    const rowRegex = /<tr\s+class="(?:even|odd)"[^>]*>([\s\S]*?)<\/tr>/gi;
+    let rowMatch;
+    while ((rowMatch = rowRegex.exec(html)) !== null) {
+      const row = rowMatch[1];
+      const cellRegex = /<td[^>]*>([\s\S]*?)<\/td>/gi;
+      const cells: string[] = [];
+      let cellMatch;
+      while ((cellMatch = cellRegex.exec(row)) !== null) {
+        cells.push(cellMatch[1].replace(/<[^>]*>/g, "").trim());
+      }
+      // cells: [0]=position, [1]=photo(empty), [2]=name, [3]=club, [4]=matches, [5]=goals
+      if (cells.length >= 6) {
+        scorers.push({
+          position: parseInt(cells[0]) || scorers.length + 1,
+          name: cells[2],
+          club: cells[3],
+          matches: parseInt(cells[4]) || 0,
+          goals: parseInt(cells[5]) || 0,
+        });
+      }
+    }
+
+    return scorers;
+  } catch {
+    return [];
+  }
+}
+
 function formatDate(dateString: string) {
   const date = new Date(dateString);
   return date.toLocaleDateString("pl-PL", {
@@ -112,6 +157,7 @@ function formatDate(dateString: string) {
 export default async function Home() {
   const nextMatch = getNextMatch();
   const leagueTable = await fetchLeagueTable();
+  const topScorers = await fetchTopScorers();
   const opponentLogo = nextMatch ? getOpponentLogo(nextMatch.opponent) : null;
 
   return (
@@ -224,7 +270,18 @@ export default async function Home() {
                   </p>
                   <p className="flex items-center justify-center gap-3">
                     <LocationIcon className="w-5 h-5 text-navy" />
-                    <span>{nextMatch.venue}</span>
+                    {nextMatch.isHome ? (
+                      <a
+                        href="https://maps.app.goo.gl/XM1XMa5zmbcCc6tq5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-red hover:text-red-dark transition-colors underline"
+                      >
+                        {nextMatch.venue}
+                      </a>
+                    ) : (
+                      <span>{nextMatch.venue}</span>
+                    )}
                   </p>
                   {nextMatch.isHome && (
                     <p className="flex items-center justify-center gap-3 text-green-600 font-semibold mt-4">
@@ -251,6 +308,9 @@ export default async function Home() {
 
       {/* TABELA LIGOWA */}
       <LeagueTable teams={leagueTable} />
+
+      {/* KLASYFIKACJA STRZELCÓW */}
+      <TopScorers scorers={topScorers} />
 
       {/* FILOZOFIA KLUBU */}
       <section className="py-16 bg-gray-50">

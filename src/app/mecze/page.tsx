@@ -38,8 +38,13 @@ export default function MeczePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-navy text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className="relative text-white pt-32 pb-16 bg-navy">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/images/mecze.jpg')", backgroundPosition: "left 25%" }}
+        />
+        <div className="absolute inset-0 bg-navy/70" />
+        <div className="relative max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Mecze</h1>
           <p className="text-xl text-gray-200">
             Terminarz sezonu {matches.season}

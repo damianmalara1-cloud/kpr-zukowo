@@ -92,7 +92,7 @@ export default function SponsorsBar() {
           <li className="relative flex h-8 items-center justify-center">
             <a
               className="block text-gray-400 hover:text-navy transition-colors duration-200"
-              href="https://www.facebook.com/kprzukovo"
+              href="https://www.facebook.com/kprzukowo"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -105,7 +105,7 @@ export default function SponsorsBar() {
           <li className="relative flex h-8 items-center justify-center">
             <a
               className="block text-gray-400 hover:text-pink-600 transition-colors duration-200"
-              href="https://www.instagram.com/kprzukovo"
+              href="https://www.instagram.com/kpr_zukowo/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -118,7 +118,7 @@ export default function SponsorsBar() {
           <li className="relative flex h-8 items-center justify-center">
             <a
               className="block text-gray-400 hover:text-gray-900 transition-colors duration-200"
-              href="https://www.tiktok.com/@kprzukovo"
+              href="https://www.tiktok.com/@kprzukowo"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok"
@@ -131,7 +131,7 @@ export default function SponsorsBar() {
           <li className="relative flex h-8 items-center justify-center">
             <a
               className="block text-gray-400 hover:text-red transition-colors duration-200"
-              href="mailto:kontakt@kprzukovo.pl"
+              href="mailto:klub@kprzukowo.pl"
               aria-label="Email"
             >
               <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

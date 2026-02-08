@@ -10,8 +10,13 @@ export default function KibicePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-navy text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="relative text-white pt-28 pb-16 bg-navy">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/images/kibice.jpg')", backgroundPosition: "70% 45%" }}
+        />
+        <div className="absolute inset-0 bg-navy/65" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Kibice & Społeczność</h1>
           <p className="text-xl text-gray-200">
             Tu zaczyna się historia
@@ -157,7 +162,7 @@ export default function KibicePage() {
               Zobacz terminarz
             </Link>
             <a
-              href="https://www.facebook.com/kprzukovo"
+              href="https://www.facebook.com/kprzukowo"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-lg transition-all hover:scale-105"

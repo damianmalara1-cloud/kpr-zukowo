@@ -1,20 +1,22 @@
-import { TrophyIcon, UsersIcon, SeedlingIcon, HeartIcon, ChartIcon, HomeIcon, UserIcon } from "@/components/Icons";
+import { TrophyIcon, UsersIcon, SeedlingIcon, HeartIcon, ChartIcon, HomeIcon } from "@/components/Icons";
+import BoardMembers from "@/components/BoardMembers";
 
 export const metadata = {
   title: "O klubie | KPR Fitdieta Żukowo",
   description: "Historia i misja KPR Fitdieta Żukowo. Poznaj nasz klub piłki ręcznej.",
 };
 
-const boardMembers = [
+const boardMembers: { name: string; role: string; description: string; image?: string }[] = [
   {
     name: "Jan Kowalski",
     role: "Prezes klubu",
     description: "Od ponad 10 lat związany z klubem. Pasjonat piłki ręcznej i lokalnej społeczności. Odpowiada za strategiczny rozwój KPR Żukowo oraz relacje z partnerami i sponsorami.",
   },
   {
-    name: "Anna Nowak",
-    role: "Wiceprezes",
-    description: "Koordynuje codzienne działania klubu i współpracę z samorządem. Dba o rozwój sekcji młodzieżowych oraz organizację wydarzeń klubowych.",
+    name: "Damian Malara",
+    role: "Sekretarz Klubu",
+    description: "Od lat związany z piłką ręczną, multimedalista mistrzostw Polski w kategoriach juniorskich. Posiada doświadczenie w biznesie i budowaniu struktur organizacyjnych, aktywnie angażując się w rozwój młodzieży oraz długofalowy rozwój klubu.",
+    image: "/images/Damian_Malara.jpg",
   },
 ];
 
@@ -22,8 +24,13 @@ export default function OKlubiePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-navy text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="relative text-white pt-24 pb-16 bg-navy">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/images/o_klubie.jpg')", backgroundPosition: "left 20% top 15%" }}
+        />
+        <div className="absolute inset-0 bg-navy/70" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">O klubie</h1>
           <p className="text-xl text-gray-200">
             KPR Fitdieta Żukowo – piłka ręczna, emocje i społeczność
@@ -106,31 +113,11 @@ export default function OKlubiePage() {
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-navy mb-8 text-center">Zarząd klubu</h2>
           <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Za codzienne funkcjonowanie klubu odpowiada zespół ludzi oddanych idei rozwoju
+            Za codzienne funkcjonowanie klubu odpowiadają ludzie oddani idei rozwoju
             piłki ręcznej w naszym regionie.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {boardMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center flex-shrink-0">
-                    <UserIcon className="w-10 h-10 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-xl text-navy mb-1">{member.name}</h3>
-                    <p className="text-red font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {member.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <BoardMembers members={boardMembers} />
         </div>
       </section>
 
@@ -191,25 +178,6 @@ export default function OKlubiePage() {
         </div>
       </section>
 
-      {/* Hala */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-navy mb-8 text-center">Nasza hala</h2>
-
-          <div className="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
-            <h3 className="font-semibold text-xl text-navy mb-4">
-              Hala Widowiskowo-Sportowa w Żukowie
-            </h3>
-            <p className="text-gray-600 mb-4">
-              ul. Sportowa, 83-330 Żukowo
-            </p>
-            <p className="text-gray-500 text-sm">
-              Nowoczesny obiekt sportowy, gdzie rozgrywamy nasze mecze domowe.
-              Zapraszamy na każdy mecz – wstęp wolny!
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

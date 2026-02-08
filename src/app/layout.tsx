@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import SponsorsBar from "@/components/SponsorsBar";
+import ConditionalSponsorsBar from "@/components/ConditionalSponsorsBar";
 import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
@@ -43,7 +43,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <SponsorsBar />
+        <ConditionalSponsorsBar />
         <Footer />
       </body>
     </html>

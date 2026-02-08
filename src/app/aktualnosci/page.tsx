@@ -23,8 +23,13 @@ export default function AktualnosciPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-navy text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="relative text-white pt-28 pb-16 bg-navy">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/images/aktualnosci.jpg')", backgroundPosition: "center 29%" }}
+        />
+        <div className="absolute inset-0 bg-navy/65" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Aktualności</h1>
           <p className="text-xl text-gray-200">
             Bądź na bieżąco z życiem klubu
@@ -88,7 +93,7 @@ export default function AktualnosciPage() {
           </p>
           <div className="flex justify-center gap-4">
             <a
-              href="https://www.facebook.com/kprzukovo"
+              href="https://www.facebook.com/kprzukowo"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 hover:bg-white/20 px-6 py-2 rounded-lg transition-colors"
@@ -96,7 +101,7 @@ export default function AktualnosciPage() {
               Facebook
             </a>
             <a
-              href="https://www.instagram.com/kprzukovo"
+              href="https://www.instagram.com/kpr_zukowo/"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 hover:bg-white/20 px-6 py-2 rounded-lg transition-colors"

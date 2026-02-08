@@ -17,7 +17,21 @@ const sponsorPackages = [
       "Możliwość aktywacji podczas meczu",
       "Zdjęcia z meczu do wykorzystania",
     ],
-    color: "bg-gray-100",
+    featured: false,
+  },
+  {
+    name: "Sponsor Sezonu",
+    description: "Kompleksowa współpraca przez cały sezon",
+    features: [
+      "Logo na stroju meczowym",
+      "Stała obecność na stronie WWW",
+      "Baner w hali podczas meczów domowych",
+      "Regularne posty w mediach społecznościowych",
+      "Udział w spotkaniach Rady Mecenasów",
+      "Udział w wydarzeniach klubowych",
+      "Materiały foto/video do własnych celów",
+    ],
+    featured: true,
   },
   {
     name: "Sponsor Emocji",
@@ -29,20 +43,7 @@ const sponsorPackages = [
       "Dostęp do contentu foto/video",
       "Wspólne akcje w social media",
     ],
-    color: "bg-red/10",
-  },
-  {
-    name: "Partner Sezonu",
-    description: "Kompleksowa współpraca przez cały sezon",
-    features: [
-      "Logo na stroju meczowym",
-      "Stała obecność na stronie WWW",
-      "Baner w hali podczas meczów domowych",
-      "Regularne posty w mediach społecznościowych",
-      "Udział w wydarzeniach klubowych",
-      "Materiały foto/video do własnych celów",
-    ],
-    color: "bg-navy/10",
+    featured: false,
   },
 ];
 
@@ -55,7 +56,7 @@ const benefits = [
   {
     icon: ShareIcon,
     title: "Zasięgi",
-    description: "Dotarcie do lokalnej społeczności poprzez media klubu",
+    description: "Dotarcie do ogólnopolskiej społeczności poprzez media klubu",
   },
   {
     icon: FlameIcon,
@@ -73,8 +74,13 @@ export default function SponsorzyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-navy to-navy-light text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <div className="relative text-white pt-28 pb-16 bg-navy">
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: "url('/images/sponsorzy.jpg')", backgroundPosition: "65% 35%" }}
+        />
+        <div className="absolute inset-0 bg-navy/65" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Sponsorzy</h1>
           <p className="text-xl text-gray-200">
             Firmy, które grają z KPR
@@ -114,19 +120,34 @@ export default function SponsorzyPage() {
             jesteśmy otwarci na indywidualne rozwiązania.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-center">
             {sponsorPackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`${pkg.color} rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:-translate-y-1 transition-all`}
+                className={`rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all relative ${
+                  pkg.featured
+                    ? "bg-navy text-white border-2 border-navy shadow-xl md:scale-105 md:py-12"
+                    : "bg-gray-100 border border-gray-200"
+                }`}
               >
-                <h3 className="text-xl font-bold text-navy mb-2">{pkg.name}</h3>
-                <p className="text-gray-600 text-sm mb-6">{pkg.description}</p>
+                {pkg.featured && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-red text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md">
+                      Najkorzystniejszy
+                    </span>
+                  </div>
+                )}
+                <h3 className={`text-xl font-bold mb-2 ${pkg.featured ? "text-white" : "text-navy"}`}>
+                  {pkg.name}
+                </h3>
+                <p className={`text-sm mb-6 ${pkg.featured ? "text-gray-300" : "text-gray-600"}`}>
+                  {pkg.description}
+                </p>
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <svg
-                        className="w-5 h-5 mt-0.5 flex-shrink-0 text-navy"
+                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${pkg.featured ? "text-red-light" : "text-navy"}`}
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -136,7 +157,7 @@ export default function SponsorzyPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="text-sm text-gray-600">{feature}</span>
+                      <span className={`text-sm ${pkg.featured ? "text-gray-200" : "text-gray-600"}`}>{feature}</span>
                     </li>
                   ))}
                 </ul>
