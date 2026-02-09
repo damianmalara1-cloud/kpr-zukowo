@@ -83,6 +83,7 @@ function ArticleForm({
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0]);
+  const [facebookUrl, setFacebookUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -94,7 +95,7 @@ function ArticleForm({
     }
     setSaving(true);
     setError("");
-    const result = await addArticle({ title, excerpt, content, category });
+    const result = await addArticle({ title, excerpt, content, category, facebookEmbed: facebookUrl || undefined });
     setSaving(false);
     if (result.success) {
       onSave();
@@ -155,6 +156,19 @@ function ArticleForm({
             rows={8}
             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none resize-y text-gray-900"
             placeholder="Pełna treść artykułu... (nowa linia = nowy akapit)"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Link do posta na Facebooku (galeria zdjęć) <span className="text-gray-400 font-normal">(opcjonalne)</span>
+          </label>
+          <input
+            type="url"
+            value={facebookUrl}
+            onChange={(e) => setFacebookUrl(e.target.value)}
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none text-gray-900"
+            placeholder="https://www.facebook.com/kprzukowo/posts/..."
           />
         </div>
       </div>

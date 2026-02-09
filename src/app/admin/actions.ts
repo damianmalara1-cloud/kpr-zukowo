@@ -113,6 +113,7 @@ export interface NewsArticle {
   content: string;
   image: string | null;
   category: string;
+  facebookEmbed: string | null;
 }
 
 export async function addArticle(formData: {
@@ -120,6 +121,7 @@ export async function addArticle(formData: {
   excerpt: string;
   content: string;
   category: string;
+  facebookEmbed?: string;
 }) {
   const isAuth = await checkAuth();
   if (!isAuth) return { success: false, error: "Brak autoryzacji" };
@@ -138,6 +140,7 @@ export async function addArticle(formData: {
       content: formData.content,
       image: null,
       category: formData.category,
+      facebookEmbed: formData.facebookEmbed?.trim() || null,
     };
 
     content.news.push(newArticle);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import news from "@/data/news.json";
 import { CalendarIcon } from "@/components/Icons";
+import type { NewsArticle } from "@/app/admin/actions";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ArticlePage({ params }: PageProps) {
   const { id } = await params;
-  const article = news.news.find((n) => n.id === id);
+  const article = (news.news as NewsArticle[]).find((n) => n.id === id);
 
   if (!article) notFound();
 
@@ -71,6 +72,19 @@ export default async function ArticlePage({ params }: PageProps) {
             </p>
           ))}
         </div>
+
+        {article.facebookEmbed && (
+          <div className="mt-8 flex justify-center">
+            <iframe
+              src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(article.facebookEmbed)}&show_text=true&width=500`}
+              width="500"
+              height="600"
+              style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            />
+          </div>
+        )}
 
         <div className="mt-8 text-center">
           <Link
