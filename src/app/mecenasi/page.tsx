@@ -92,43 +92,6 @@ export default function MecenasiPage() {
         </div>
       </div>
 
-      {/* Filozofia mecenatu */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-6">Filozofia mecenatu</h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              „Mecenasi KPR Fit Dieta Żukowo to lokalni przedsiębiorcy i osoby, które wspierają klub
-              <strong className="text-navy"> nie tylko dla reklamy, lecz także dla idei, wspólnoty i przyszłości sportu w gminie.</strong>"
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
-              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
-                <UsersIcon className="w-8 h-8 text-navy" />
-              </div>
-              <h3 className="font-semibold text-navy mb-2">Wspólnota</h3>
-              <p className="text-gray-500 text-sm">Budujemy razem coś większego niż sport</p>
-            </div>
-            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
-              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
-                <TrophyIcon className="w-8 h-8 text-navy" />
-              </div>
-              <h3 className="font-semibold text-navy mb-2">Prestiż</h3>
-              <p className="text-gray-500 text-sm">Bycie częścią elitarnego grona Mecenasów</p>
-            </div>
-            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
-              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
-                <SeedlingIcon className="w-8 h-8 text-navy" />
-              </div>
-              <h3 className="font-semibold text-navy mb-2">Przyszłość</h3>
-              <p className="text-gray-500 text-sm">Inwestycja w młode pokolenie sportowców</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Klub Biznesu KPR - Rada Mecenasów */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4">
@@ -223,6 +186,43 @@ export default function MecenasiPage() {
               <p className="text-gray-400 text-sm mt-3">
                 Porozmawiajmy o najlepszym poziomie mecenatu dla Twojej firmy.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Filozofia mecenatu */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-navy mb-6">Filozofia mecenatu</h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              „Mecenasi KPR Fit Dieta Żukowo to lokalni przedsiębiorcy i osoby, które wspierają klub
+              <strong className="text-navy"> nie tylko dla reklamy, lecz także dla idei, wspólnoty i przyszłości sportu w gminie.</strong>"
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
+              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
+                <UsersIcon className="w-8 h-8 text-navy" />
+              </div>
+              <h3 className="font-semibold text-navy mb-2">Wspólnota</h3>
+              <p className="text-gray-500 text-sm">Budujemy razem coś większego niż sport</p>
+            </div>
+            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
+              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
+                <TrophyIcon className="w-8 h-8 text-navy" />
+              </div>
+              <h3 className="font-semibold text-navy mb-2">Prestiż</h3>
+              <p className="text-gray-500 text-sm">Bycie częścią elitarnego grona Mecenasów</p>
+            </div>
+            <div className="p-6 group hover:bg-gray-50 rounded-xl transition-colors">
+              <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/20 transition-colors">
+                <SeedlingIcon className="w-8 h-8 text-navy" />
+              </div>
+              <h3 className="font-semibold text-navy mb-2">Przyszłość</h3>
+              <p className="text-gray-500 text-sm">Inwestycja w młode pokolenie sportowców</p>
             </div>
           </div>
         </div>
