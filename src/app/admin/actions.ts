@@ -157,6 +157,45 @@ export async function addArticle(formData: {
   }
 }
 
+export async function editArticle(
+  id: string,
+  formData: {
+    title: string;
+    excerpt: string;
+    content: string;
+    category: string;
+    facebookEmbed?: string;
+  }
+) {
+  const isAuth = await checkAuth();
+  if (!isAuth) return { success: false, error: "Brak autoryzacji" };
+
+  try {
+    const { content, sha } = await getFileFromGitHub();
+    const index = content.news.findIndex((n: NewsArticle) => n.id === id);
+    if (index === -1) return { success: false, error: "Nie znaleziono artykułu" };
+
+    content.news[index] = {
+      ...content.news[index],
+      title: formData.title,
+      excerpt: formData.excerpt,
+      content: formData.content,
+      category: formData.category,
+      facebookEmbed: formData.facebookEmbed?.trim() || null,
+    };
+
+    await updateFileOnGitHub(
+      content,
+      sha,
+      `Zaktualizowano artykuł: ${formData.title}`
+    );
+
+    return { success: true };
+  } catch (e) {
+    return { success: false, error: String(e) };
+  }
+}
+
 export async function deleteArticle(id: string) {
   const isAuth = await checkAuth();
   if (!isAuth) return { success: false, error: "Brak autoryzacji" };

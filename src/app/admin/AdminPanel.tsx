@@ -6,6 +6,7 @@ import {
   logout,
   getNews,
   addArticle,
+  editArticle,
   deleteArticle,
   type NewsArticle,
 } from "./actions";
@@ -75,15 +76,18 @@ function LoginForm({ onSuccess }: { onSuccess: () => void }) {
 function ArticleForm({
   onSave,
   onCancel,
+  article,
 }: {
   onSave: () => void;
   onCancel: () => void;
+  article?: NewsArticle;
 }) {
-  const [title, setTitle] = useState("");
-  const [excerpt, setExcerpt] = useState("");
-  const [content, setContent] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0]);
-  const [facebookUrl, setFacebookUrl] = useState("");
+  const isEditing = !!article;
+  const [title, setTitle] = useState(article?.title ?? "");
+  const [excerpt, setExcerpt] = useState(article?.excerpt ?? "");
+  const [content, setContent] = useState(article?.content ?? "");
+  const [category, setCategory] = useState(article?.category ?? CATEGORIES[0]);
+  const [facebookUrl, setFacebookUrl] = useState(article?.facebookEmbed ?? "");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -95,7 +99,10 @@ function ArticleForm({
     }
     setSaving(true);
     setError("");
-    const result = await addArticle({ title, excerpt, content, category, facebookEmbed: facebookUrl || undefined });
+    const formData = { title, excerpt, content, category, facebookEmbed: facebookUrl || undefined };
+    const result = isEditing
+      ? await editArticle(article.id, formData)
+      : await addArticle(formData);
     setSaving(false);
     if (result.success) {
       onSave();
@@ -106,7 +113,9 @@ function ArticleForm({
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-      <h2 className="text-xl font-bold text-navy mb-6">Nowy artykuł</h2>
+      <h2 className="text-xl font-bold text-navy mb-6">
+        {isEditing ? "Edytuj artykuł" : "Nowy artykuł"}
+      </h2>
 
       <div className="space-y-5">
         <div>
@@ -181,7 +190,9 @@ function ArticleForm({
           disabled={saving}
           className="flex-1 bg-red hover:bg-red-dark disabled:bg-gray-300 text-white font-semibold py-3 rounded-lg transition-colors"
         >
-          {saving ? "Publikowanie..." : "Opublikuj artykuł"}
+          {saving
+            ? (isEditing ? "Zapisywanie..." : "Publikowanie...")
+            : (isEditing ? "Zapisz zmiany" : "Opublikuj artykuł")}
         </button>
         <button
           type="button"
@@ -207,6 +218,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [editingArticle, setEditingArticle] = useState<NewsArticle | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [error, setError] = useState("");
 
@@ -270,7 +282,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
         {/* Actions */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-navy">Aktualności</h2>
-          {!showForm && (
+          {!showForm && !editingArticle && (
             <button
               onClick={() => setShowForm(true)}
               className="bg-red hover:bg-red-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-colors text-sm"
@@ -281,14 +293,20 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
         </div>
 
         {/* Form */}
-        {showForm && (
+        {(showForm || editingArticle) && (
           <div className="mb-8">
             <ArticleForm
+              key={editingArticle?.id ?? "new"}
+              article={editingArticle ?? undefined}
               onSave={() => {
                 setShowForm(false);
+                setEditingArticle(null);
                 fetchNews();
               }}
-              onCancel={() => setShowForm(false)}
+              onCancel={() => {
+                setShowForm(false);
+                setEditingArticle(null);
+              }}
             />
           </div>
         )}
@@ -336,20 +354,34 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                   <h3 className="font-semibold text-navy truncate">{article.title}</h3>
                   <p className="text-sm text-gray-500 truncate">{article.excerpt}</p>
                 </div>
-                <button
-                  onClick={() => handleDelete(article.id)}
-                  disabled={deleting === article.id}
-                  className="text-gray-300 hover:text-red transition-colors shrink-0 p-1"
-                  title="Usuń artykuł"
-                >
-                  {deleting === article.id ? (
-                    <span className="text-xs">...</span>
-                  ) : (
+                <div className="flex gap-1 shrink-0">
+                  <button
+                    onClick={() => {
+                      setShowForm(false);
+                      setEditingArticle(article);
+                    }}
+                    className="text-gray-300 hover:text-navy transition-colors p-1"
+                    title="Edytuj artykuł"
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
-                  )}
-                </button>
+                  </button>
+                  <button
+                    onClick={() => handleDelete(article.id)}
+                    disabled={deleting === article.id}
+                    className="text-gray-300 hover:text-red transition-colors p-1"
+                    title="Usuń artykuł"
+                  >
+                    {deleting === article.id ? (
+                      <span className="text-xs">...</span>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
               </div>
             ))}
           </div>
