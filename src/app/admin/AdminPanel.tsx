@@ -170,14 +170,14 @@ function ArticleForm({
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Link do posta na Facebooku (galeria zdjęć) <span className="text-gray-400 font-normal">(opcjonalne)</span>
+            Kod embed z Facebooka <span className="text-gray-400 font-normal">(opcjonalne — wklej kod iframe)</span>
           </label>
-          <input
-            type="url"
+          <textarea
             value={facebookUrl}
             onChange={(e) => setFacebookUrl(e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none text-gray-900"
-            placeholder="https://www.facebook.com/kprzukowo/posts/..."
+            rows={3}
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none resize-y text-gray-900 font-mono text-xs"
+            placeholder='<iframe src="https://www.facebook.com/plugins/post.php?..." width="500" height="696" ...></iframe>'
           />
         </div>
       </div>

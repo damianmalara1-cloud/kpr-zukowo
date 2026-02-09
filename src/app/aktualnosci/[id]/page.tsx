@@ -74,16 +74,10 @@ export default async function ArticlePage({ params }: PageProps) {
         </div>
 
         {article.facebookEmbed && (
-          <div className="mt-8 flex justify-center">
-            <iframe
-              src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(article.facebookEmbed)}&show_text=true&width=500`}
-              width="500"
-              height="600"
-              style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            />
-          </div>
+          <div
+            className="mt-8 flex justify-center [&>iframe]:max-w-full"
+            dangerouslySetInnerHTML={{ __html: article.facebookEmbed }}
+          />
         )}
 
         <div className="mt-8 text-center">
