@@ -24,11 +24,11 @@ export async function generateMetadata({ params }: PageProps) {
   const match = matches.matches.find((m) => m.id === id);
 
   if (!match) {
-    return { title: "Mecz nie znaleziony | KPR Fitdieta Żukowo" };
+    return { title: "Mecz nie znaleziony | KPR Fit Dieta Żukowo" };
   }
 
   return {
-    title: `KPR Fitdieta Żukowo vs ${match.opponent} | Mecze`,
+    title: `KPR Fit Dieta Żukowo vs ${match.opponent} | Mecze`,
     description: match.description,
   };
 }
@@ -101,7 +101,7 @@ export default async function MatchPage({ params }: PageProps) {
                     </div>
                   )}
                 </div>
-                <p className="font-semibold">{match.isHome ? "KPR Fitdieta Żukowo" : match.opponent}</p>
+                <p className="font-semibold">{match.isHome ? "KPR Fit Dieta Żukowo" : match.opponent}</p>
               </div>
 
               {/* Score or VS */}
@@ -128,7 +128,7 @@ export default async function MatchPage({ params }: PageProps) {
                     <Image src="/images/logo/kpr_zukowo_beztla.png" alt="KPR Żukowo" fill className="object-contain" />
                   )}
                 </div>
-                <p className="font-semibold">{match.isHome ? match.opponent : "KPR Fitdieta Żukowo"}</p>
+                <p className="font-semibold">{match.isHome ? match.opponent : "KPR Fit Dieta Żukowo"}</p>
               </div>
             </div>
           </div>

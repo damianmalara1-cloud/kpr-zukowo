@@ -17,12 +17,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KPR Fitdieta Żukowo | Piłka ręczna, emocje i społeczność",
-  description: "Oficjalna strona klubu piłki ręcznej KPR Fitdieta Żukowo. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością. Darmowe wejście, pełna hala i prawdziwe emocje.",
-  keywords: ["KPR Żukowo", "piłka ręczna", "Żukowo", "handball", "Fitdieta", "sport", "Pomorze"],
-  authors: [{ name: "KPR Fitdieta Żukowo" }],
+  title: "KPR Fit Dieta Żukowo | Piłka ręczna, emocje i społeczność",
+  description: "Oficjalna strona klubu piłki ręcznej KPR Fit Dieta Żukowo. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością. Darmowe wejście, pełna hala i prawdziwe emocje.",
+  keywords: ["KPR Żukowo", "piłka ręczna", "Żukowo", "handball", "Fit Dieta", "sport", "Pomorze"],
+  authors: [{ name: "KPR Fit Dieta Żukowo" }],
   openGraph: {
-    title: "KPR Fitdieta Żukowo",
+    title: "KPR Fit Dieta Żukowo",
     description: "Tu zaczyna się historia. Piłka ręczna, emocje i społeczność.",
     locale: "pl_PL",
     type: "website",

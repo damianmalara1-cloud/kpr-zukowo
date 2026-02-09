@@ -2,8 +2,8 @@ import Link from "next/link";
 import news from "@/data/news.json";
 
 export const metadata = {
-  title: "Aktualności | KPR Fitdieta Żukowo",
-  description: "Najnowsze wiadomości z KPR Fitdieta Żukowo. Bądź na bieżąco!",
+  title: "Aktualności | KPR Fit Dieta Żukowo",
+  description: "Najnowsze wiadomości z KPR Fit Dieta Żukowo. Bądź na bieżąco!",
 };
 
 function formatDate(dateString: string) {

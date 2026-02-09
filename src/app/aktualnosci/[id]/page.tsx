@@ -19,9 +19,9 @@ function formatDate(dateString: string) {
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
   const article = news.news.find((n) => n.id === id);
-  if (!article) return { title: "Nie znaleziono | KPR Fitdieta Żukowo" };
+  if (!article) return { title: "Nie znaleziono | KPR Fit Dieta Żukowo" };
   return {
-    title: `${article.title} | KPR Fitdieta Żukowo`,
+    title: `${article.title} | KPR Fit Dieta Żukowo`,
     description: article.excerpt,
   };
 }

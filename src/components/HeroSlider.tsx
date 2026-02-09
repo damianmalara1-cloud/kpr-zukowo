@@ -62,7 +62,7 @@ export default function HeroSlider() {
           Tu zaczyna się <span className="text-red">historia</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-200 mb-8">
-          KPR Fitdieta Żukowo – piłka ręczna, emocje i społeczność
+          KPR Fit Dieta Żukowo – piłka ręczna, emocje i społeczność
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

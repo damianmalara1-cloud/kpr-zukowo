@@ -2,8 +2,8 @@ import Link from "next/link";
 import { TicketIcon, FlameIcon, UsersIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Kibice & Społeczność | KPR Fitdieta Żukowo",
-  description: "Dołącz do społeczności KPR Fitdieta Żukowo. Tu zaczyna się historia!",
+  title: "Kibice & Społeczność | KPR Fit Dieta Żukowo",
+  description: "Dołącz do społeczności KPR Fit Dieta Żukowo. Tu zaczyna się historia!",
 };
 
 export default function KibicePage() {
@@ -31,7 +31,7 @@ export default function KibicePage() {
             Więcej niż klub – to społeczność
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            KPR Fitdieta Żukowo to miejsce, gdzie spotykają się pokolenia.
+            KPR Fit Dieta Żukowo to miejsce, gdzie spotykają się pokolenia.
             Dzieci, rodzice, dziadkowie – wszyscy razem kibicują naszej drużynie.
             Każdy mecz domowy to święto dla całej społeczności Żukowa i okolic.
           </p>

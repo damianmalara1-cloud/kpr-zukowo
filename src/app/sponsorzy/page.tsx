@@ -2,8 +2,8 @@ import Link from "next/link";
 import { EyeIcon, ShareIcon, FlameIcon, TargetIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Sponsorzy | KPR Fitdieta Żukowo",
-  description: "Oferta sponsorska KPR Fitdieta Żukowo. Widoczność, zasięgi, emocje i aktywacje marketingowe.",
+  title: "Sponsorzy | KPR Fit Dieta Żukowo",
+  description: "Oferta sponsorska KPR Fit Dieta Żukowo. Widoczność, zasięgi, emocje i aktywacje marketingowe.",
 };
 
 const sponsorPackages = [
@@ -189,7 +189,7 @@ export default function SponsorzyPage() {
             />
             <img
               src="/images/logo/fitdietaa.png"
-              alt="Fitdieta"
+              alt="Fit Dieta"
               className="h-24 md:h-32 w-auto object-contain"
             />
           </div>

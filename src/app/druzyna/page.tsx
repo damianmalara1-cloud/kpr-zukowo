@@ -3,8 +3,8 @@ import PositionFilter from "@/components/PositionFilter";
 import TeamPhoto from "@/components/TeamPhoto";
 
 export const metadata = {
-  title: "Drużyna | KPR Fitdieta Żukowo",
-  description: "Poznaj zawodników i sztab szkoleniowy KPR Fitdieta Żukowo.",
+  title: "Drużyna | KPR Fit Dieta Żukowo",
+  description: "Poznaj zawodników i sztab szkoleniowy KPR Fit Dieta Żukowo.",
 };
 
 export default function DruzynaPage() {
@@ -16,7 +16,7 @@ export default function DruzynaPage() {
         <div className="absolute inset-0">
           <img
             src="/images/Grupa-1.jpg"
-            alt="Drużyna KPR Fitdieta Żukowo"
+            alt="Drużyna KPR Fit Dieta Żukowo"
             className="w-full h-full object-cover object-top opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/60" />
@@ -37,7 +37,7 @@ export default function DruzynaPage() {
           <div className="max-w-5xl mx-auto">
             <TeamPhoto
               src="/images/Grupa-1.jpg"
-              alt="Drużyna KPR Fitdieta Żukowo - zdjęcie grupowe"
+              alt="Drużyna KPR Fit Dieta Żukowo - zdjęcie grupowe"
             />
           </div>
         </div>

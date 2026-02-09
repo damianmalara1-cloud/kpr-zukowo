@@ -1,8 +1,8 @@
 import { LocationIcon, MailIcon, PhoneIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Kontakt | KPR Fitdieta Żukowo",
-  description: "Skontaktuj się z KPR Fitdieta Żukowo. Współpraca, pytania, media.",
+  title: "Kontakt | KPR Fit Dieta Żukowo",
+  description: "Skontaktuj się z KPR Fit Dieta Żukowo. Współpraca, pytania, media.",
 };
 
 export default function KontaktPage() {

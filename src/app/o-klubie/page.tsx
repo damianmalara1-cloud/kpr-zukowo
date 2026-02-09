@@ -2,15 +2,15 @@ import { TrophyIcon, UsersIcon, SeedlingIcon, HeartIcon, ChartIcon, HomeIcon } f
 import BoardMembers from "@/components/BoardMembers";
 
 export const metadata = {
-  title: "O klubie | KPR Fitdieta Żukowo",
-  description: "Historia i misja KPR Fitdieta Żukowo. Poznaj nasz klub piłki ręcznej.",
+  title: "O klubie | KPR Fit Dieta Żukowo",
+  description: "Historia i misja KPR Fit Dieta Żukowo. Poznaj nasz klub piłki ręcznej.",
 };
 
 const boardMembers: { name: string; role: string; description: string; image?: string }[] = [
   {
     name: "Serge Bosca",
     role: "Prezes Klubu",
-    description: "Doświadczony menedżer sportowy i biznesowy, od lat związany z zarządzaniem organizacjami sportowymi w Polsce (m.in. PGE Wybrzeże Gdańsk, Polski Związek Rugby). W KPR Fitdieta Żukowo odpowiada za strategiczny rozwój klubu, budowę stabilnych struktur oraz długofalową wizję opartą na współpracy i profesjonalizacji.",
+    description: "Doświadczony menedżer sportowy i biznesowy, od lat związany z zarządzaniem organizacjami sportowymi w Polsce (m.in. PGE Wybrzeże Gdańsk, Polski Związek Rugby). W KPR Fit Dieta Żukowo odpowiada za strategiczny rozwój klubu, budowę stabilnych struktur oraz długofalową wizję opartą na współpracy i profesjonalizacji.",
     image: "/images/staff/Serge_Bosca.png",
   },
   {
@@ -34,7 +34,7 @@ export default function OKlubiePage() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">O klubie</h1>
           <p className="text-xl text-gray-200">
-            KPR Fitdieta Żukowo – piłka ręczna, emocje i społeczność
+            KPR Fit Dieta Żukowo – piłka ręczna, emocje i społeczność
           </p>
         </div>
       </div>
@@ -97,12 +97,12 @@ export default function OKlubiePage() {
               ośrodków szczypiorniaka w regionie.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Współpraca z firmą Fitdieta jako sponsorem tytularnym otworzyła nowy rozdział
+              Współpraca z firmą Fit Dieta jako sponsorem tytularnym otworzyła nowy rozdział
               w historii klubu. Stawiamy na profesjonalizację przy zachowaniu lokalnego charakteru
               i bliskich relacji z kibicami.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Dziś KPR Fitdieta Żukowo to nie tylko drużyna seniorów, ale również miejsce, gdzie
+              Dziś KPR Fit Dieta Żukowo to nie tylko drużyna seniorów, ale również miejsce, gdzie
               pasja do piłki ręcznej jest przekazywana młodym pokoleniom.
             </p>
           </div>

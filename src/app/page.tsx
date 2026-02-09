@@ -199,7 +199,7 @@ export default async function Home() {
                           className="object-contain"
                         />
                       </div>
-                      <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
+                      <p className="font-semibold text-navy">KPR Fit Dieta Żukowo</p>
                     </div>
                   ) : (
                     <div className="text-center group">
@@ -253,7 +253,7 @@ export default async function Home() {
                           className="object-contain"
                         />
                       </div>
-                      <p className="font-semibold text-navy">KPR Fitdieta Żukowo</p>
+                      <p className="font-semibold text-navy">KPR Fit Dieta Żukowo</p>
                     </div>
                   )}
                 </div>

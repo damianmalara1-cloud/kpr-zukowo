@@ -91,7 +91,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-navy-light mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} KPR Fitdieta Żukowo. Wszystkie prawa zastrzeżone.
+            © {new Date().getFullYear()} KPR Fit Dieta Żukowo. Wszystkie prawa zastrzeżone.
           </p>
         </div>
       </div>

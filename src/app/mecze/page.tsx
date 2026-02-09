@@ -20,8 +20,8 @@ function formatFullDate(dateString: string) {
 }
 
 export const metadata = {
-  title: "Mecze | KPR Fitdieta Żukowo",
-  description: "Terminarz meczów KPR Fitdieta Żukowo. Sprawdź kiedy gramy!",
+  title: "Mecze | KPR Fit Dieta Żukowo",
+  description: "Terminarz meczów KPR Fit Dieta Żukowo. Sprawdź kiedy gramy!",
 };
 
 export default function MeczePage() {
@@ -94,7 +94,7 @@ export default function MeczePage() {
                           )}
                         </div>
                         <h3 className="font-semibold text-lg">
-                          KPR Fitdieta Żukowo vs {match.opponent}
+                          KPR Fit Dieta Żukowo vs {match.opponent}
                         </h3>
                         <p className="text-gray-500 text-sm">
                           {match.time} • {match.venue}
@@ -135,7 +135,7 @@ export default function MeczePage() {
                     <div className="flex-1 p-4 flex items-center justify-between">
                       <div>
                         <h3 className="font-semibold text-lg text-gray-700">
-                          KPR Fitdieta Żukowo vs {match.opponent}
+                          KPR Fit Dieta Żukowo vs {match.opponent}
                         </h3>
                         <p className="text-gray-400 text-sm">
                           {match.venue}

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const mainSponsors = [
   { name: "Gmina Żukowo", href: "https://www.zukowo.pl", logo: "/images/logo/gmina_zukowo.png" },
-  { name: "Fitdieta", href: "https://www.fit-dieta.com", logo: "/images/logo/fitdietaa.png" },
+  { name: "Fit Dieta", href: "https://www.fit-dieta.com", logo: "/images/logo/fitdietaa.png" },
 ];
 
 const partners = [

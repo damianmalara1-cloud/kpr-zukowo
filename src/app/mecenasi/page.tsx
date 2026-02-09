@@ -2,8 +2,8 @@ import Link from "next/link";
 import { UsersIcon, TrophyIcon, SeedlingIcon, HandshakeIcon, ChartIcon, HomeIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Mecenasi KPR | KPR Fitdieta Żukowo",
-  description: "Zostań Mecenasem KPR Fitdieta Żukowo. Wspieraj klub dla idei, wspólnoty i przyszłości sportu w gminie.",
+  title: "Mecenasi KPR | KPR Fit Dieta Żukowo",
+  description: "Zostań Mecenasem KPR Fit Dieta Żukowo. Wspieraj klub dla idei, wspólnoty i przyszłości sportu w gminie.",
 };
 
 const packages = [
@@ -98,7 +98,7 @@ export default function MecenasiPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-navy mb-6">Filozofia mecenatu</h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              „Mecenasi KPR Fitdieta Żukowo to lokalni przedsiębiorcy i osoby, które wspierają klub
+              „Mecenasi KPR Fit Dieta Żukowo to lokalni przedsiębiorcy i osoby, które wspierają klub
               <strong className="text-navy"> nie tylko dla reklamy, lecz także dla idei, wspólnoty i przyszłości sportu w gminie.</strong>"
             </p>
           </div>
