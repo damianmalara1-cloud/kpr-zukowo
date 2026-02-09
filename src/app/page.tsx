@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import matches from "@/data/matches.json";
-import fs from "fs";
-import path from "path";
 import HeroSlider from "@/components/HeroSlider";
 import MatchCountdown from "@/components/MatchCountdown";
 import LeagueTable from "@/components/LeagueTable";
@@ -18,31 +16,6 @@ function getNextMatch() {
   return upcomingMatches[0] || null;
 }
 
-// Znajdź logo przeciwnika
-function getOpponentLogo(opponentName: string): string | null {
-  const opponentsDir = path.join(process.cwd(), "public", "images", "opponents");
-
-  // Sprawdź czy folder istnieje
-  if (!fs.existsSync(opponentsDir)) {
-    return null;
-  }
-
-  // Szukaj pliku z nazwą przeciwnika (różne rozszerzenia)
-  const extensions = [".png", ".jpg", ".jpeg", ".webp", ".svg"];
-  const files = fs.readdirSync(opponentsDir);
-
-  for (const file of files) {
-    const fileName = path.parse(file).name.toLowerCase();
-    const opponentLower = opponentName.toLowerCase();
-
-    // Sprawdź czy nazwa pliku zawiera nazwę przeciwnika lub odwrotnie
-    if (fileName.includes(opponentLower) || opponentLower.includes(fileName)) {
-      return `/images/opponents/${file}`;
-    }
-  }
-
-  return null;
-}
 
 async function fetchLeagueTable() {
   try {
@@ -158,7 +131,7 @@ export default async function Home() {
   const nextMatch = getNextMatch();
   const leagueTable = await fetchLeagueTable();
   const topScorers = await fetchTopScorers();
-  const opponentLogo = nextMatch ? getOpponentLogo(nextMatch.opponent) : null;
+  const opponentLogo = nextMatch?.opponentLogo || null;
 
   return (
     <div>

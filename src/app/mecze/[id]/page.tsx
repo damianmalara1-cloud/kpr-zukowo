@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import fs from "fs";
-import path from "path";
 import matches from "@/data/matches.json";
 
 interface PageProps {
@@ -33,20 +31,6 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-function getOpponentLogo(opponentName: string): string | null {
-  const opponentsDir = path.join(process.cwd(), "public", "images", "opponents");
-  if (!fs.existsSync(opponentsDir)) return null;
-  const extensions = [".png", ".jpg", ".jpeg", ".webp", ".svg"];
-  const files = fs.readdirSync(opponentsDir);
-  for (const file of files) {
-    const fileName = path.parse(file).name.toLowerCase();
-    const opponentLower = opponentName.toLowerCase();
-    if (fileName.includes(opponentLower) || opponentLower.includes(fileName)) {
-      return `/images/opponents/${file}`;
-    }
-  }
-  return null;
-}
 
 export async function generateStaticParams() {
   return matches.matches.map((match) => ({
@@ -63,7 +47,7 @@ export default async function MatchPage({ params }: PageProps) {
   }
 
   const isPast = new Date(match.date) < new Date();
-  const opponentLogo = getOpponentLogo(match.opponent);
+  const opponentLogo = match.opponentLogo || null;
 
   return (
     <div className="min-h-screen bg-gray-50">
