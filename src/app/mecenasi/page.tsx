@@ -48,8 +48,30 @@ const packages = [
 ];
 
 const currentPatrons = [
+  { name: "Aste", logo: "/images/logo/mecenasi/aste.png" },
+  { name: "Biznes po Kaszubsku", logo: "/images/logo/mecenasi/biznes_po_kaszubsku.png" },
   { name: "BOTERM", logo: "/images/logo/mecenasi/BOTERM.png" },
-  { name: "CWP", logo: "/images/logo/mecenasi/CWP.jpg" },
+  { name: "Budmax", logo: "/images/logo/mecenasi/budmax.png" },
+  { name: "CWP", logo: "/images/logo/mecenasi/cwp.png" },
+  { name: "Deka2", logo: "/images/logo/mecenasi/deka2.png" },
+  { name: "Elektromajster", logo: "/images/logo/mecenasi/ELEKTROMAJSTER.png" },
+  { name: "First Stop", logo: "/images/logo/mecenasi/first_stop.png" },
+  { name: "GOSZ", logo: "/images/logo/mecenasi/GOSZ.png" },
+  { name: "Gryf", logo: "/images/logo/mecenasi/gryf.png" },
+  { name: "Powiat Kartuski", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
+  { name: "JustGym", logo: "/images/logo/mecenasi/JUSTGYM.png" },
+  { name: "KIA", logo: "/images/logo/mecenasi/KIA.png" },
+  { name: "Motion Clinic", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
+  { name: "Nata", logo: "/images/logo/mecenasi/nata.png" },
+  { name: "Okis", logo: "/images/logo/mecenasi/okis.png" },
+  { name: "OX System", logo: "/images/logo/mecenasi/ox_system.png" },
+  { name: "Pastelowa", logo: "/images/logo/mecenasi/pastelowa.png" },
+  { name: "PBS", logo: "/images/logo/mecenasi/pbs.png" },
+  { name: "Repiński", logo: "/images/logo/mecenasi/Repiński.png" },
+  { name: "Świat Reklamy", logo: "/images/logo/mecenasi/świat reklamy.png" },
+  { name: "T.N.T.", logo: "/images/logo/mecenasi/T.N.T.png" },
+  { name: "U Michała", logo: "/images/logo/mecenasi/U Micha_a.png" },
+  { name: "Wantrans", logo: "/images/logo/mecenasi/wantrans.png" },
 ];
 
 export default function MecenasiPage() {

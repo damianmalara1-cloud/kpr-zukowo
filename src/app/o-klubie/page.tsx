@@ -8,9 +8,10 @@ export const metadata = {
 
 const boardMembers: { name: string; role: string; description: string; image?: string }[] = [
   {
-    name: "Jan Kowalski",
-    role: "Prezes klubu",
-    description: "Od ponad 10 lat związany z klubem. Pasjonat piłki ręcznej i lokalnej społeczności. Odpowiada za strategiczny rozwój KPR Żukowo oraz relacje z partnerami i sponsorami.",
+    name: "Serge Bosca",
+    role: "Prezes Klubu",
+    description: "Doświadczony menedżer sportowy i biznesowy, od lat związany z zarządzaniem organizacjami sportowymi w Polsce (m.in. PGE Wybrzeże Gdańsk, Polski Związek Rugby). W KPR Fitdieta Żukowo odpowiada za strategiczny rozwój klubu, budowę stabilnych struktur oraz długofalową wizję opartą na współpracy i profesjonalizacji.",
+    image: "/images/staff/Serge_Bosca.png",
   },
   {
     name: "Damian Malara",

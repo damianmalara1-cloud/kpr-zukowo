@@ -77,7 +77,7 @@ export default function SponsorzyPage() {
       <div className="relative text-white pt-28 pb-16 bg-navy">
         <div
           className="absolute inset-0 bg-cover"
-          style={{ backgroundImage: "url('/images/sponsorzy.jpg')", backgroundPosition: "65% 35%" }}
+          style={{ backgroundImage: "url('/images/sponsorzy.jpg')", backgroundPosition: "65% 39%" }}
         />
         <div className="absolute inset-0 bg-navy/65" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
@@ -183,13 +183,13 @@ export default function SponsorzyPage() {
 
           <div className="flex flex-wrap justify-center items-center gap-16 mb-8">
             <img
-              src="/images/logo/fitdietaa.png"
-              alt="Fitdieta"
+              src="/images/logo/gmina_zukowo.png"
+              alt="Gmina Żukowo"
               className="h-24 md:h-32 w-auto object-contain"
             />
             <img
-              src="/images/logo/gmina_zukowo.png"
-              alt="Gmina Żukowo"
+              src="/images/logo/fitdietaa.png"
+              alt="Fitdieta"
               className="h-24 md:h-32 w-auto object-contain"
             />
           </div>

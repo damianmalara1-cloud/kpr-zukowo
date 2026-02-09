@@ -181,9 +181,11 @@ export default async function MatchPage({ params }: PageProps) {
             <h2 className="text-xl font-bold text-navy mb-4">
               {isPast ? "Relacja" : "Zapowiedź"}
             </h2>
-            <p className="text-gray-600 leading-relaxed">
-              {match.description}
-            </p>
+            <div className="text-gray-600 leading-relaxed space-y-4">
+              {match.description.split("\n\n").map((paragraph: string, i: number) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
           </div>
         </div>
 

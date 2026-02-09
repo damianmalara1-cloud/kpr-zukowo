@@ -1,13 +1,35 @@
 import Link from "next/link";
 
 const mainSponsors = [
-  { name: "Gmina Żukowo", href: "#", logo: "/images/logo/gmina_zukowo.png" },
-  { name: "Fitdieta", href: "#", logo: "/images/logo/fitdietaa.png" },
+  { name: "Gmina Żukowo", href: "https://www.zukowo.pl", logo: "/images/logo/gmina_zukowo.png" },
+  { name: "Fitdieta", href: "https://www.fit-dieta.com", logo: "/images/logo/fitdietaa.png" },
 ];
 
 const partners = [
+  { name: "Aste", href: "#", logo: "/images/logo/mecenasi/aste.png" },
+  { name: "Biznes po Kaszubsku", href: "#", logo: "/images/logo/mecenasi/biznes_po_kaszubsku.png" },
   { name: "BOTERM", href: "#", logo: "/images/logo/mecenasi/BOTERM.png" },
-  { name: "CWP", href: "#", logo: "/images/logo/mecenasi/CWP.jpg" },
+  { name: "Budmax", href: "#", logo: "/images/logo/mecenasi/budmax.png" },
+  { name: "CWP", href: "#", logo: "/images/logo/mecenasi/cwp.png" },
+  { name: "Deka2", href: "#", logo: "/images/logo/mecenasi/deka2.png" },
+  { name: "Elektromajster", href: "#", logo: "/images/logo/mecenasi/ELEKTROMAJSTER.png" },
+  { name: "First Stop", href: "#", logo: "/images/logo/mecenasi/first_stop.png" },
+  { name: "GOSZ", href: "#", logo: "/images/logo/mecenasi/GOSZ.png" },
+  { name: "Gryf", href: "#", logo: "/images/logo/mecenasi/gryf.png" },
+  { name: "Powiat Kartuski", href: "#", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
+  { name: "JustGym", href: "#", logo: "/images/logo/mecenasi/JUSTGYM.png" },
+  { name: "KIA", href: "#", logo: "/images/logo/mecenasi/KIA.png" },
+  { name: "Motion Clinic", href: "#", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
+  { name: "Nata", href: "#", logo: "/images/logo/mecenasi/nata.png" },
+  { name: "Okis", href: "#", logo: "/images/logo/mecenasi/okis.png" },
+  { name: "OX System", href: "#", logo: "/images/logo/mecenasi/ox_system.png" },
+  { name: "Pastelowa", href: "#", logo: "/images/logo/mecenasi/pastelowa.png" },
+  { name: "PBS", href: "#", logo: "/images/logo/mecenasi/pbs.png" },
+  { name: "Repiński", href: "#", logo: "/images/logo/mecenasi/Repiński.png" },
+  { name: "Świat Reklamy", href: "#", logo: "/images/logo/mecenasi/świat reklamy.png" },
+  { name: "T.N.T.", href: "#", logo: "/images/logo/mecenasi/T.N.T.png" },
+  { name: "U Michała", href: "#", logo: "/images/logo/mecenasi/U Micha_a.png" },
+  { name: "Wantrans", href: "#", logo: "/images/logo/mecenasi/wantrans.png" },
 ];
 
 export default function SponsorsBar() {
@@ -47,20 +69,16 @@ export default function SponsorsBar() {
         </p>
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
           {partners.map((partner) => (
-            <a
+            <div
               key={partner.name}
-              href={partner.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center transition-transform duration-300 hover:scale-110"
-              aria-label={partner.name}
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-14 md:h-18 w-auto object-contain"
+                className="h-7 md:h-9 w-auto object-contain"
               />
-            </a>
+            </div>
           ))}
         </div>
       </div>
