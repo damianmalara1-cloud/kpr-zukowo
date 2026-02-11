@@ -58,7 +58,7 @@ export default function HeroSlider() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 animate-fade-in drop-shadow-lg">
           Tu zaczyna się <span className="text-red">historia</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-200 mb-8">

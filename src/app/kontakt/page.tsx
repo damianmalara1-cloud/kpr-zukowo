@@ -36,7 +36,7 @@ export default function KontaktPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-navy">Adres</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 selectable">
                     Szkoła Podstawowa nr 2 im. Jana Heweliusza<br />
                     ul. Armii Krajowej 2e<br />
                     83-330 Żukowo
@@ -51,7 +51,7 @@ export default function KontaktPage() {
                 <div>
                   <h3 className="font-semibold text-navy">E-mail</h3>
                   <p className="text-gray-600">
-                    <a href="mailto:klub@kprzukowo.pl" className="text-red hover:text-red-dark transition-colors">
+                    <a href="mailto:klub@kprzukowo.pl" className="text-red hover:text-red-dark transition-colors selectable">
                       klub@kprzukowo.pl
                     </a>
                   </p>

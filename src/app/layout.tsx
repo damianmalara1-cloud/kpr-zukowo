@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ConditionalSponsorsBar from "@/components/ConditionalSponsorsBar";
 import Footer from "@/components/Footer";
 
-const montserrat = Montserrat({
+const latoHeading = Lato({
   variable: "--font-heading",
   subsets: ["latin", "latin-ext"],
-  weight: ["600", "700", "800", "900"],
+  weight: ["700", "900"],
+  display: "swap",
 });
 
-const inter = Inter({
+const latoBody = Lato({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body
-        className={`${montserrat.variable} ${inter.variable} antialiased`}
+        className={`${latoHeading.variable} ${latoBody.variable} antialiased`}
       >
         <Navbar />
         <main className="min-h-screen">
