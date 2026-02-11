@@ -22,6 +22,7 @@ const navItems: NavItem[] = [
   },
   { href: "/kibice", label: "Kibice" },
   {
+    href: "/wspolpraca",
     label: "Współpraca",
     children: [
       { href: "/sponsorzy", label: "Sponsorzy" },
@@ -76,22 +77,39 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button
-        className="flex items-center gap-1 px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      >
-        {item.label}
-        <svg
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+      <div className="flex items-center">
+        {item.href ? (
+          <Link
+            href={item.href}
+            className="px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+            onClick={onClose}
+          >
+            {item.label}
+          </Link>
+        ) : (
+          <button
+            className="px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {item.label}
+          </button>
+        )}
+        <button
+          className="py-2 pr-2 hover:bg-navy-light rounded-md transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-haspopup="true"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+          <svg
+            className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
       <div
         className={`absolute top-full left-0 mt-1 bg-navy-dark rounded-md shadow-lg py-2 min-w-[180px] z-50 transition-all duration-200 ${
           isOpen
@@ -122,21 +140,38 @@ function MobileDropdown({ item, onClose }: { item: NavItem; onClose: () => void 
 
   return (
     <div>
-      <button
-        className="flex items-center justify-between w-full px-3 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-      >
-        {item.label}
-        <svg
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+      <div className="flex items-center justify-between">
+        {item.href ? (
+          <Link
+            href={item.href}
+            className="flex-1 px-3 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+            onClick={onClose}
+          >
+            {item.label}
+          </Link>
+        ) : (
+          <button
+            className="flex-1 text-left px-3 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {item.label}
+          </button>
+        )}
+        <button
+          className="px-3 py-2 hover:bg-navy-light rounded-md transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+          <svg
+            className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
       <div
         className={`overflow-hidden transition-all duration-200 ${
           isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"

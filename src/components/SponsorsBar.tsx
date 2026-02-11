@@ -189,7 +189,7 @@ export default function SponsorsBar() {
         </p>
         <div className="flex flex-wrap justify-center items-center gap-3">
           <Link
-            href="/sponsorzy"
+            href="/wspolpraca"
             className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-sm"
           >
             Współpracuj z KPR

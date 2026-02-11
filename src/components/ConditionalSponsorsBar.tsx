@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import SponsorsBar from "@/components/SponsorsBar";
 
-const HIDDEN_PATHS = ["/mecenasi", "/sponsorzy"];
+const HIDDEN_PATHS = ["/mecenasi", "/sponsorzy", "/wspolpraca"];
 
 export default function ConditionalSponsorsBar() {
   const pathname = usePathname();
