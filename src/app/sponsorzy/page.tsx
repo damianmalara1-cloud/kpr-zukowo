@@ -176,30 +176,99 @@ export default function SponsorzyPage() {
         </div>
       </section>
 
-      {/* Aktualni partnerzy */}
+      {/* Sponsorzy KPR */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-navy mb-8">Nasi partnerzy</h2>
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-navy text-center mb-12">Sponsorzy KPR</h2>
 
-          <div className="flex flex-wrap justify-center items-center gap-16 mb-8">
-            <img
-              src="/images/logo/gmina_zukowo.png"
-              alt="Gmina Żukowo"
-              className="h-24 md:h-32 w-auto object-contain"
-            />
-            <img
-              src="/images/logo/fitdietaa.png"
-              alt="Fit Dieta"
-              className="h-24 md:h-32 w-auto object-contain"
-            />
+          {/* Sponsor Tytularny */}
+          <div className="mb-10">
+            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-cyan-500 font-semibold mb-4">Sponsor Tytularny</p>
+            <div className="flex justify-center">
+              <div className="bg-gradient-to-b from-cyan-50 via-sky-50/50 to-transparent border border-cyan-300/50 shadow-lg shadow-cyan-200/30 rounded-2xl px-10 py-6">
+                <img src="/images/logo/fitdietaa.png" alt="Fit Dieta" className="h-24 md:h-36 w-auto object-contain" />
+              </div>
+            </div>
           </div>
 
-          <Link
-            href="/kontakt"
-            className="text-red hover:text-red-dark font-semibold transition-colors"
-          >
-            Dołącz do grona partnerów →
-          </Link>
+          {/* Sponsor Strategiczny */}
+          <div className="mb-10">
+            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold mb-4">Sponsor Strategiczny</p>
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              {[
+                { name: "Gmina Żukowo", logo: "/images/logo/gmina_zukowo.png" },
+                { name: "Starostwo Powiatowe", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
+              ].map((s) => (
+                <div key={s.name} className="bg-gradient-to-b from-slate-100 via-gray-50 to-transparent border border-slate-300/60 shadow-md shadow-slate-200/40 rounded-xl px-8 py-5">
+                  <img src={s.logo} alt={s.name} className="h-16 md:h-24 w-auto object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sponsor Złoty */}
+          <div className="mb-10">
+            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-amber-600 font-semibold mb-4">Sponsor Złoty</p>
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              {[
+                { name: "Świat Reklamy", logo: "/images/logo/mecenasi/świat reklamy.png" },
+                { name: "Gryf", logo: "/images/logo/mecenasi/gryf.png" },
+              ].map((s) => (
+                <div key={s.name} className="bg-gradient-to-b from-amber-50 to-transparent border border-amber-300/60 shadow-md shadow-amber-200/40 rounded-xl px-6 py-4">
+                  <img src={s.logo} alt={s.name} className="h-12 md:h-18 w-auto object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sponsor Srebrny */}
+          <div className="mb-10">
+            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-gray-500 font-semibold mb-4">Sponsor Srebrny</p>
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              {[
+                { name: "GOSZ", logo: "/images/logo/mecenasi/GOSZ.png" },
+                { name: "Witek Deka", logo: "/images/logo/mecenasi/deka2.png" },
+                { name: "Nata", logo: "/images/logo/mecenasi/nata.png" },
+              ].map((s) => (
+                <div key={s.name} className="bg-gradient-to-b from-gray-100 to-transparent border border-gray-300/60 shadow-sm shadow-gray-200/40 rounded-xl px-5 py-3">
+                  <img src={s.logo} alt={s.name} className="h-10 md:h-14 w-auto object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sponsor Brązowy */}
+          <div className="mb-10">
+            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-orange-800 font-semibold mb-4">Sponsor Brązowy</p>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              {[
+                { name: "BOTERM", logo: "/images/logo/mecenasi/BOTERM.png" },
+                { name: "Aste", logo: "/images/logo/mecenasi/aste.png" },
+                { name: "Elektromaster", logo: "/images/logo/mecenasi/ELEKTROMAJSTER.png" },
+                { name: "OX System", logo: "/images/logo/mecenasi/ox_system.png" },
+                { name: "T.N.T.", logo: "/images/logo/mecenasi/T.N.T.png" },
+                { name: "Budmax", logo: "/images/logo/mecenasi/budmax.png" },
+                { name: "KIA", logo: "/images/logo/mecenasi/KIA.png" },
+                { name: "Wantrans", logo: "/images/logo/mecenasi/wantrans.png" },
+                { name: "CWP", logo: "/images/logo/mecenasi/cwp.png" },
+                { name: "Repiński", logo: "/images/logo/mecenasi/Repiński.png" },
+                { name: "Motion Clinic", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
+              ].map((s) => (
+                <div key={s.name} className="bg-gradient-to-b from-orange-50 to-transparent border border-orange-300/50 shadow-sm shadow-orange-200/30 rounded-xl px-4 py-2.5">
+                  <img src={s.logo} alt={s.name} className="h-7 md:h-10 w-auto object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/kontakt"
+              className="text-red hover:text-red-dark font-semibold transition-colors"
+            >
+              Dołącz do grona sponsorów →
+            </Link>
+          </div>
         </div>
       </section>
 

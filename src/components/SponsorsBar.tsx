@@ -1,86 +1,185 @@
 import Link from "next/link";
 
-const mainSponsors = [
-  { name: "Gmina Żukowo", href: "https://www.zukowo.pl", logo: "/images/logo/gmina_zukowo.png" },
-  { name: "Fit Dieta", href: "https://www.fit-dieta.com", logo: "/images/logo/fitdietaa.png" },
+interface Sponsor {
+  name: string;
+  logo: string;
+}
+
+const tytularny: Sponsor[] = [
+  { name: "Fit Dieta", logo: "/images/logo/fitdietaa.png" },
 ];
 
-const partners = [
-  { name: "Aste", href: "#", logo: "/images/logo/mecenasi/aste.png" },
-  { name: "Biznes po Kaszubsku", href: "#", logo: "/images/logo/mecenasi/biznes_po_kaszubsku.png" },
-  { name: "BOTERM", href: "#", logo: "/images/logo/mecenasi/BOTERM.png" },
-  { name: "Budmax", href: "#", logo: "/images/logo/mecenasi/budmax.png" },
-  { name: "CWP", href: "#", logo: "/images/logo/mecenasi/cwp.png" },
-  { name: "Deka2", href: "#", logo: "/images/logo/mecenasi/deka2.png" },
-  { name: "Elektromajster", href: "#", logo: "/images/logo/mecenasi/ELEKTROMAJSTER.png" },
-  { name: "First Stop", href: "#", logo: "/images/logo/mecenasi/first_stop.png" },
-  { name: "GOSZ", href: "#", logo: "/images/logo/mecenasi/GOSZ.png" },
-  { name: "Gryf", href: "#", logo: "/images/logo/mecenasi/gryf.png" },
-  { name: "Powiat Kartuski", href: "#", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
-  { name: "JustGym", href: "#", logo: "/images/logo/mecenasi/JUSTGYM.png" },
-  { name: "KIA", href: "#", logo: "/images/logo/mecenasi/KIA.png" },
-  { name: "Motion Clinic", href: "#", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
-  { name: "Nata", href: "#", logo: "/images/logo/mecenasi/nata.png" },
-  { name: "Okis", href: "#", logo: "/images/logo/mecenasi/okis.png" },
-  { name: "OX System", href: "#", logo: "/images/logo/mecenasi/ox_system.png" },
-  { name: "Pastelowa", href: "#", logo: "/images/logo/mecenasi/pastelowa.png" },
-  { name: "PBS", href: "#", logo: "/images/logo/mecenasi/pbs.png" },
-  { name: "Repiński", href: "#", logo: "/images/logo/mecenasi/Repiński.png" },
-  { name: "Świat Reklamy", href: "#", logo: "/images/logo/mecenasi/świat reklamy.png" },
-  { name: "T.N.T.", href: "#", logo: "/images/logo/mecenasi/T.N.T.png" },
-  { name: "U Michała", href: "#", logo: "/images/logo/mecenasi/U Micha_a.png" },
-  { name: "Wantrans", href: "#", logo: "/images/logo/mecenasi/wantrans.png" },
+const strategiczny: Sponsor[] = [
+  { name: "Gmina Żukowo", logo: "/images/logo/gmina_zukowo.png" },
+  { name: "Starostwo Powiatowe", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
 ];
+
+const zloty: Sponsor[] = [
+  { name: "Świat Reklamy", logo: "/images/logo/mecenasi/świat reklamy.png" },
+  { name: "Gryf", logo: "/images/logo/mecenasi/gryf.png" },
+];
+
+const srebrny: Sponsor[] = [
+  { name: "GOSZ", logo: "/images/logo/mecenasi/GOSZ.png" },
+  { name: "Witek Deka", logo: "/images/logo/mecenasi/deka2.png" },
+  { name: "Nata", logo: "/images/logo/mecenasi/nata.png" },
+];
+
+const brazowy: Sponsor[] = [
+  { name: "BOTERM", logo: "/images/logo/mecenasi/BOTERM.png" },
+  { name: "Aste", logo: "/images/logo/mecenasi/aste.png" },
+  { name: "Elektromaster", logo: "/images/logo/mecenasi/ELEKTROMAJSTER.png" },
+  { name: "OX System", logo: "/images/logo/mecenasi/ox_system.png" },
+  { name: "T.N.T.", logo: "/images/logo/mecenasi/T.N.T.png" },
+  { name: "Budmax", logo: "/images/logo/mecenasi/budmax.png" },
+  { name: "KIA", logo: "/images/logo/mecenasi/KIA.png" },
+  { name: "Wantrans", logo: "/images/logo/mecenasi/wantrans.png" },
+  { name: "CWP", logo: "/images/logo/mecenasi/cwp.png" },
+  { name: "Repiński", logo: "/images/logo/mecenasi/Repiński.png" },
+  { name: "Motion Clinic", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
+];
+
+const partnerzy: Sponsor[] = [
+  { name: "PBS", logo: "/images/logo/mecenasi/pbs.png" },
+  { name: "Biznes po Kaszubsku", logo: "/images/logo/mecenasi/biznes_po_kaszubsku.png" },
+  { name: "Okis", logo: "/images/logo/mecenasi/okis.png" },
+  { name: "U Michała", logo: "/images/logo/mecenasi/U Micha_a.png" },
+  { name: "JustGym", logo: "/images/logo/mecenasi/JUSTGYM.png" },
+];
+
+interface TierStyle {
+  label: string;
+  labelColor: string;
+  cardBg: string;
+  cardBorder: string;
+  cardShadow: string;
+}
+
+const tierStyles: Record<string, TierStyle> = {
+  tytularny: {
+    label: "Sponsor Tytularny",
+    labelColor: "text-cyan-500",
+    cardBg: "bg-gradient-to-b from-cyan-50 via-sky-50/50 to-transparent",
+    cardBorder: "border border-cyan-300/50",
+    cardShadow: "shadow-lg shadow-cyan-200/30",
+  },
+  strategiczny: {
+    label: "Sponsor Strategiczny",
+    labelColor: "text-slate-400",
+    cardBg: "bg-gradient-to-b from-slate-100 via-gray-50 to-transparent",
+    cardBorder: "border border-slate-300/60",
+    cardShadow: "shadow-md shadow-slate-200/40",
+  },
+  zloty: {
+    label: "Sponsor Złoty",
+    labelColor: "text-amber-600",
+    cardBg: "bg-gradient-to-b from-amber-50 to-transparent",
+    cardBorder: "border border-amber-300/60",
+    cardShadow: "shadow-md shadow-amber-200/40",
+  },
+  srebrny: {
+    label: "Sponsor Srebrny",
+    labelColor: "text-gray-500",
+    cardBg: "bg-gradient-to-b from-gray-100 to-transparent",
+    cardBorder: "border border-gray-300/60",
+    cardShadow: "shadow-sm shadow-gray-200/40",
+  },
+  brazowy: {
+    label: "Sponsor Brązowy",
+    labelColor: "text-orange-800",
+    cardBg: "bg-gradient-to-b from-orange-50 to-transparent",
+    cardBorder: "border border-orange-300/50",
+    cardShadow: "shadow-sm shadow-orange-200/30",
+  },
+  partner: {
+    label: "Partner",
+    labelColor: "text-gray-400",
+    cardBg: "bg-gray-50",
+    cardBorder: "border border-gray-200/60",
+    cardShadow: "",
+  },
+};
+
+function SponsorTier({
+  tier,
+  sponsors,
+  logoHeight,
+  cardPadding,
+}: {
+  tier: string;
+  sponsors: Sponsor[];
+  logoHeight: string;
+  cardPadding: string;
+}) {
+  const style = tierStyles[tier];
+  return (
+    <div className="py-5 md:py-6">
+      <p className={`text-center text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 ${style.labelColor}`}>
+        {style.label}
+      </p>
+      <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+        {sponsors.map((s) => (
+          <div
+            key={s.name}
+            className={`flex items-center justify-center rounded-xl transition-all duration-300 hover:scale-105 ${cardPadding} ${style.cardBg} ${style.cardBorder} ${style.cardShadow}`}
+          >
+            <img
+              src={s.logo}
+              alt={s.name}
+              className={`${logoHeight} w-auto object-contain`}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function SponsorsBar() {
   return (
     <section className="bg-white">
-      {/* Sponsors tier 1 - main */}
-      <div className="border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-8 md:py-10">
-          <p className="text-center text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-6">
-            Sponsorzy
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Sponsor Tytularny */}
+        <div className="py-8 md:py-10">
+          <p className={`text-center text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 ${tierStyles.tytularny.labelColor}`}>
+            {tierStyles.tytularny.label}
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {mainSponsors.map((sponsor) => (
-              <a
-                key={sponsor.name}
-                href={sponsor.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center transition-transform duration-300 hover:scale-110"
-                aria-label={sponsor.name}
+          <div className="flex justify-center">
+            {tytularny.map((s) => (
+              <div
+                key={s.name}
+                className={`flex items-center justify-center rounded-2xl px-10 py-6 transition-all duration-300 hover:scale-105 ${tierStyles.tytularny.cardBg} ${tierStyles.tytularny.cardBorder} ${tierStyles.tytularny.cardShadow}`}
               >
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="h-20 md:h-28 w-auto object-contain"
-                />
-              </a>
+                <img src={s.logo} alt={s.name} className="h-24 md:h-36 w-auto object-contain" />
+              </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Sponsors tier 2 - partners */}
-      <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
-        <p className="text-center text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-5">
-          Mecenasi klubu
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="flex items-center transition-transform duration-300 hover:scale-110"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="h-7 md:h-9 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
+        <hr className="border-gray-100" />
+
+        {/* Sponsor Strategiczny */}
+        <SponsorTier tier="strategiczny" sponsors={strategiczny} logoHeight="h-16 md:h-24" cardPadding="px-8 py-5" />
+
+        <hr className="border-gray-100" />
+
+        {/* Sponsor Złoty */}
+        <SponsorTier tier="zloty" sponsors={zloty} logoHeight="h-12 md:h-18" cardPadding="px-6 py-4" />
+
+        <hr className="border-gray-100" />
+
+        {/* Sponsor Srebrny */}
+        <SponsorTier tier="srebrny" sponsors={srebrny} logoHeight="h-10 md:h-14" cardPadding="px-5 py-3" />
+
+        <hr className="border-gray-100" />
+
+        {/* Sponsor Brązowy */}
+        <SponsorTier tier="brazowy" sponsors={brazowy} logoHeight="h-7 md:h-10" cardPadding="px-4 py-2.5" />
+
+        <hr className="border-gray-100" />
+
+        {/* Partner */}
+        <SponsorTier tier="partner" sponsors={partnerzy} logoHeight="h-6 md:h-9" cardPadding="px-4 py-2" />
       </div>
 
       {/* CTA */}
@@ -89,12 +188,6 @@ export default function SponsorsBar() {
           Chcesz budować z nami przyszłość lokalnego sportu?
         </p>
         <div className="flex flex-wrap justify-center items-center gap-3">
-          <Link
-            href="/mecenasi"
-            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-sm"
-          >
-            Dołącz do Mecenasów
-          </Link>
           <Link
             href="/sponsorzy"
             className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-sm"

@@ -11,7 +11,7 @@ const footerLinks = {
     { href: "/aktualnosci", label: "Aktualności" },
   ],
   wspolpraca: [
-    { href: "/mecenasi", label: "Mecenasi KPR" },
+    { href: "/mecenasi", label: "Klub Partnerów" },
     { href: "/sponsorzy", label: "Sponsorzy" },
   ],
 };

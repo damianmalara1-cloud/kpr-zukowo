@@ -24,8 +24,8 @@ const navItems: NavItem[] = [
   {
     label: "Współpraca",
     children: [
-      { href: "/mecenasi", label: "Mecenasi KPR" },
       { href: "/sponsorzy", label: "Sponsorzy" },
+      { href: "/mecenasi", label: "Klub Partnerów" },
     ],
   },
   { href: "/aktualnosci", label: "Aktualności" },
