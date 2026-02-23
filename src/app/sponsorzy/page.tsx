@@ -185,10 +185,12 @@ export default function SponsorzyPage() {
 
             {/* Tabela porównania cen */}
             <div className="bg-navy rounded-xl overflow-hidden">
-              <div className="px-6 py-4">
+              <div className="px-4 md:px-6 py-4">
                 <h4 className="text-white font-bold uppercase tracking-wide text-sm">Porównanie cen — Sponsor Meczu</h4>
               </div>
-              <table className="w-full text-sm">
+
+              {/* Desktop */}
+              <table className="w-full text-sm hidden md:table">
                 <thead>
                   <tr className="bg-navy-dark text-white/80 text-xs uppercase tracking-wider">
                     <th className="text-left px-6 py-3">Poziom</th>
@@ -206,6 +208,23 @@ export default function SponsorzyPage() {
                   ))}
                 </tbody>
               </table>
+
+              {/* Mobile — karty zamiast tabeli */}
+              <div className="md:hidden space-y-2 p-3">
+                {pricingTable.map((row, i) => (
+                  <div key={i} className="bg-white rounded-lg p-4">
+                    <p className={`font-semibold mb-2 ${row.color}`}>{row.level}</p>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-500">Cena:</span>
+                      <span className="font-bold text-navy">{row.price}</span>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">Limit:</span>
+                      <span className="text-gray-600">{row.limit}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -233,10 +252,8 @@ export default function SponsorzyPage() {
                 <span className="text-3xl mb-2 block">&#9733;</span>
                 <h3 className="text-2xl font-bold text-navy mb-1">Sponsor Emocji</h3>
                 <p className="text-amber-700 text-sm font-medium mb-5">Patronat nad najważniejszymi momentami wideo</p>
-                <p>
-                  <span className="text-4xl font-bold text-navy">15 000 zł</span>
-                  <span className="text-gray-500"> / sezon</span>
-                </p>
+                <p className="text-xl font-bold text-navy">Wyceniane indywidualnie</p>
+                <p className="text-gray-500 text-sm">na podstawie celów Twojej marki</p>
               </div>
 
               {/* Wyróżniony social reach */}
@@ -288,10 +305,8 @@ export default function SponsorzyPage() {
                 <span className="text-3xl mb-2 block">&#9733;</span>
                 <h3 className="text-2xl font-bold mb-1">Sponsor Sezonu</h3>
                 <p className="text-gray-300 text-sm font-medium mb-5">Kompleksowa współpraca przez cały sezon</p>
-                <p>
-                  <span className="text-3xl font-bold">30 000 – 45 000 zł</span>
-                </p>
-                <p className="text-gray-400 text-sm mt-1">/ sezon — negocjowane indywidualnie</p>
+                <p className="text-xl font-bold text-white">Budżet szyty na miarę</p>
+                <p className="text-gray-400 text-sm mt-1">negocjowany indywidualnie</p>
               </div>
 
               {/* Wyróżniony social reach */}
