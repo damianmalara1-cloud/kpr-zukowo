@@ -1,50 +1,68 @@
 import Link from "next/link";
 import { EyeIcon, ShareIcon, FlameIcon, TargetIcon } from "@/components/Icons";
+import EmocjeCategoryPicker from "./EmocjeCategoryPicker";
 
 export const metadata = {
   title: "Sponsorzy | KPR Fit Dieta Żukowo",
   description: "Oferta sponsorska KPR Fit Dieta Żukowo. Widoczność, zasięgi, emocje i aktywacje marketingowe.",
 };
 
-const sponsorPackages = [
+/* ── Sponsor Meczu ── */
+const sponsorMeczPhases = [
   {
-    name: "Sponsor Meczu",
-    description: "Widoczność podczas jednego meczu domowego",
-    features: [
-      "Logo na materiałach promocyjnych meczu",
-      "Wyróżnienie w zapowiedzi meczu",
-      "Post w mediach społecznościowych",
-      "Możliwość aktywacji podczas meczu",
-      "Zdjęcia z meczu do wykorzystania",
+    title: "Przed meczem",
+    items: [
+      "Logo na grafikach meczowych",
+      "Post z oznaczeniem sponsora",
     ],
-    featured: false,
   },
   {
-    name: "Sponsor Sezonu",
-    description: "Kompleksowa współpraca przez cały sezon",
-    features: [
-      "Logo na stroju meczowym",
-      "Stała obecność na stronie WWW",
-      "Baner w hali podczas meczów domowych",
-      "Regularne posty w mediach społecznościowych",
-      "Udział w spotkaniach Rady Mecenasów",
-      "Udział w wydarzeniach klubowych",
-      "Materiały foto/video do własnych celów",
+    title: "W trakcie meczu",
+    items: [
+      "Min. 4 komunikaty spikera",
+      "Ekspozycja w hali (roll-up / baner)",
     ],
-    featured: true,
   },
   {
-    name: "Sponsor Emocji",
-    description: "Obecność przy najważniejszych momentach",
-    features: [
-      "Logo przy relacjach z meczów",
-      "Branding materiałów wideo",
-      "Wyróżnienie w podsumowaniach",
-      "Dostęp do contentu foto/video",
-      "Wspólne akcje w social media",
+    title: "Po meczu",
+    items: [
+      "Post podsumowujący",
+      "Zdjęcie z drużyną",
     ],
-    featured: false,
   },
+  {
+    title: "Hospitality",
+    items: [
+      "2 wejścia VIP",
+      "Wspólne wejście na parkiet z drużyną (opcjonalnie)",
+      "Materiał PR do profili firmowych",
+    ],
+  },
+];
+
+const pricingTable = [
+  { level: "Partner Strategiczny", price: "1 200 zł", limit: "1 mecz / sezon", color: "text-red" },
+  { level: "Partner Lokalny", price: "1 700 zł", limit: "1 mecz / sezon", color: "text-green-600" },
+  { level: "Spoza Klubu Partnerów KPR", price: "2 500 zł", limit: "\u2014", color: "text-gray-600" },
+];
+
+const preferenceSteps = [
+  { num: "1", label: "Partnerzy Strategiczni", desc: "Pierwszeństwo rezerwacji", bg: "bg-red" },
+  { num: "2", label: "Partnerzy Lokalni", desc: "Następni w kolejce", bg: "bg-green-600" },
+  { num: "3", label: "Sprzedaż otwarta", desc: "Każda firma spoza Klubu", bg: "bg-blue-600" },
+];
+
+/* ── Sponsor Sezonu ── */
+const sezonFeatures = [
+  "Centralna, wieloformatowa ekspozycja marki na głównych banerach (w zasięgu kamery)",
+  "Gwarantowana obecność logotypu Sponsora na KAŻDYM materiale wideo",
+  "Mecz Sponsora (Matchday Takeover) \u2014 jeden mecz w sezonie z pełnym pakietem: strefa Hospitality, Twoja marka na drużynie",
+  "Pełna integracja z contentem klubowym (zdjęcia / wideo / web)",
+  "Reklama stała w hali (podłoga / ściany)",
+  "Obecność w materiałach drukowanych",
+  "Dyspozycja logotypu na strojach meczowych / nagraniowych banerach",
+  "Wyróżnione podstrona sponsora na stronie klubu",
+  "VIP na każdym meczu domowym",
 ];
 
 const benefits = [
@@ -109,55 +127,31 @@ export default function SponsorzyPage() {
         </div>
       </section>
 
-      {/* Pakiety sponsorskie */}
+      {/* ═══ SPONSOR MECZU ═══ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-navy text-center mb-4">
-            Oferta sponsorska
-          </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Dopasujemy współpracę do Twoich potrzeb. Poniższe pakiety to propozycje –
-            jesteśmy otwarci na indywidualne rozwiązania.
+          <h2 className="text-3xl font-bold text-navy text-center mb-2">Sponsor Meczu</h2>
+          <p className="text-gray-500 text-center mb-2 text-sm uppercase tracking-widest">KPR Fit Dieta Żukowo</p>
+          <p className="text-center mb-1">
+            <span className="text-5xl font-bold text-navy">2 500 zł</span>
+          </p>
+          <p className="text-gray-500 text-center text-sm mb-2">cena nominalna</p>
+          <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto">
+            Dostępny dla każdej firmy — członka Klubu lub spoza niego.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 items-center">
-            {sponsorPackages.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all relative ${
-                  pkg.featured
-                    ? "bg-navy text-white border-2 border-navy shadow-xl md:scale-105 md:py-12"
-                    : "bg-gray-100 border border-gray-200"
-                }`}
-              >
-                {pkg.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-red text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md">
-                      Najkorzystniejszy
-                    </span>
-                  </div>
-                )}
-                <h3 className={`text-xl font-bold mb-2 ${pkg.featured ? "text-white" : "text-navy"}`}>
-                  {pkg.name}
-                </h3>
-                <p className={`text-sm mb-6 ${pkg.featured ? "text-gray-300" : "text-gray-600"}`}>
-                  {pkg.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <svg
-                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${pkg.featured ? "text-red-light" : "text-navy"}`}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
+          {/* 4 fazy */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {sponsorMeczPhases.map((phase) => (
+              <div key={phase.title} className="bg-white rounded-2xl p-6 shadow-md">
+                <h4 className="font-bold text-navy mb-3 text-sm uppercase tracking-wide">{phase.title}</h4>
+                <ul className="space-y-2">
+                  {phase.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-red" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      <span className={`text-sm ${pkg.featured ? "text-gray-200" : "text-gray-600"}`}>{feature}</span>
+                      {item}
                     </li>
                   ))}
                 </ul>
@@ -165,13 +159,174 @@ export default function SponsorzyPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* Zasady preferencji */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-8">
+            <h3 className="text-2xl font-bold text-navy mb-2">Zasady preferencji</h3>
+            <p className="text-gray-500 text-sm mb-8">Kolejność dostępu do Sponsora Meczu</p>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-10">
+              {preferenceSteps.map((step, i) => (
+                <div key={step.num} className="flex items-center gap-4 md:gap-6">
+                  <div className="text-center">
+                    <div className={`w-14 h-14 ${step.bg} text-white rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold`}>
+                      {step.num}
+                    </div>
+                    <p className="font-bold text-navy text-sm">{step.label}</p>
+                    <p className="text-gray-500 text-xs">{step.desc}</p>
+                  </div>
+                  {i < preferenceSteps.length - 1 && (
+                    <svg className="w-6 h-6 text-gray-300 hidden md:block flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Tabela porównania cen */}
+            <div className="bg-navy rounded-xl overflow-hidden">
+              <div className="px-6 py-4">
+                <h4 className="text-white font-bold uppercase tracking-wide text-sm">Porównanie cen — Sponsor Meczu</h4>
+              </div>
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-navy-dark text-white/80 text-xs uppercase tracking-wider">
+                    <th className="text-left px-6 py-3">Poziom</th>
+                    <th className="text-center px-6 py-3">Cena za mecz</th>
+                    <th className="text-center px-6 py-3">Limit preferencji</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white">
+                  {pricingTable.map((row, i) => (
+                    <tr key={i} className="border-t border-gray-100">
+                      <td className={`px-6 py-4 font-semibold ${row.color}`}>{row.level}</td>
+                      <td className="px-6 py-4 text-center font-bold text-navy">{row.price}</td>
+                      <td className="px-6 py-4 text-center text-gray-500">{row.limit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="text-center">
             <Link
               href="/kontakt"
-              className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-4 px-8 rounded-lg transition-all text-lg hover:scale-105 hover:shadow-lg"
+              className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-all hover:scale-105 hover:shadow-lg"
             >
-              Porozmawiajmy o współpracy
+              Zarezerwuj Sponsoring Meczu
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SPONSORING SEZONOWY ═══ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold mb-4">Sponsoring sezonowy</p>
+          <h2 className="text-3xl font-bold text-navy text-center mb-12">Oferta na cały sezon</h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Sponsor Emocji */}
+            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-200 rounded-2xl p-8 md:p-10 flex flex-col">
+              <div className="text-center mb-8">
+                <span className="text-3xl mb-2 block">&#9733;</span>
+                <h3 className="text-2xl font-bold text-navy mb-1">Sponsor Emocji</h3>
+                <p className="text-amber-700 text-sm font-medium mb-5">Patronat nad najważniejszymi momentami wideo</p>
+                <p>
+                  <span className="text-4xl font-bold text-navy">15 000 zł</span>
+                  <span className="text-gray-500"> / sezon</span>
+                </p>
+              </div>
+
+              {/* Wyróżniony social reach */}
+              <div className="bg-navy rounded-xl p-5 mb-8 text-center">
+                <p className="text-white text-xs uppercase tracking-widest mb-1">Zasięg wideo</p>
+                <p className="text-3xl font-bold text-white mb-1">14–18 tys.</p>
+                <p className="text-gray-300 text-sm">wyświetleń na post</p>
+                <p className="text-amber-400 text-xs mt-2 font-medium">Zawieszcz ten format!</p>
+              </div>
+
+              {/* Interaktywny picker kategorii */}
+              <div className="mb-8 flex-grow">
+                <EmocjeCategoryPicker />
+              </div>
+
+              <div className={`border-t border-amber-200 pt-6 mb-6`} />
+
+              <ul className="space-y-2 mb-8">
+                {[
+                  "Stałe oznaczenie w grafikach meczowych",
+                  "Branding przy najważniejszych ujęciach",
+                  "Oznaczenie w postach w social media",
+                  "4 wejścia VIP na kulisy meczowe",
+                ].map((f, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/kontakt"
+                className="block text-center bg-navy hover:bg-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all hover:scale-105 mt-auto"
+              >
+                Zapytaj o Sponsoring Emocji
+              </Link>
+            </div>
+
+            {/* Sponsor Sezonu */}
+            <div className="bg-navy text-white rounded-2xl p-8 md:p-10 flex flex-col relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-red text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wide">
+                Premium
+              </div>
+
+              <div className="text-center mb-6">
+                <span className="text-3xl mb-2 block">&#9733;</span>
+                <h3 className="text-2xl font-bold mb-1">Sponsor Sezonu</h3>
+                <p className="text-gray-300 text-sm font-medium mb-5">Kompleksowa współpraca przez cały sezon</p>
+                <p>
+                  <span className="text-3xl font-bold">30 000 – 45 000 zł</span>
+                </p>
+                <p className="text-gray-400 text-sm mt-1">/ sezon — negocjowane indywidualnie</p>
+              </div>
+
+              {/* Wyróżniony social reach */}
+              <div className="bg-white/10 backdrop-blur rounded-xl p-5 mb-8 text-center border border-white/20">
+                <p className="text-white/70 text-xs uppercase tracking-widest mb-1">Zasięg w social media</p>
+                <p className="text-4xl font-bold text-white mb-1">2 000 000+</p>
+                <p className="text-gray-300 text-sm">wyświetleń w sezonie</p>
+              </div>
+
+              <p className="text-gray-300 text-sm mb-4">
+                Pakiet zawiera wszystkie świadczenia z niższych poziomów (w tym Partnera Strategicznego) ORAZ:
+              </p>
+
+              <ul className="space-y-2 mb-8 flex-grow">
+                {sezonFeatures.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-200">
+                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-red" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-gray-400 text-xs italic text-center mb-6">
+                Na życzenie: Sponsor Tytularny — negocjowane indywidualnie.
+              </p>
+
+              <Link
+                href="/kontakt"
+                className="block text-center bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-all hover:scale-105 mt-auto"
+              >
+                Umów rozmowę o Sponsoringu Sezonu
+              </Link>
+            </div>
           </div>
         </div>
       </section>

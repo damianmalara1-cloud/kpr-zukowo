@@ -8,44 +8,52 @@ export const metadata = {
 
 const packages = [
   {
-    name: "Partner-Sympatyk",
+    name: "Partner Społeczności",
     price: "199",
-    description: "Wejście do społeczności Partnerów i podstawowa widoczność.",
+    description: "Realizacja celów wizerunkowych i CSR.",
     features: [
+      "Wyjątkowy Certyfikat Partnera",
+      "Wymienienie w zbiorczej grafice \u201EPartnerzy Społeczności\u201D",
       "Podziękowanie na stronie klubu",
-      "Wyjątkowy certyfikat Partnera KPR",
-      "Satysfakcja ze wsparcia lokalnego sportu",
+      "Zaproszenie na otwarcie sezonu Klubu Partnerów",
     ],
     highlighted: false,
+    limit: null,
     cta: "Zacznij jako Partner",
   },
   {
-    name: "Partner Lokalny KPR",
+    name: "Partner Lokalny",
     price: "499",
-    description: "Najlepszy wybór dla firm z Żukowa i okolicy — widoczność + relacje.",
+    description: "Aktywny członek środowiska biznesowego KPR.",
     features: [
-      "Wszystko z pakietu Partner-Sympatyk",
-      "Logo na stronie w sekcji Partnerów (z linkiem)",
-      "Tablica Partnerów w hali (ekspozycja w dniu meczowym)",
-      "Wyróżnienie w social media (min. 1 publikacja / 2 miesiące)",
-      "Udział w spotkaniach Klubu Partnerów (zamkniętych)",
-      "Pierwszeństwo przy formacie \u201EPartner Meczu\u201D",
-      "Możliwość zaproszenia 2 gości na strefę VIP, na wybrany mecz w sezonie",
+      "Wszystko z poziomu Partnera Społeczności",
+      "Indywidualne logo na stronie (z linkiem)",
+      "Ekspozycja na Tablicy Partnerów w hali",
+      "Min. 2 publikacje rocznie w social media",
+      "2 wejścia VIP w sezonie",
+      "Udział w zamkniętych spotkaniach Klubu Partnerów KPR",
+      "Sponsor Meczu w cenie preferencyjnej: 1 700 zł",
     ],
     highlighted: true,
+    limit: "Limit: 30 firm",
     cta: "Dołącz jako Partner Lokalny",
   },
   {
-    name: "Partner Główny",
+    name: "Partner Strategiczny",
     price: "1 200",
-    description: "Pakiet premium dla firm, które chcą być najbardziej widoczne i aktywne.",
+    description: "Elitarny networking B2B \u2013 silne utożsamienie z projektem KPR.",
     features: [
-      "Wszystko z pakietu Partner Lokalny KPR",
-      "Wyróżnione miejsce na tablicy Partnerów w hali (premium ekspozycja)",
-      "Wyróżniona prezentacja na stronie (opis firmy + CTA + link)",
+      "Wszystko z poziomu Partnera Lokalnego",
+      "Wyróżniona ekspozycja na Tablicy Partnerów",
+      "4 wejścia VIP w sezonie",
+      "1 dedykowany post sponsorowany w sezonie",
+      "Aktywacja marki w hali (roll-up / stoisko)",
+      "Pierwszeństwo zakupu Sponsora Meczu",
+      "Sponsor Meczu w cenie preferencyjnej: 1 200 zł (maks. 1/sezon)",
     ],
     highlighted: false,
-    cta: "Porozmawiajmy o pakiecie premium",
+    limit: "Limit: 10 firm",
+    cta: "Porozmawiajmy o partnerstwie strategicznym",
   },
 ];
 
@@ -83,7 +91,7 @@ const faqItems = [
   },
   {
     q: "Jak często pojawia się moja firma w social media?",
-    a: "W pakiecie Partner Lokalny — minimum 1 publikacja na 2 miesiące (post lub relacja). W pakiecie Partner Główny — częściej, z dedykowanymi formatami. Szczegóły ustalamy indywidualnie.",
+    a: "W pakiecie Partner Lokalny — minimum 2 publikacje rocznie (post lub relacja). W pakiecie Partner Strategiczny — dodatkowo dedykowany post sponsorowany. Szczegóły ustalamy indywidualnie.",
   },
   {
     q: "Czy mogę zmienić pakiet w trakcie sezonu?",
@@ -319,34 +327,55 @@ export default function MecenasiPage() {
             Wybierz poziom obecności Twojej marki. Ceny zostają, zakres dopasujemy do celów firmy.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`rounded-2xl p-8 transition-all hover:shadow-xl ${
+                className={`rounded-2xl p-8 transition-all hover:shadow-xl flex flex-col ${
                   pkg.highlighted
-                    ? "bg-navy text-white shadow-xl scale-105"
+                    ? "bg-navy text-white shadow-xl md:scale-105"
                     : "bg-white shadow-lg hover:-translate-y-1"
                 }`}
               >
-                {pkg.highlighted && (
-                  <span className="inline-block bg-red text-white text-xs px-3 py-1 rounded-full mb-4">
-                    Rekomendowany
-                  </span>
-                )}
-                <h3 className={`text-xl font-bold mb-2 ${pkg.highlighted ? "text-white" : "text-navy"}`}>
+                {/* Badge row — stała wysokość dla wyrównania */}
+                <div className="h-7 flex flex-wrap items-center justify-center gap-2 mb-4">
+                  {pkg.highlighted && (
+                    <span className="inline-block bg-red text-white text-xs px-3 py-1 rounded-full">
+                      Rekomendowany
+                    </span>
+                  )}
+                  {pkg.limit && (
+                    <span className={`inline-block text-xs px-3 py-1 rounded-full font-semibold ${
+                      pkg.highlighted ? "bg-white/20 text-white" : "bg-navy/10 text-navy"
+                    }`}>
+                      {pkg.limit}
+                    </span>
+                  )}
+                </div>
+
+                {/* Nazwa pakietu */}
+                <h3 className={`text-xl font-bold mb-2 text-center ${pkg.highlighted ? "text-white" : "text-navy"}`}>
                   {pkg.name}
                 </h3>
-                <p className={`text-sm mb-4 ${pkg.highlighted ? "text-gray-300" : "text-gray-500"}`}>
+
+                {/* Opis */}
+                <p className={`text-sm mb-5 text-center ${pkg.highlighted ? "text-gray-300" : "text-gray-500"}`}>
                   {pkg.description}
                 </p>
-                <div className="mb-6">
+
+                {/* Cena */}
+                <div className="mb-6 text-center">
                   <span className={`text-4xl font-bold ${pkg.highlighted ? "text-white" : "text-navy"}`}>
                     {pkg.price}
                   </span>
-                  <span className={pkg.highlighted ? "text-gray-300" : "text-gray-500"}> zł/miesiąc</span>
+                  <span className={pkg.highlighted ? "text-gray-300" : "text-gray-500"}> zł/mies.</span>
                 </div>
-                <ul className="space-y-3 mb-8">
+
+                {/* Separator */}
+                <div className={`border-t mb-6 ${pkg.highlighted ? "border-white/20" : "border-gray-200"}`} />
+
+                {/* Lista cech — flex-grow aby przycisk był na dole */}
+                <ul className="space-y-3 mb-8 flex-grow">
                   {pkg.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <svg
@@ -366,14 +395,11 @@ export default function MecenasiPage() {
                     </li>
                   ))}
                 </ul>
-                {pkg.highlighted && (
-                  <p className="text-gray-300 text-xs italic mb-4 text-center">
-                    Najczęściej wybierany przez firmy, które chcą realnej widoczności w hali i w social media.
-                  </p>
-                )}
+
+                {/* CTA — zawsze na dole karty */}
                 <Link
                   href="/kontakt"
-                  className={`block text-center py-3 px-6 rounded-lg font-semibold transition-all hover:scale-105 ${
+                  className={`block text-center py-3 px-6 rounded-lg font-semibold transition-all hover:scale-105 mt-auto ${
                     pkg.highlighted
                       ? "bg-red hover:bg-red-dark text-white"
                       : "bg-navy hover:bg-navy-dark text-white"

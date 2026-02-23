@@ -27,9 +27,9 @@
     },
     {
       "id": "3",
-      "date": "2026-02-21",
-      "time": "17:00",
-      "opponent": "Wybrzeże Gdańsk II",
+      "date": "2026-03-18",
+      "time": "20:30",
+      "opponent": "SPR Wybrzeże Gdańsk",
       "opponentLogo": "/images/opponents/gdansk.png",
       "venue": "SP nr 2 im. Jana Heweliusza, ul. Armii Krajowej 2e, Żukowo",
       "isHome": true,
@@ -39,8 +39,8 @@
     },
     {
       "id": "4",
-      "date": "2026-02-28",
-      "time": "17:00",
+      "date": "2026-03-04",
+      "time": "20:30",
       "opponent": "Tytani Wejherowo",
       "opponentLogo": "/images/opponents/wejherowo.png",
       "venue": "SP nr 2 im. Jana Heweliusza, ul. Armii Krajowej 2e, Żukowo",
