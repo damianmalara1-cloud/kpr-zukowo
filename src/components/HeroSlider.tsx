@@ -32,7 +32,7 @@ export default function HeroSlider() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <Link
             href="/mecze"
-            className="bg-red hover:bg-red-dark text-white font-semibold py-4 px-10 rounded-lg transition-colors text-lg hover:scale-[1.02] transition-transform shadow-lg"
+            className="bg-red hover:bg-red-dark text-white font-semibold py-4 px-10 rounded-lg text-lg hover:scale-[1.02] shadow-lg transition-[color,background-color,transform]"
           >
             Zobacz najbliższy mecz
           </Link>

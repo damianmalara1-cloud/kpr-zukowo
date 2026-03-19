@@ -52,7 +52,7 @@ export default function EmocjeCategoryPicker() {
           <button
             key={cat.name}
             onClick={() => setActive(i)}
-            className={`relative rounded-xl px-4 py-5 text-center transition-all duration-300 cursor-pointer border-2 group ${
+            className={`relative rounded-xl px-4 py-5 text-center transition-[color,background-color,border-color,box-shadow,transform] duration-300 cursor-pointer border-2 group ${
               active === i
                 ? "bg-navy text-white border-navy shadow-lg scale-[1.03]"
                 : "bg-white text-navy border-amber-200 hover:border-navy/40 hover:shadow-md"
@@ -67,7 +67,7 @@ export default function EmocjeCategoryPicker() {
       </div>
 
       {/* Opis wybranej kategorii */}
-      <div className="bg-white border border-amber-200 rounded-xl p-5 min-h-[80px] transition-all duration-300 shadow-sm">
+      <div className="bg-white border border-amber-200 rounded-xl p-5 min-h-[80px] transition-opacity duration-300 shadow-sm">
         <div className="flex items-start gap-3">
           <div className="text-amber-600 flex-shrink-0 mt-0.5">
             {categories[active].icon}

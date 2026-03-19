@@ -49,8 +49,47 @@ export default async function MatchPage({ params }: PageProps) {
   const isPast = new Date(match.date) < new Date();
   const opponentLogo = match.opponentLogo || null;
 
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: `${match.isHome ? "KPR Fit Dieta Żukowo" : match.opponent} vs ${match.isHome ? match.opponent : "KPR Fit Dieta Żukowo"}`,
+    startDate: `${match.date}T${match.time}:00`,
+    location: {
+      "@type": "Place",
+      name: match.venue,
+      address: match.isHome
+        ? {
+            "@type": "PostalAddress",
+            streetAddress: "ul. Armii Krajowej 2e",
+            addressLocality: "Żukowo",
+            postalCode: "83-330",
+            addressCountry: "PL",
+          }
+        : undefined,
+    },
+    homeTeam: {
+      "@type": "SportsTeam",
+      name: match.isHome ? "KPR Fit Dieta Żukowo" : match.opponent,
+    },
+    awayTeam: {
+      "@type": "SportsTeam",
+      name: match.isHome ? match.opponent : "KPR Fit Dieta Żukowo",
+    },
+    isAccessibleForFree: match.isHome,
+    eventStatus: "https://schema.org/EventScheduled",
+    organizer: {
+      "@type": "SportsTeam",
+      "@id": "https://kprzukowo.pl/#organization",
+      name: "KPR Fit Dieta Żukowo",
+    },
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+      />
       {/* Header */}
       <div className={`${match.isHome ? "bg-navy" : "bg-gray-700"} text-white py-12`}>
         <div className="max-w-4xl mx-auto px-4">

@@ -51,7 +51,7 @@ export default function WspolpracaPage() {
             {/* Sponsorzy */}
             <Link
               href="/sponsorzy"
-              className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2"
+              className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-[transform,box-shadow] hover:-translate-y-2"
             >
               {/* Tło karty */}
               <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy-dark" />
@@ -85,7 +85,7 @@ export default function WspolpracaPage() {
                   ))}
                 </ul>
 
-                <span className="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-all group-hover:gap-3">
+                <span className="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-[color,background-color,gap] group-hover:gap-3">
                   Zobacz ofertę sponsorską
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -97,7 +97,7 @@ export default function WspolpracaPage() {
             {/* Klub Partnerów */}
             <Link
               href="/mecenasi"
-              className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2"
+              className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-[transform,box-shadow] hover:-translate-y-2"
             >
               {/* Tło karty */}
               <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy-dark" />
@@ -131,7 +131,7 @@ export default function WspolpracaPage() {
                   ))}
                 </ul>
 
-                <span className="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-all group-hover:gap-3">
+                <span className="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-[color,background-color,gap] group-hover:gap-3">
                   Poznaj Klub Partnerów
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -182,7 +182,7 @@ export default function WspolpracaPage() {
           </p>
           <Link
             href="/kontakt"
-            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-all text-lg hover:scale-105 hover:shadow-lg"
+            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] text-lg hover:scale-105 hover:shadow-lg"
           >
             Skontaktuj się
           </Link>

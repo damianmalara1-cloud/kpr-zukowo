@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface Sponsor {
   name: string;
@@ -121,11 +122,13 @@ function SponsorTier({
         {sponsors.map((s) => (
           <div
             key={s.name}
-            className={`flex items-center justify-center rounded-xl transition-all duration-300 hover:scale-105 ${cardPadding} ${style.cardBg} ${style.cardBorder} ${style.cardShadow}`}
+            className={`flex items-center justify-center rounded-xl transition-[transform,box-shadow] duration-300 hover:scale-105 ${cardPadding} ${style.cardBg} ${style.cardBorder} ${style.cardShadow}`}
           >
-            <img
+            <Image
               src={s.logo}
               alt={s.name}
+              width={200}
+              height={100}
               className={`${logoHeight} w-auto object-contain`}
             />
           </div>
@@ -148,9 +151,9 @@ export default function SponsorsBar() {
             {tytularny.map((s) => (
               <div
                 key={s.name}
-                className={`flex items-center justify-center rounded-2xl px-10 py-6 transition-all duration-300 hover:scale-105 ${tierStyles.tytularny.cardBg} ${tierStyles.tytularny.cardBorder} ${tierStyles.tytularny.cardShadow}`}
+                className={`flex items-center justify-center rounded-2xl px-10 py-6 transition-[transform,box-shadow] duration-300 hover:scale-105 ${tierStyles.tytularny.cardBg} ${tierStyles.tytularny.cardBorder} ${tierStyles.tytularny.cardShadow}`}
               >
-                <img src={s.logo} alt={s.name} className="h-24 md:h-36 w-auto object-contain" />
+                <Image src={s.logo} alt={s.name} width={400} height={200} className="h-24 md:h-36 w-auto object-contain" />
               </div>
             ))}
           </div>
@@ -190,7 +193,7 @@ export default function SponsorsBar() {
         <div className="flex flex-wrap justify-center items-center gap-3">
           <Link
             href="/wspolpraca"
-            className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-sm"
+            className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-2.5 px-6 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-105 hover:shadow-lg text-sm"
           >
             Współpracuj z KPR
           </Link>

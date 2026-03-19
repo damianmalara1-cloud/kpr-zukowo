@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect, useCallback } from "react";
 
@@ -36,6 +37,8 @@ const navItems: NavItem[] = [
 function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback(() => {
@@ -70,6 +73,43 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const closeAndReturnFocus = useCallback(() => {
+    setIsOpen(false);
+    triggerRef.current?.focus();
+  }, []);
+
+  const handleTriggerKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setIsOpen(true);
+        requestAnimationFrame(() => menuItemsRef.current[0]?.focus());
+      } else if (e.key === "Escape") {
+        closeAndReturnFocus();
+      }
+    },
+    [closeAndReturnFocus],
+  );
+
+  const handleMenuKeyDown = useCallback(
+    (e: React.KeyboardEvent, index: number) => {
+      const items = menuItemsRef.current.filter(Boolean);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        items[(index + 1) % items.length]?.focus();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        items[(index - 1 + items.length) % items.length]?.focus();
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        closeAndReturnFocus();
+      } else if (e.key === "Tab") {
+        setIsOpen(false);
+      }
+    },
+    [closeAndReturnFocus],
+  );
+
   return (
     <div
       ref={dropdownRef}
@@ -95,8 +135,10 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
           </button>
         )}
         <button
+          ref={triggerRef}
           className="py-2 pr-2 hover:bg-navy-light rounded-md transition-colors"
           onClick={() => setIsOpen(!isOpen)}
+          onKeyDown={handleTriggerKeyDown}
           aria-expanded={isOpen}
           aria-haspopup="true"
         >
@@ -111,17 +153,22 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
         </button>
       </div>
       <div
-        className={`absolute top-full left-0 mt-1 bg-navy-dark rounded-md shadow-lg py-2 min-w-[180px] z-50 transition-all duration-200 ${
+        role="menu"
+        className={`absolute top-full left-0 mt-1 bg-navy-dark rounded-md shadow-lg py-2 min-w-[180px] z-50 transition-[opacity,transform,visibility] duration-200 ${
           isOpen
             ? "opacity-100 visible translate-y-0"
             : "opacity-0 invisible -translate-y-2"
         }`}
       >
-        {item.children?.map((child) => (
+        {item.children?.map((child, index) => (
           <Link
             key={child.href}
+            ref={(el) => { menuItemsRef.current[index] = el; }}
             href={child.href}
+            role="menuitem"
+            tabIndex={isOpen ? 0 : -1}
             className="block px-4 py-3 text-sm hover:bg-navy-light transition-colors"
+            onKeyDown={(e) => handleMenuKeyDown(e, index)}
             onClick={() => {
               setIsOpen(false);
               onClose();
@@ -173,7 +220,7 @@ function MobileDropdown({ item, onClose }: { item: NavItem; onClose: () => void 
         </button>
       </div>
       <div
-        className={`overflow-hidden transition-all duration-200 ${
+        className={`overflow-hidden transition-[max-height,opacity] duration-200 ${
           isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -218,9 +265,11 @@ export default function Navbar() {
             className="flex items-center"
             onClick={handleHomeClick}
           >
-            <img
+            <Image
               src="/images/logo/kpr_zukowo_beztla.png"
               alt="KPR Żukowo"
+              width={64}
+              height={64}
               className="h-16 w-auto"
             />
           </Link>
@@ -271,7 +320,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-navy-dark overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden bg-navy-dark overflow-hidden transition-[max-height,opacity] duration-300 ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >

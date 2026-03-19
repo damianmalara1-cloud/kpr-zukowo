@@ -1,7 +1,7 @@
 # Kontekst: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 🟡)
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 4 ✅)
 
 ---
 
@@ -157,6 +157,65 @@
 ---
 
 ## Przekazanie
+
+### Sesja 5: 2026-03-19 — Faza 4 ✅ COMPLETE
+
+- **Branch:** `feature/ux-ui-audit-improvements`
+- **Edytowane pliki:**
+  - `src/app/layout.tsx` (JSON-LD SportsTeam schema)
+  - `src/app/mecze/[id]/page.tsx` (JSON-LD SportsEvent schema)
+  - `src/app/mecenasi/page.tsx` (JSON-LD FAQPage schema, Image migration, transition-all fixes)
+  - `src/components/Navbar.tsx` (keyboard nav dropdown, role=menu/menuitem, Image migration, transition-all fixes)
+  - `src/components/Footer.tsx` (Image migration)
+  - `src/components/SponsorsBar.tsx` (Image migration, transition-all fixes)
+  - `src/app/sponsorzy/page.tsx` (Image migration, transition-all fixes)
+  - `src/components/HeroSlider.tsx` (duplex transition fix)
+  - `src/components/BoardMembers.tsx` (transition-all fixes)
+  - `src/components/PositionFilter.tsx` (transition-all fixes)
+  - `src/app/kontakt/page.tsx` (transition-all fixes)
+  - `src/app/kontakt/ContactForm.tsx` (transition-all fixes)
+  - `src/app/kibice/page.tsx` (transition-all fixes)
+  - `src/app/wspolpraca/page.tsx` (transition-all fixes)
+  - `src/app/sponsorzy/EmocjeCategoryPicker.tsx` (transition-all fixes)
+  - `src/app/admin/AdminPanel.tsx` (transition-all fix)
+  - `src/app/page.tsx` (duplex transition fix)
+
+- **Cel zmian (Faza 4):** Rich snippety Google (JSON-LD), pełna dostępność dropdown klawiaturą, optymalizacja obrazów (Next.js Image), usunięcie wszystkich transition-all
+
+- **Decyzje techniczne:**
+  - JSON-LD: SportsTeam (nie Organization+SportsTeam oddzielnie) — prostszy schema, lepiej obsługiwany
+  - SportsEvent z `isAccessibleForFree: true` dla meczów domowych
+  - FAQPage z dynamicznym mapowaniem faqItems
+  - Keyboard nav: cykliczna nawigacja ArrowUp/Down, requestAnimationFrame dla focusu po otwarciu
+  - Image: width/height proporcjonalne do CSS h-*, nie oryginalne wymiary (uniknięcie pobierania ogromnych obrazów)
+  - transition-all: zamienione na specyficzne per kontekst (48 instancji → 0)
+
+- **Weryfikacja:**
+  - `npm run build` ✅ (28/28 stron, 0 błędów)
+  - `<img ` w TSX = 0 ✅
+  - `transition-all` w TSX = 0 ✅
+  - `transition: all` w CSS = 0 ✅
+
+- **Wymaga testów w przeglądarce:**
+  - Google Rich Results Test na stronach z JSON-LD
+  - Keyboard nav dropdown: Enter/Space/ArrowDown/Escape
+  - Lighthouse Performance score
+  - Wizualna inspekcja logo po migracji na Image (CLS)
+
+- **Następny krok:**
+  - Faza 5 — Architektura i utrzymywalność
+  - Zadania: konsolidacja danych sponsorów, analityka, error handling API ZPRP
+  - Uruchom: `/dev-docs-execute Faza 5`
+
+**Status Fazy 4:** ✅ COMPLETE
+- [x] JSON-LD: SportsTeam, SportsEvent, FAQPage
+- [x] Keyboard nav dropdown z role=menu/menuitem
+- [x] Zero raw `<img>` tagów
+- [x] Zero `transition-all`
+- [x] npm run build przechodzi
+- ⏳ Testy w przeglądarce (Rich Results, keyboard, Lighthouse, wizualne)
+
+---
 
 ### Sesja 4: 2026-03-19 — Faza 3 ✅ COMPLETE, Vercel preview deployed
 

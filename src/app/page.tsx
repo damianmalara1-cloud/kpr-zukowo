@@ -267,7 +267,7 @@ export default async function Home() {
                 <div className="mt-8 text-center">
                   <Link
                     href={`/mecze/${nextMatch.id}`}
-                    className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors hover:scale-105 hover:shadow-lg"
+                    className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-105 hover:shadow-lg"
                   >
                     Szczegóły meczu
                   </Link>

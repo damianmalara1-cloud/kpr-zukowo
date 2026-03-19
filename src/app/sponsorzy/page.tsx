@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { EyeIcon, ShareIcon, FlameIcon, TargetIcon } from "@/components/Icons";
 import EmocjeCategoryPicker from "./EmocjeCategoryPicker";
 
@@ -231,7 +232,7 @@ export default function SponsorzyPage() {
           <div className="text-center">
             <Link
               href="/kontakt"
-              className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-all hover:scale-105 hover:shadow-lg"
+              className="inline-block bg-navy hover:bg-navy-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-105 hover:shadow-lg"
             >
               Zarezerwuj Sponsoring Meczu
             </Link>
@@ -289,7 +290,7 @@ export default function SponsorzyPage() {
 
               <Link
                 href="/kontakt"
-                className="block text-center bg-navy hover:bg-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-all hover:scale-105 mt-auto"
+                className="block text-center bg-navy hover:bg-navy-dark text-white font-semibold py-3 px-6 rounded-lg transition-[color,background-color,transform] hover:scale-105 mt-auto"
               >
                 Zapytaj o Sponsoring Emocji
               </Link>
@@ -337,7 +338,7 @@ export default function SponsorzyPage() {
 
               <Link
                 href="/kontakt"
-                className="block text-center bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-all hover:scale-105 mt-auto"
+                className="block text-center bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-[color,background-color,transform] hover:scale-105 mt-auto"
               >
                 Umów rozmowę o Sponsoringu Sezonu
               </Link>
@@ -356,7 +357,7 @@ export default function SponsorzyPage() {
             <p className="text-center text-[10px] uppercase tracking-[0.2em] text-cyan-500 font-semibold mb-4">Sponsor Tytularny</p>
             <div className="flex justify-center">
               <div className="bg-gradient-to-b from-cyan-50 via-sky-50/50 to-transparent border border-cyan-300/50 shadow-lg shadow-cyan-200/30 rounded-2xl px-10 py-6">
-                <img src="/images/logo/fitdietaa.png" alt="Fit Dieta" className="h-24 md:h-36 w-auto object-contain" />
+                <Image src="/images/logo/fitdietaa.png" alt="Fit Dieta" width={400} height={200} className="h-24 md:h-36 w-auto object-contain" />
               </div>
             </div>
           </div>
@@ -370,7 +371,7 @@ export default function SponsorzyPage() {
                 { name: "Starostwo Powiatowe", logo: "/images/logo/mecenasi/herb-powiat kartuski.png" },
               ].map((s) => (
                 <div key={s.name} className="bg-gradient-to-b from-slate-100 via-gray-50 to-transparent border border-slate-300/60 shadow-md shadow-slate-200/40 rounded-xl px-8 py-5">
-                  <img src={s.logo} alt={s.name} className="h-16 md:h-24 w-auto object-contain" />
+                  <Image src={s.logo} alt={s.name} width={200} height={100} className="h-16 md:h-24 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -385,7 +386,7 @@ export default function SponsorzyPage() {
                 { name: "Gryf", logo: "/images/logo/mecenasi/gryf.png" },
               ].map((s) => (
                 <div key={s.name} className="bg-gradient-to-b from-amber-50 to-transparent border border-amber-300/60 shadow-md shadow-amber-200/40 rounded-xl px-6 py-4">
-                  <img src={s.logo} alt={s.name} className="h-12 md:h-18 w-auto object-contain" />
+                  <Image src={s.logo} alt={s.name} width={160} height={80} className="h-12 md:h-18 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -401,7 +402,7 @@ export default function SponsorzyPage() {
                 { name: "Nata", logo: "/images/logo/mecenasi/nata.png" },
               ].map((s) => (
                 <div key={s.name} className="bg-gradient-to-b from-gray-100 to-transparent border border-gray-300/60 shadow-sm shadow-gray-200/40 rounded-xl px-5 py-3">
-                  <img src={s.logo} alt={s.name} className="h-10 md:h-14 w-auto object-contain" />
+                  <Image src={s.logo} alt={s.name} width={140} height={70} className="h-10 md:h-14 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -425,7 +426,7 @@ export default function SponsorzyPage() {
                 { name: "Motion Clinic", logo: "/images/logo/mecenasi/MOTION-CLINIC.png" },
               ].map((s) => (
                 <div key={s.name} className="bg-gradient-to-b from-orange-50 to-transparent border border-orange-300/50 shadow-sm shadow-orange-200/30 rounded-xl px-4 py-2.5">
-                  <img src={s.logo} alt={s.name} className="h-7 md:h-10 w-auto object-contain" />
+                  <Image src={s.logo} alt={s.name} width={100} height={50} className="h-7 md:h-10 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -451,7 +452,7 @@ export default function SponsorzyPage() {
           </p>
           <Link
             href="/kontakt"
-            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-all text-lg hover:scale-105 hover:shadow-lg"
+            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] text-lg hover:scale-105 hover:shadow-lg"
           >
             Skontaktuj się
           </Link>

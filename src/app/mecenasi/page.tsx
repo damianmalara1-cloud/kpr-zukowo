@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { EyeIcon, UsersIcon, FlameIcon, HandshakeIcon, ChartIcon, TrophyIcon } from "@/components/Icons";
 
 export const metadata = {
@@ -107,9 +108,26 @@ const faqItems = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 export default function MecenasiPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* HERO */}
       <div className="relative text-white pt-28 pb-20 bg-navy">
         <div
@@ -132,13 +150,13 @@ export default function MecenasiPage() {
           <div className="flex flex-wrap justify-center gap-4 mb-10">
             <Link
               href="/kontakt"
-              className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-all hover:scale-105 hover:shadow-lg text-lg"
+              className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-105 hover:shadow-lg text-lg"
             >
               Umów rozmowę — 15 minut
             </Link>
             <a
               href="#pakiety"
-              className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold py-3.5 px-8 rounded-lg transition-all hover:scale-105 border border-white/30 text-lg"
+              className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold py-3.5 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-105 border border-white/30 text-lg"
             >
               Zobacz pakiety partnerstwa
             </a>
@@ -255,11 +273,13 @@ export default function MecenasiPage() {
                 {currentPartners.map((partner, index) => (
                   <div
                     key={index}
-                    className="bg-gray-50 px-6 py-4 rounded-xl shadow-md hover:shadow-lg transition-all"
+                    className="bg-gray-50 px-6 py-4 rounded-xl shadow-md hover:shadow-lg transition-shadow"
                   >
-                    <img
+                    <Image
                       src={partner.logo}
                       alt={partner.name}
+                      width={160}
+                      height={80}
                       className="h-16 md:h-20 w-auto object-contain"
                     />
                   </div>
@@ -271,7 +291,7 @@ export default function MecenasiPage() {
             <div className="text-center">
               <Link
                 href="/kontakt"
-                className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-10 rounded-lg transition-all text-lg hover:scale-105 hover:shadow-lg"
+                className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-10 rounded-lg transition-[color,background-color,transform,box-shadow] text-lg hover:scale-105 hover:shadow-lg"
               >
                 Dołącz do Klubu Partnerów
               </Link>
@@ -331,7 +351,7 @@ export default function MecenasiPage() {
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`rounded-2xl p-8 transition-all hover:shadow-xl flex flex-col ${
+                className={`rounded-2xl p-8 transition-[transform,box-shadow] hover:shadow-xl flex flex-col ${
                   pkg.highlighted
                     ? "bg-navy text-white shadow-xl md:scale-105"
                     : "bg-white shadow-lg hover:-translate-y-1"
@@ -399,7 +419,7 @@ export default function MecenasiPage() {
                 {/* CTA — zawsze na dole karty */}
                 <Link
                   href="/kontakt"
-                  className={`block text-center py-3 px-6 rounded-lg font-semibold transition-all hover:scale-105 mt-auto ${
+                  className={`block text-center py-3 px-6 rounded-lg font-semibold transition-[color,background-color,transform] hover:scale-105 mt-auto ${
                     pkg.highlighted
                       ? "bg-red hover:bg-red-dark text-white"
                       : "bg-navy hover:bg-navy-dark text-white"
@@ -488,7 +508,7 @@ export default function MecenasiPage() {
           </p>
           <Link
             href="/kontakt"
-            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-all text-lg hover:scale-105 hover:shadow-lg"
+            className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-8 rounded-lg transition-[color,background-color,transform,box-shadow] text-lg hover:scale-105 hover:shadow-lg"
           >
             Umów rozmowę — 15 minut
           </Link>

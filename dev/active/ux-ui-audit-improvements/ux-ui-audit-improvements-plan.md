@@ -1,8 +1,8 @@
 # Plan: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 ✅)
-**Status:** Faza 3 ✅ COMPLETE — kod deployed na Vercel preview, wymaga wizualnej inspekcji
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 4 ✅)
+**Status:** Faza 4 ✅ COMPLETE — JSON-LD, keyboard nav, Image migration, transition-all cleanup
 **Preview URL:** https://kpr-zukowo-4ym5annur-damians-projects-00b2acae.vercel.app
 
 ---
@@ -178,10 +178,10 @@ Po wdrożeniu planu strona będzie:
 | Lighthouse Performance | ~80 (est.) | >= 90 |
 | Lighthouse SEO | ~70 (est.) | >= 95 |
 | Formularz kontaktowy | Nie działa | 100% dostarczalność |
-| Raw `<img>` tags | 6 (zweryfikowano) | 0 |
-| `transition-all` instances | 48 (zweryfikowano) | 0 |
+| Raw `<img>` tags | ~~6~~ → 0 ✅ | 0 |
+| `transition-all` instances | ~~48~~ → 0 ✅ | 0 |
 | Fonty nagłówkowe | 1 (Lato) | 2 (Oswald + Lato) |
-| JSON-LD schemas | 0 | 4 (Organization, SportsTeam, SportsEvent, FAQPage) |
+| JSON-LD schemas | ~~0~~ → 3 ✅ | 4 (Organization, SportsTeam, SportsEvent, FAQPage) |
 | OG image | Brak | 1200x630 branded |
 
 ---

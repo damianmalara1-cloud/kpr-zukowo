@@ -46,6 +46,38 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsTeam",
+  "@id": "https://kprzukowo.pl/#organization",
+  name: "KPR Fit Dieta Żukowo",
+  alternateName: "KPR Żukowo",
+  url: "https://kprzukowo.pl",
+  logo: "https://kprzukowo.pl/images/logo/kpr_zukowo_beztla.png",
+  image: "https://kprzukowo.pl/images/og-image.jpg",
+  description:
+    "Klub piłki ręcznej z Żukowa. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością.",
+  sport: "Handball",
+  memberOf: {
+    "@type": "SportsOrganization",
+    name: "Związek Piłki Ręcznej w Polsce",
+    alternateName: "ZPRP",
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "ul. Armii Krajowej 2e",
+    addressLocality: "Żukowo",
+    postalCode: "83-330",
+    addressCountry: "PL",
+  },
+  email: "klub@kprzukowo.pl",
+  sameAs: [
+    "https://www.facebook.com/kprzukowo",
+    "https://www.instagram.com/kpr_zukowo/",
+    "https://www.tiktok.com/@kprzukowo",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +85,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${oswaldHeading.variable} ${latoBody.variable} antialiased`}
       >

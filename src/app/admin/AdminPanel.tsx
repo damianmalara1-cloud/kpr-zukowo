@@ -51,7 +51,7 @@ function LoginForm({ onSuccess }: { onSuccess: () => void }) {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none transition-all text-gray-900"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-navy outline-none transition-[border-color,box-shadow] text-gray-900"
             placeholder="Wprowadź hasło..."
             autoFocus
           />

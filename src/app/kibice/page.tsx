@@ -57,7 +57,7 @@ export default function KibicePage() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-all">
+            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-[transform,box-shadow]">
               <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TicketIcon className="w-8 h-8 text-navy" />
               </div>
@@ -66,7 +66,7 @@ export default function KibicePage() {
                 Wszystkie mecze domowe są bezpłatne. Przyjdź z całą rodziną!
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-all">
+            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-[transform,box-shadow]">
               <div className="w-16 h-16 bg-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FlameIcon className="w-8 h-8 text-red" />
               </div>
@@ -75,7 +75,7 @@ export default function KibicePage() {
                 Piłka ręczna to jeden z najszybszych sportów halowych. Adrenalina gwarantowana!
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-all">
+            <div className="bg-white rounded-xl p-6 shadow-md text-center hover:shadow-lg hover:-translate-y-1 transition-[transform,box-shadow]">
               <div className="w-16 h-16 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <UsersIcon className="w-8 h-8 text-navy" />
               </div>
@@ -157,7 +157,7 @@ export default function KibicePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/mecze"
-              className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-all hover:scale-105"
+              className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-[color,background-color,transform] hover:scale-105"
             >
               Zobacz terminarz
             </Link>
@@ -165,7 +165,7 @@ export default function KibicePage() {
               href="https://www.facebook.com/kprzukowo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-lg transition-all hover:scale-105"
+              className="inline-block bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-lg transition-[color,background-color,transform] hover:scale-105"
             >
               Obserwuj na Facebooku
             </a>

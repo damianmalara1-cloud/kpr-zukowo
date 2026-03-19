@@ -1,7 +1,7 @@
 # Zadania: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 ✅ COMPLETE)
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 4 ✅ COMPLETE)
 **Preview URL:** https://kpr-zukowo-4ym5annur-damians-projects-00b2acae.vercel.app
 
 ---
@@ -119,40 +119,50 @@
 
 ## FAZA 4: SEO zaawansowane + wydajność (~7-8h)
 
-- [ ] **4.1** Dodać JSON-LD structured data (rozmiar: M)
-  - `layout.tsx`: Schema `Organization` + `SportsTeam` (nazwa, logo, social links, adres)
-  - `mecze/[id]/page.tsx`: Schema `SportsEvent` (data, lokalizacja, drużyny)
+- [x] **4.1** Dodać JSON-LD structured data (rozmiar: M) ✅
+  - `layout.tsx`: Schema `SportsTeam` (nazwa, logo, social links, adres, memberOf ZPRP)
+  - `mecze/[id]/page.tsx`: Schema `SportsEvent` (data, lokalizacja, drużyny, isAccessibleForFree)
   - `mecenasi/page.tsx`: Schema `FAQPage` (z istniejących faqItems)
-  - Walidacja: Google Rich Results Test
+  - Walidacja: wymaga Google Rich Results Test w przeglądarce
 
-- [ ] **4.2** Keyboard navigation w dropdown w `Navbar.tsx` (rozmiar: M)
-  - Trigger: Enter/Space → toggle, ArrowDown → open + focus first
-  - Dzieci: ArrowUp/ArrowDown → nawigacja, Escape → close + return focus, Tab → close
-  - Dodać `role="menu"` na container, `role="menuitem"` na dzieci
-  - Refs do zarządzania focusem
-  - Naprawić 3 instancje `transition-all` przy okazji
+- [x] **4.2** Keyboard navigation w dropdown w `Navbar.tsx` (rozmiar: M) ✅
+  - Trigger: Enter/Space → toggle, ArrowDown → open + focus first item
+  - Dzieci: ArrowUp/ArrowDown → cykliczna nawigacja, Escape → close + return focus, Tab → close
+  - Dodano `role="menu"` na container, `role="menuitem"` + `tabIndex` na dzieci
+  - Refs do zarządzania focusem (triggerRef, menuItemsRef)
+  - Naprawiono 3 instancje `transition-all` → `transition-[opacity,transform,visibility]`, `transition-[max-height,opacity]`
 
-- [ ] **4.3** Zamienić raw `<img>` na Next.js `<Image>` (rozmiar: M)
-  - `Navbar.tsx:221` — logo klubu (1 img)
-  - `Footer.tsx:27` — logo klubu (1 img)
-  - `SponsorsBar.tsx:126,153,260` — loga sponsorów (3 img patterns)
-  - `sponsorzy/page.tsx:359,373,388,404,428` — loga sponsorów (5 img patterns)
-  - `mecenasi/page.tsx:260` — loga partnerów (1 img pattern)
-  - Wymierzyć wymiary PRZED migracją (unikanie CLS)
+- [x] **4.3** Zamienić raw `<img>` na Next.js `<Image>` (rozmiar: M) ✅
+  - `Navbar.tsx` — logo klubu → `<Image width={64} height={64}>`
+  - `Footer.tsx` — logo klubu → `<Image width={64} height={64}>`
+  - `SponsorsBar.tsx` — loga sponsorów (2 patterns: SponsorTier + tytularny)
+  - `sponsorzy/page.tsx` — loga sponsorów (5 tier patterns)
+  - `mecenasi/page.tsx` — loga partnerów (1 pattern)
+  - Wymiary z `logo-dimensions.ts` (przygotowane w Fazie 1)
+  - Grep: `<img ` = 0 wyników ✅
 
-- [ ] **4.4** Naprawić pozostałe `transition-all` we wszystkich komponentach (rozmiar: S-M)
+- [x] **4.4** Naprawić pozostałe `transition-all` we wszystkich komponentach (rozmiar: S-M) ✅
   - `kontakt/page.tsx`: 4 instancje → `transition-[border-color,box-shadow]`
-  - `mecenasi/page.tsx`: 9 instancji → per kontekst
-  - `sponsorzy/page.tsx`: 5 instancji → per kontekst
-  - `page.tsx`: 2 instancje → `transition-colors`
+  - `kontakt/ContactForm.tsx`: 5 instancji → `transition-[border-color,box-shadow]` (inputs), `transition-[color,background-color,transform,box-shadow]` (button)
+  - `mecenasi/page.tsx`: 7 instancji → per kontekst
+  - `sponsorzy/page.tsx`: 4 instancje → per kontekst
+  - `sponsorzy/EmocjeCategoryPicker.tsx`: 2 instancje → per kontekst
+  - `kibice/page.tsx`: 5 instancji → per kontekst
+  - `wspolpraca/page.tsx`: 5 instancji → per kontekst
+  - `BoardMembers.tsx`: 2 instancje → `transition-[transform,box-shadow]`, `transition-shadow`
+  - `PositionFilter.tsx`: 3 instancje → `transition-[transform,box-shadow]`, `transition-colors`
+  - `AdminPanel.tsx`: 1 instancja → `transition-[border-color,box-shadow]`
+  - `page.tsx`: 1 instancja (duplex fix) → `transition-[color,background-color,transform,box-shadow]`
+  - `HeroSlider.tsx`: 1 instancja (duplex fix) → `transition-[color,background-color,transform]`
+  - Grep: `transition-all` = 0 wyników, `transition: all` = 0 wyników ✅
 
 **Weryfikacja Fazy 4:**
-- [ ] Google Rich Results Test → brak błędów na każdej stronie z JSON-LD
-- [ ] Dropdown: Tab → Enter opens → ArrowDown navigates → Escape closes
-- [ ] Zero `<img` tagów w codebase (Grep: `<img ` = 0 wyników)
-- [ ] Zero `transition-all` w codebase (Grep: `transition-all` = 0 wyników, `transition: all` = 0)
-- [ ] Lighthouse Performance >= 90
-- [ ] `npm run build` przechodzi
+- [ ] Google Rich Results Test → brak błędów (wymaga testu w przeglądarce)
+- [ ] Dropdown keyboard nav: Tab → Enter opens → ArrowDown navigates → Escape closes (wymaga testu w przeglądarce)
+- [x] Zero `<img` tagów w codebase ✅
+- [x] Zero `transition-all` w codebase ✅
+- [ ] Lighthouse Performance >= 90 (wymaga testu w przeglądarce)
+- [x] `npm run build` przechodzi ✅ (28/28 stron, 0 błędów)
 
 ---
 

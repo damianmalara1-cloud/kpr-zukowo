@@ -108,19 +108,19 @@ export default function KontaktPage() {
             <div className="mt-12">
               <h3 className="font-semibold text-navy mb-4">W jakiej sprawie piszesz?</h3>
               <div className="space-y-3">
-                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-all">
+                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-[border-color,box-shadow]">
                   <p className="font-medium text-navy">Współpraca sponsorska</p>
                   <p className="text-sm text-gray-500">Oferty, pakiety, indywidualne rozwiązania</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-all">
+                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-[border-color,box-shadow]">
                   <p className="font-medium text-navy">Mecenat</p>
                   <p className="text-sm text-gray-500">Dołączenie do Rady Mecenasów</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-all">
+                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-[border-color,box-shadow]">
                   <p className="font-medium text-navy">Treningi</p>
                   <p className="text-sm text-gray-500">Zapisy, treningi, informacje</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-all">
+                <div className="bg-white rounded-lg p-4 border border-gray-200 hover:border-navy/30 hover:shadow-md transition-[border-color,box-shadow]">
                   <p className="font-medium text-navy">Media</p>
                   <p className="text-sm text-gray-500">Akredytacje, materiały prasowe</p>
                 </div>

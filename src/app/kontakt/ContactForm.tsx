@@ -142,7 +142,7 @@ export default function ContactForm() {
           required
           aria-invalid={!!state.fieldErrors.name}
           aria-describedby={state.fieldErrors.name ? "name-error" : undefined}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-[border-color,box-shadow]"
           placeholder="Jan Kowalski"
         />
         {state.fieldErrors.name && (
@@ -163,7 +163,7 @@ export default function ContactForm() {
           required
           aria-invalid={!!state.fieldErrors.email}
           aria-describedby={state.fieldErrors.email ? "email-error" : undefined}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-[border-color,box-shadow]"
           placeholder="jan@example.com"
         />
         {state.fieldErrors.email && (
@@ -183,7 +183,7 @@ export default function ContactForm() {
           required
           aria-invalid={!!state.fieldErrors.subject}
           aria-describedby={state.fieldErrors.subject ? "subject-error" : undefined}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-[border-color,box-shadow]"
         >
           <option value="">Wybierz temat</option>
           <option value="sponsoring">Współpraca sponsorska</option>
@@ -211,7 +211,7 @@ export default function ContactForm() {
           minLength={10}
           aria-invalid={!!state.fieldErrors.message}
           aria-describedby={state.fieldErrors.message ? "message-error" : undefined}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all resize-none"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-[border-color,box-shadow] resize-none"
           placeholder="Treść wiadomości..."
         />
         {state.fieldErrors.message && (
@@ -224,7 +224,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full bg-red hover:bg-red-dark text-white font-semibold py-4 px-6 rounded-lg transition-all hover:scale-[1.02] hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+        className="w-full bg-red hover:bg-red-dark text-white font-semibold py-4 px-6 rounded-lg transition-[color,background-color,transform,box-shadow] hover:scale-[1.02] hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
       >
         {isPending ? (
           <span className="inline-flex items-center gap-2">

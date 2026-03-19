@@ -38,12 +38,12 @@ export default function BoardMembers({ members }: BoardMembersProps) {
         {members.map((member, index) => (
           <div
             key={index}
-            className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-[transform,box-shadow] duration-300 hover:-translate-y-1"
           >
             <div className="flex items-start gap-6">
               {member.image ? (
                 <div
-                  className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 cursor-pointer hover:ring-4 hover:ring-navy/20 transition-all"
+                  className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 cursor-pointer hover:ring-4 hover:ring-navy/20 transition-shadow"
                   onClick={() => setSelectedMember(member)}
                 >
                   <Image

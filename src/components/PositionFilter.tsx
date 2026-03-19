@@ -80,7 +80,7 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
           {staff.map((person, index) => (
             <div
               key={person.id}
-              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all ${person.photo ? "cursor-pointer" : ""}`}
+              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-[transform,box-shadow] ${person.photo ? "cursor-pointer" : ""}`}
               style={{ animationDelay: `${index * 80}ms` }}
               onClick={() => person.photo && setSelectedPerson({
                 photo: person.photo,
@@ -130,7 +130,7 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
               <button
                 key={group}
                 onClick={() => setActiveFilter(group)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide transition-all whitespace-nowrap ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide transition-colors whitespace-nowrap ${
                   activeFilter === group
                     ? "bg-red text-white shadow-md"
                     : "bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-navy"
@@ -147,7 +147,7 @@ export default function PositionFilter({ players, staff }: PositionFilterProps) 
           {filteredPlayers.map((player, index) => (
             <div
               key={player.id}
-              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all group animate-fade-in ${player.photo ? "cursor-pointer" : ""}`}
+              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-[transform,box-shadow] group animate-fade-in ${player.photo ? "cursor-pointer" : ""}`}
               style={{ animationDelay: `${index * 60}ms` }}
               onClick={() => player.photo && setSelectedPerson({
                 photo: player.photo,

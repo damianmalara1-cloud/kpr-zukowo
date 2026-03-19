@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   klub: [
@@ -24,9 +25,11 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="col-span-1 text-center">
             <Link href="/" className="inline-block mb-4">
-              <img
+              <Image
                 src="/images/logo/kpr_zukowo_beztla.png"
                 alt="KPR Żukowo"
+                width={64}
+                height={64}
                 className="h-16 w-auto mx-auto"
               />
             </Link>
