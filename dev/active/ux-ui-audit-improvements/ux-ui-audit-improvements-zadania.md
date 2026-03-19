@@ -1,7 +1,7 @@
 # Zadania: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 2 ✅ complete)
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 🟡 in progress)
 
 ---
 
@@ -82,29 +82,36 @@
 
 ## FAZA 3: Poprawa wizualna i konwersji (~6-8h)
 
-- [ ] **3.1** Dodać font Oswald dla nagłówków w `layout.tsx` (rozmiar: M)
-  - Importować `Oswald` z `next/font/google` (wagi: 500, 600, 700)
-  - Zastąpić `latoHeading` nową deklaracją Oswald
-  - Dostosować `letter-spacing` w `globals.css:68` (Oswald jest naturalnie kondensowany)
-  - QA wizualne na KAŻDEJ stronie (10 stron)
+- [x] **3.1** Dodać font Oswald dla nagłówków w `layout.tsx` (rozmiar: M) ✅
+  - Zaimportowano `Oswald` z `next/font/google` (wagi: 500, 600, 700)
+  - Zastąpiono `latoHeading` → `oswaldHeading` w `layout.tsx`
+  - Zmieniono `letter-spacing: -0.02em` → `0.01em` (Oswald jest kondensowany)
+  - Dodano `text-transform: uppercase` na h2-h6 (h1 bez — hero potrzebuje mixed case)
+  - QA wizualne: wymaga inspekcji w przeglądarce na 375px, 768px, 1024px, 1440px
 
-- [ ] **3.2** Uprościć hero z karuzeli na single hero w `HeroSlider.tsx` (rozmiar: M)
-  - Wybrać najlepsze zdjęcie (Grupa-6.jpg lub Grupa-7.jpg)
-  - Usunąć state management (useState, useEffect, setInterval)
-  - Jeden główny CTA: "Zobacz najbliższy mecz" (czerwony, duży)
+- [x] **3.2** Uprościć hero z karuzeli na single hero w `HeroSlider.tsx` (rozmiar: M) ✅
+  - Wybrano Grupa-7.jpg (zdjęcie drużynowe)
+  - Usunięto `"use client"`, useState, useEffect, setInterval — teraz server component
+  - Jeden główny CTA: "Zobacz najbliższy mecz" (czerwony, duży, py-4 px-10)
   - Drugi CTA zdegradowany do text-linka: "Poznaj klub →"
-  - Dodać social proof bar: "24+ Partnerów | 2M+ wyświetleń | Darmowe wejście"
-  - Naprawić 3 instancje `transition-all` w tym pliku
+  - Dodano social proof bar: "24+ Partnerów | 2M+ Wyświetleń | 100% Darmowe wejście"
+  - Usunięto 3 instancje `transition-all` (CTA buttons + slide indicator)
+  - Usunięto slide indicators (niepotrzebne bez karuzeli)
 
-- [ ] **3.3** Dodać custom `:focus-visible` w `globals.css` (rozmiar: S)
+- [x] **3.3** Dodać custom `:focus-visible` w `globals.css` (rozmiar: S) ✅
   - Globalny: `outline: 2px solid var(--red); outline-offset: 2px`
-  - Na ciemnych tłach: `outline-color: white`
-  - Test: Tab-through na każdej stronie, focus widoczny wszędzie
+  - Na ciemnych tłach (`bg-navy`, `bg-navy-dark`): `outline-color: white`
+  - Dodano przed sekcją `prefers-reduced-motion`
+
+- [x] **3.4** (bonus) Naprawiono 2 instancje `transition-all` w `page.tsx` ✅
+  - Linia 270: "Szczegóły meczu" CTA → `transition-colors`
+  - Linia 322: "Dołącz do społeczności" CTA → `transition-colors`
 
 **Weryfikacja Fazy 3:**
-- [ ] Nagłówki w Oswald, body w Lato — widoczna różnica
-- [ ] Hero: statyczny, jeden CTA dominujący, social proof widoczny
-- [ ] Focus ring widoczny na białym tle (czerwony) i ciemnym tle (biały)
+- [x] `npm run build` przechodzi ✅ (28/28 stron, 0 błędów)
+- [ ] Nagłówki w Oswald, body w Lato — widoczna różnica (wymaga inspekcji wizualnej)
+- [ ] Hero: statyczny, jeden CTA dominujący, social proof widoczny (wymaga inspekcji wizualnej)
+- [ ] Focus ring widoczny na białym tle (czerwony) i ciemnym tle (biały) (wymaga inspekcji wizualnej)
 - [ ] Wizualna inspekcja: 375px, 768px, 1024px, 1440px — brak regresji
 
 ---

@@ -1,7 +1,7 @@
 # Kontekst: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 2 ✅)
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 🟡)
 
 ---
 
@@ -157,6 +157,48 @@
 ---
 
 ## Przekazanie
+
+### Sesja 3: 2026-03-19 — Faza 3 kod gotowy, wymaga wizualnej inspekcji
+
+- **Branch:** `feature/ux-ui-audit-improvements`
+- **Ostatni commit:** `68a19d0` — wip: Faza 3 — Oswald font, static hero, focus-visible
+- **Edytowane pliki:**
+  - `src/app/layout.tsx` (Oswald import, `oswaldHeading` zamiast `latoHeading`)
+  - `src/app/globals.css` (letter-spacing 0.01em, uppercase h2-h6, focus-visible rules)
+  - `src/components/HeroSlider.tsx` (przebudowa: karuzela → static hero, server component, social proof bar)
+  - `src/app/page.tsx` (2x transition-all → transition-colors)
+
+- **Cel zmian:** Wzmocnienie identyfikacji wizualnej — sportowy font Oswald, uproszczony hero z social proof, globalne focus-visible dla a11y
+
+- **Decyzje techniczne:**
+  - Oswald wagi 500/600/700 (bez 400 — body zostaje Lato)
+  - `text-transform: uppercase` tylko na h2-h6 (h1 bez — hero "Tu zaczyna się historia" potrzebuje mixed case)
+  - `letter-spacing: 0.01em` (vs poprzednie -0.02em) — Oswald jest naturalnie kondensowany
+  - Hero: Grupa-7.jpg (zdjęcie drużynowe, lepsze niż Grupa-6)
+  - HeroSlider → server component (usunięto "use client", zero JS na kliencie)
+  - Social proof: "24+ Partnerów | 2M+ Wyświetleń | 100% Darmowe wejście"
+  - Focus-visible: red na białych tłach, white na navy — selector `[class*="bg-navy"] :focus-visible`
+
+- **WYMAGA:** Wizualna inspekcja w przeglądarce (375px, 768px, 1024px, 1440px)
+  - Sprawdzić czy uppercase h2-h6 wygląda dobrze na WSZYSTKICH stronach
+  - Sprawdzić czy focus ring jest widoczny na ciemnych i jasnych tłach
+  - Sprawdzić hero layout na mobile
+
+- **Weryfikacja:** `npm run build` ✅ (28/28 stron)
+
+- **Następny krok:**
+  - Wizualna inspekcja → ewentualne korekty → commit finalny Fazy 3
+  - Potem: Faza 4 — JSON-LD, keyboard nav dropdown, Next.js Image migration, transition-all cleanup
+  - Uruchom: `/dev-docs-execute Faza 4`
+
+**Status Fazy 3:** 🟡 KOD GOTOWY — wymaga QA wizualnego
+- [x] Oswald font (layout.tsx + globals.css)
+- [x] Static hero z social proof (HeroSlider.tsx)
+- [x] focus-visible styling (globals.css)
+- [x] npm run build przechodzi
+- [ ] Wizualna inspekcja na 4 breakpointach
+
+---
 
 ### Sesja 2: 2026-03-19 — Faza 2 częściowo ukończona
 

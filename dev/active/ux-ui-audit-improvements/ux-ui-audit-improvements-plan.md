@@ -1,8 +1,8 @@
 # Plan: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 2 🟡)
-**Status:** Faza 2 częściowo — wysyłka email do przetestowania po deploy
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 3 🟡)
+**Status:** Faza 3 kod gotowy — wymaga wizualnej inspekcji w przeglądarce
 
 ---
 
