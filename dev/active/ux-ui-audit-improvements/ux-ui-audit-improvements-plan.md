@@ -2,7 +2,7 @@
 
 **Branch:** `feature/ux-ui-audit-improvements`
 **Ostatnia aktualizacja:** 2026-03-19
-**Status:** Planowanie
+**Status:** Faza 1 ukończona
 
 ---
 
@@ -177,8 +177,8 @@ Po wdrożeniu planu strona będzie:
 | Lighthouse Performance | ~80 (est.) | >= 90 |
 | Lighthouse SEO | ~70 (est.) | >= 95 |
 | Formularz kontaktowy | Nie działa | 100% dostarczalność |
-| Raw `<img>` tags | 17 | 0 |
-| `transition-all` instances | 32 | 0 |
+| Raw `<img>` tags | 6 (zweryfikowano) | 0 |
+| `transition-all` instances | 48 (zweryfikowano) | 0 |
 | Fonty nagłówkowe | 1 (Lato) | 2 (Oswald + Lato) |
 | JSON-LD schemas | 0 | 4 (Organization, SportsTeam, SportsEvent, FAQPage) |
 | OG image | Brak | 1200x630 branded |

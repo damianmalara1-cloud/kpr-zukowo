@@ -20,6 +20,7 @@ const latoBody = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kprzukowo.pl"),
   title: "KPR Fit Dieta Żukowo | Piłka ręczna, emocje i społeczność",
   description: "Oficjalna strona klubu piłki ręcznej KPR Fit Dieta Żukowo. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością. Darmowe wejście, pełna hala i prawdziwe emocje.",
   keywords: ["KPR Żukowo", "piłka ręczna", "Żukowo", "handball", "Fit Dieta", "sport", "Pomorze"],
@@ -29,6 +30,20 @@ export const metadata: Metadata = {
     description: "Tu zaczyna się historia. Piłka ręczna, emocje i społeczność.",
     locale: "pl_PL",
     type: "website",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "KPR Fit Dieta Żukowo — drużyna piłki ręcznej",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KPR Fit Dieta Żukowo",
+    description: "Tu zaczyna się historia. Piłka ręczna, emocje i społeczność.",
+    images: ["/images/og-image.jpg"],
   },
 };
 
@@ -42,8 +57,11 @@ export default function RootLayout({
       <body
         className={`${latoHeading.variable} ${latoBody.variable} antialiased`}
       >
+        <a href="#main-content" className="skip-link">
+          Przejdź do treści
+        </a>
         <Navbar />
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen">
           {children}
         </main>
         <ConditionalSponsorsBar />

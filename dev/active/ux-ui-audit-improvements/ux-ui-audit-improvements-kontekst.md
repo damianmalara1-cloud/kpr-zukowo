@@ -42,6 +42,8 @@
 
 ## Szczegółowa mapa `transition-all` (do zamiany)
 
+> **Zweryfikowano: 2026-03-19** na bieżącym kodzie branch `feature/ux-ui-audit-improvements`
+
 | Plik | Linia | Kontekst | Zamiana na |
 |------|-------|----------|-----------|
 | `globals.css` | 216 | `button, .btn { transition: all }` | `transition: color, background-color, border-color, transform, box-shadow` |
@@ -51,43 +53,58 @@
 | `HeroSlider.tsx` | 70 | Primary CTA button | `transition-colors` |
 | `HeroSlider.tsx` | 76 | Secondary CTA button | `transition-colors` |
 | `HeroSlider.tsx` | 89 | Slide indicator | `transition-colors` |
+| `BoardMembers.tsx` | 41 | Card hover | `transition-[transform,box-shadow]` |
+| `BoardMembers.tsx` | 46 | Avatar hover ring | `transition-shadow` |
 | `SponsorsBar.tsx` | 124 | Sponsor card hover | `transition-[transform,box-shadow]` |
 | `SponsorsBar.tsx` | 151 | Tytularny card | `transition-[transform,box-shadow]` |
 | `SponsorsBar.tsx` | 193 | CTA button | `transition-colors` |
-| `SponsorsBar.tsx` | 258 | Partner logo card | `transition-[transform,box-shadow]` |
+| `PositionFilter.tsx` | 83 | Player card (staff) | `transition-[transform,box-shadow]` |
+| `PositionFilter.tsx` | 133 | Position filter button | `transition-colors` |
+| `PositionFilter.tsx` | 150 | Player card (players) | `transition-[transform,box-shadow]` |
 | `kontakt/page.tsx` | 110,114,118,122 | Topic cards | `transition-[border-color,box-shadow]` |
+| `kontakt/page.tsx` | 143,156,168 | Form inputs | `transition-[border-color,box-shadow]` |
+| `kontakt/page.tsx` | 187 | Textarea | `transition-[border-color,box-shadow]` |
+| `kontakt/page.tsx` | 194 | Submit button | `transition-colors` |
+| `kibice/page.tsx` | 60,69,78 | Info cards | `transition-[transform,box-shadow]` |
+| `kibice/page.tsx` | 160 | Primary CTA | `transition-colors` |
+| `kibice/page.tsx` | 168 | Secondary CTA | `transition-colors` |
+| `wspolpraca/page.tsx` | 54,100 | Package cards | `transition-[transform,box-shadow]` |
+| `wspolpraca/page.tsx` | 88,134 | CTA buttons w pakietach | `transition-colors` |
+| `wspolpraca/page.tsx` | 185 | Contact CTA | `transition-colors` |
 | `mecenasi/page.tsx` | 135,141 | CTA buttons | `transition-colors` |
 | `mecenasi/page.tsx` | 258 | Partner logo card | `transition-[transform,box-shadow]` |
 | `mecenasi/page.tsx` | 274 | CTA button | `transition-colors` |
-| `mecenasi/page.tsx` | 297,304,311 | How-it-works tiles | `transition-colors` |
 | `mecenasi/page.tsx` | 334 | Package card | `transition-[transform,box-shadow]` |
 | `mecenasi/page.tsx` | 402 | CTA button | `transition-colors` |
-| `mecenasi/page.tsx` | 465 | FAQ chevron | `transition-transform` |
-| `sponsorzy/page.tsx` | 119 | Benefit card | `transition-colors` |
+| `mecenasi/page.tsx` | 491 | Bottom CTA | `transition-colors` |
 | `sponsorzy/page.tsx` | 234 | CTA button | `transition-colors` |
 | `sponsorzy/page.tsx` | 292 | Emocji CTA | `transition-colors` |
 | `sponsorzy/page.tsx` | 340 | Sezonu CTA | `transition-colors` |
 | `sponsorzy/page.tsx` | 454 | Contact CTA | `transition-colors` |
+| `EmocjeCategoryPicker.tsx` | 55 | Category card | `transition-colors` |
+| `EmocjeCategoryPicker.tsx` | 70 | Description container | `transition-colors` |
+| `admin/AdminPanel.tsx` | 54 | Password input | `transition-[border-color,box-shadow]` |
 | `page.tsx` | 270 | Home CTA | `transition-colors` |
 | `page.tsx` | 322 | Community CTA | `transition-colors` |
+
+**Łącznie: 48 instancji** (poprzednio dokumentowano 27)
 
 ---
 
 ## Szczegółowa mapa raw `<img>` (do zamiany na Next.js Image)
 
+> **Zweryfikowano: 2026-03-19** — w bieżącym kodzie istnieje **6 instancji** (nie 11 jak wcześniej)
+
 | Plik | Linia | Element | Uwagi |
 |------|-------|---------|-------|
-| `Navbar.tsx` | 221 | Logo klubu (16h) | Znane wymiary, priority |
-| `Footer.tsx` | 27 | Logo klubu | Znane wymiary |
-| `SponsorsBar.tsx` | 126 | Logo sponsora w SponsorTier | Dynamiczne, potrzebne wymiary per tier |
-| `SponsorsBar.tsx` | 153 | Logo tytularnego (Fit Dieta) | h-24/h-36 |
-| `SponsorsBar.tsx` | 260 | Logo partnera | h-6/h-9 |
-| `sponsorzy/page.tsx` | 359 | Logo Fit Dieta (powtórzone) | h-24 |
-| `sponsorzy/page.tsx` | 373 | Logo strategiczny (loop) | h-16 |
-| `sponsorzy/page.tsx` | 388 | Logo złoty (loop) | h-12 |
-| `sponsorzy/page.tsx` | 404 | Logo srebrny (loop) | h-10 |
-| `sponsorzy/page.tsx` | 428 | Logo brązowy (loop) | h-7 |
-| `mecenasi/page.tsx` | 260 | Logo partnera (loop) | h-10 |
+| `SponsorsBar.tsx` | 153 | Logo tytularnego (dynamiczne) | h-24/h-36, wymiary w `logo-dimensions.ts` |
+| `sponsorzy/page.tsx` | 359 | Logo Fit Dieta (hardcoded) | h-24/h-36 |
+| `sponsorzy/page.tsx` | 373 | Logo strategiczny (loop) | h-16/h-24 |
+| `sponsorzy/page.tsx` | 388 | Logo złoty (loop) | h-12/h-18 |
+| `sponsorzy/page.tsx` | 404 | Logo srebrny (loop) | h-10/h-14 |
+| `sponsorzy/page.tsx` | 428 | Logo brązowy (loop) | h-7/h-10 |
+
+**Uwaga:** Navbar i Footer używają już `<Image>` lub innego rozwiązania — nie wymagają migracji.
 
 ---
 

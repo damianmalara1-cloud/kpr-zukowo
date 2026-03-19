@@ -7,41 +7,42 @@
 
 ## FAZA 1: Krytyczne poprawki a11y + SEO (~2h)
 
-- [ ] **1.1** Usunąć `user-select: none` z body w `globals.css:44-47` (rozmiar: S)
-  - Usunąć `pointer-events: none` z `img` w `globals.css:56`
-  - Usunąć klasę `.selectable` z `globals.css:59-64`
-  - Usunąć klasę `selectable` z `kontakt/page.tsx:39,54`
-  - Zostawić `user-drag: none` na obrazkach
+- [x] **1.1** Usunąć `user-select: none` z body w `globals.css:44-47` (rozmiar: S) ✅
+  - Usunięto `user-select: none` (4 linie) z body
+  - Usunięto `pointer-events: none` z `img`
+  - Usunięto klasę `.selectable` z `globals.css`
+  - Usunięto klasę `selectable` z `kontakt/page.tsx:39,54`
+  - Zostawiono `user-drag: none` na obrazkach
 
-- [ ] **1.2** Dodać `prefers-reduced-motion` media query w `globals.css` (rozmiar: S)
-  - Dodać na końcu pliku blok `@media (prefers-reduced-motion: reduce)`
-  - Wyzerowywać animation-duration i transition-duration
+- [x] **1.2** Dodać `prefers-reduced-motion` media query w `globals.css` (rozmiar: S) ✅
+  - Dodano blok `@media (prefers-reduced-motion: reduce)` na końcu `globals.css`
+  - Zeruje animation-duration, animation-iteration-count, transition-duration, scroll-behavior
 
-- [ ] **1.3** Dodać skip-to-content link w `layout.tsx` (rozmiar: S)
-  - Dodać `<a href="#main-content" class="skip-link">` przed `<Navbar />`
-  - Dodać `id="main-content"` do `<main>`
-  - Dodać style `.skip-link` w `globals.css` (sr-only, widoczny na focus)
+- [x] **1.3** Dodać skip-to-content link w `layout.tsx` (rozmiar: S) ✅
+  - Dodano `<a href="#main-content" class="skip-link">Przejdź do treści</a>` przed `<Navbar />`
+  - Dodano `id="main-content"` do `<main>`
+  - Dodano style `.skip-link` w `globals.css` (sr-only, widoczny na focus, navy bg)
 
-- [ ] **1.4** Uzupełnić OG image + meta tagi w `layout.tsx` (rozmiar: S)
-  - Przygotować `og-image.jpg` (1200x630) z Grupa-6.jpg lub Grupa-7.jpg
-  - Dodać `metadataBase: new URL('https://kprzukowo.pl')`
-  - Dodać `openGraph.images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }]`
-  - Dodać `twitter: { card: 'summary_large_image', ... }`
+- [x] **1.4** Uzupełnić OG image + meta tagi w `layout.tsx` (rozmiar: S) ✅
+  - OG image (1200x630) wygenerowano z Grupa-7.jpg → `public/images/og-image.jpg`
+  - Dodano `metadataBase: new URL('https://kprzukowo.pl')`
+  - Dodano `openGraph.images` z wymiarami i alt
+  - Dodano `twitter: { card: 'summary_large_image', ... }`
 
-- [ ] **1.5** Utworzyć `robots.ts` i `sitemap.ts` w `src/app/` (rozmiar: S)
-  - `robots.ts`: Allow all, disallow /admin, Sitemap URL
-  - `sitemap.ts`: Wszystkie statyczne strony + dynamiczne mecze i aktualności z JSON
+- [x] **1.5** Utworzyć `robots.ts` i `sitemap.ts` w `src/app/` (rozmiar: S) ✅
+  - `robots.ts`: Allow all, disallow /admin, sitemap URL
+  - `sitemap.ts`: 10 stron statycznych + dynamiczne mecze (z matches.json) + aktualności (z news.json)
 
-- [ ] **1.6** Naprawić `transition: all` w `globals.css:216` (rozmiar: S)
-  - Zamienić na: `transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease`
+- [x] **1.6** Naprawić `transition: all` w `globals.css:216` (rozmiar: S) ✅
+  - Zamieniono na: `transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease`
 
 **Weryfikacja Fazy 1:**
-- [ ] `npm run build` przechodzi
-- [ ] Tekst można zaznaczać na wszystkich stronach
-- [ ] Tab-through: skip-link przenosi do main
-- [ ] OG image widoczny (sprawdzić źródło HTML: `<meta property="og:image">`)
-- [ ] /robots.txt i /sitemap.xml zwracają poprawne dane
-- [ ] Lighthouse Accessibility >= 90
+- [x] `npm run build` przechodzi ✅ (28/28 stron, 0 błędów)
+- [x] Tekst można zaznaczać na wszystkich stronach ✅ (user-select: none usunięte)
+- [x] Tab-through: skip-link przenosi do main ✅ (skip-link + id="main-content")
+- [x] OG image widoczny ✅ (metadataBase + openGraph.images + twitter)
+- [x] /robots.txt i /sitemap.xml zwracają poprawne dane ✅ (widoczne w build output)
+- [ ] Lighthouse Accessibility >= 90 (wymaga testu w przeglądarce)
 
 ---
 
