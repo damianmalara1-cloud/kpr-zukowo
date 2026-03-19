@@ -1,7 +1,5 @@
 "use server";
 
-import { Resend } from "resend";
-
 interface ContactFormState {
   success: boolean;
   error: string | null;
@@ -13,12 +11,6 @@ interface ContactFormState {
   };
 }
 
-const initialState: ContactFormState = {
-  success: false,
-  error: null,
-  fieldErrors: {},
-};
-
 export async function sendContactEmail(
   _prevState: ContactFormState,
   formData: FormData
@@ -26,7 +18,6 @@ export async function sendContactEmail(
   // Honeypot check — bots fill this hidden field
   const honeypot = formData.get("website");
   if (honeypot) {
-    // Silently pretend success to not tip off bots
     return { success: true, error: null, fieldErrors: {} };
   }
 
@@ -62,7 +53,6 @@ export async function sendContactEmail(
     return { success: false, error: null, fieldErrors };
   }
 
-  // Subject labels
   const subjectLabels: Record<string, string> = {
     sponsoring: "Współpraca sponsorska",
     mecenat: "Mecenat",
@@ -74,9 +64,9 @@ export async function sendContactEmail(
   const subjectLabel = subjectLabels[subject] ?? subject;
 
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error("RESEND_API_KEY is not configured");
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      console.error("WEB3FORMS_ACCESS_KEY is not configured");
       return {
         success: false,
         error:
@@ -85,24 +75,26 @@ export async function sendContactEmail(
       };
     }
 
-    const resend = new Resend(apiKey);
-
-    await resend.emails.send({
-      from: "Formularz kontaktowy <kontakt@kprzukowo.pl>",
-      to: ["klub@kprzukowo.pl"],
-      replyTo: email,
-      subject: `[Strona WWW] ${subjectLabel} — ${name}`,
-      text: [
-        `Nowa wiadomość ze strony kprzukowo.pl`,
-        ``,
-        `Imię i nazwisko: ${name}`,
-        `E-mail: ${email}`,
-        `Temat: ${subjectLabel}`,
-        ``,
-        `Wiadomość:`,
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `[Strona WWW] ${subjectLabel} — ${name}`,
+        from_name: name,
+        replyto: email,
+        name,
+        email,
+        temat: subjectLabel,
         message,
-      ].join("\n"),
+      }),
     });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.message || "Web3Forms error");
+    }
 
     return { success: true, error: null, fieldErrors: {} };
   } catch (err) {
