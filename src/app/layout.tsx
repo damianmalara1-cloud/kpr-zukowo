@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Lato, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ConditionalSponsorsBar from "@/components/ConditionalSponsorsBar";
 import Footer from "@/components/Footer";
 
-const latoHeading = Lato({
+const oswaldHeading = Oswald({
   variable: "--font-heading",
   subsets: ["latin", "latin-ext"],
-  weight: ["700", "900"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body
-        className={`${latoHeading.variable} ${latoBody.variable} antialiased`}
+        className={`${oswaldHeading.variable} ${latoBody.variable} antialiased`}
       >
         <a href="#main-content" className="skip-link">
           Przejdź do treści

@@ -267,7 +267,7 @@ export default async function Home() {
                 <div className="mt-8 text-center">
                   <Link
                     href={`/mecze/${nextMatch.id}`}
-                    className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-all hover:scale-105 hover:shadow-lg"
+                    className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors hover:scale-105 hover:shadow-lg"
                   >
                     Szczegóły meczu
                   </Link>
@@ -319,7 +319,7 @@ export default async function Home() {
           </p>
           <Link
             href="/kibice"
-            className="inline-block bg-white hover:bg-gray-100 text-navy font-semibold py-3 px-8 rounded-lg transition-all hover:scale-105"
+            className="inline-block bg-white hover:bg-gray-100 text-navy font-semibold py-3 px-8 rounded-lg transition-colors hover:scale-105"
           >
             Dołącz do społeczności
           </Link>
