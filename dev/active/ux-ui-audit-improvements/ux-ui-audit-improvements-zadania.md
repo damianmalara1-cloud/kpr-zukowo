@@ -46,20 +46,15 @@
 
 ---
 
-## FAZA 2: Formularz kontaktowy (~4h)
+## FAZA 2: Formularz kontaktowy (~4h) — 🟡 CZĘŚCIOWO
 
-- [x] **2.1** Zaimplementować server action w `kontakt/actions.ts` (rozmiar: M) ✅
-  - Zainstalowano `resend` (`npm install resend`)
-  - Utworzono server action `sendContactEmail(prevState, formData)` z `useActionState` pattern
-  - Walidacja: name (required), email (required, regex format), subject (required), message (required, min 10 znaków)
-  - Wysyłka email via Resend API na `klub@kprzukowo.pl`
-  - Zwraca `{ success, error, fieldErrors }` — per-field error messages
-  - Graceful fallback gdy brak RESEND_API_KEY (komunikat z mailto)
+- [x] **2.1** Walidacja formularza (rozmiar: S) ✅
+  - Client-side walidacja: name (required), email (required, regex), subject (required), message (required, min 10 znaków)
+  - Zwraca per-field error messages z `aria-invalid` i `aria-describedby`
 
 - [x] **2.2** Przebudować formularz w `kontakt/page.tsx` (rozmiar: M) ✅
   - Wydzielono `ContactForm` client component (`kontakt/ContactForm.tsx`)
-  - Użyto React 19 `useActionState` hook z `<form action={formAction}>`
-  - Walidacja inline z `aria-invalid` i `aria-describedby` per pole
+  - Walidacja inline per pole
   - Stany: idle, pending (disabled button + spinner SVG + "Wysyłanie..."), success (zielony komunikat), error (czerwony komunikat)
   - `aria-live="polite"` na kontener komunikatów statusu
   - `role="alert"` na komunikaty błędów (zarówno field-level jak i global)
@@ -67,15 +62,21 @@
   - Formularz resetowany po sukcesie (`formRef.current.reset()`)
   - Gwiazdki `*` przy wymaganych polach
 
+- [ ] **2.3** Wysyłka email via Web3Forms (rozmiar: S) ⏳
+  - Web3Forms skonfigurowane (klucz: `7b929b5c-...`, email: `klub@kprzukowo.pl`)
+  - Kod client-side fetch do `api.web3forms.com/submit` gotowy
+  - **BLOKADA:** Web3Forms zwraca 403 na localhost — wymaga testowania na docelowym hostingu (Vercel/produkcja)
+  - Po deploy na docelową domenę przetestować ponownie
+
 **Weryfikacja Fazy 2:**
-- [ ] Formularz z poprawnymi danymi → email przychodzi (wymaga RESEND_API_KEY)
-- [x] Formularz z pustymi polami → inline error messages ✅ (server-side validation)
-- [x] Formularz z błędnym email → inline error ✅ (regex validation)
-- [x] Pending state → button disabled, spinner/text "Wysyłanie..." ✅ (useActionState isPending)
-- [x] Success state → zielony komunikat, formularz wyczyszczony ✅ (useEffect + formRef.reset)
-- [x] Error state (API fail) → czerwony komunikat z instrukcją ✅ (fallback do mailto)
+- [ ] Formularz z poprawnymi danymi → email przychodzi ⏳ (wymaga deploy na hosting)
+- [x] Formularz z pustymi polami → inline error messages ✅
+- [x] Formularz z błędnym email → inline error ✅
+- [x] Pending state → button disabled, spinner/text "Wysyłanie..." ✅
+- [x] Success state → zielony komunikat, formularz wyczyszczony ✅ (logika gotowa)
+- [x] Error state (API fail) → czerwony komunikat z instrukcją ✅
 - [x] Screen reader czyta komunikaty sukcesu/błędu ✅ (aria-live + role="alert")
-- [x] `npm run build` przechodzi ✅ (28/28 stron, 0 błędów)
+- [x] `npm run build` przechodzi ✅
 
 ---
 

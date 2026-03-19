@@ -158,39 +158,35 @@
 
 ## Przekazanie
 
-### Sesja 2: 2026-03-19 — Faza 2 ukończona
+### Sesja 2: 2026-03-19 — Faza 2 częściowo ukończona
 
 - **Branch:** `feature/ux-ui-audit-improvements`
 - **Nowe/edytowane pliki:**
-  - `src/app/kontakt/actions.ts` (nowy — server action, walidacja, Resend email)
-  - `src/app/kontakt/ContactForm.tsx` (nowy — client component, useActionState, a11y)
+  - `src/app/kontakt/actions.ts` (nowy — server action, walidacja)
+  - `src/app/kontakt/ContactForm.tsx` (nowy — client component, walidacja, Web3Forms fetch, a11y)
+  - `src/app/kontakt/types.ts` (nowy — ContactFormState interface)
   - `src/app/kontakt/page.tsx` (zrefaktoryzowano — formularz wydzielony do ContactForm)
-  - `package.json` + `package-lock.json` (dodano `resend`)
 
-- **Cel zmian:** Uruchomienie głównego funnela konwersji — formularz kontaktowy z server action, walidacją per-pole, stanami pending/success/error, honeypot antyspam, pełną dostępnością (aria-live, aria-invalid, role="alert")
+- **Cel zmian:** Uruchomienie głównego funnela konwersji — formularz kontaktowy z walidacją per-pole, stanami pending/success/error, honeypot antyspam, pełną dostępnością
 
-- **Ważne:** Formularz wymaga `RESEND_API_KEY` w `.env.local` do wysyłki emaili. Bez klucza zwraca fallback z linkiem mailto. Konfiguracja:
-  ```bash
-  echo "RESEND_API_KEY=re_xxxxxxxxxxxx" > .env.local
-  ```
+- **Decyzje techniczne:**
+  - Rezygnacja z Resend (wymaga API key + weryfikacja domeny) na rzecz Web3Forms (darmowy, publiczny klucz)
+  - Web3Forms klucz: `7b929b5c-9b82-493c-94ed-cf874aa5860d`, email: `klub@kprzukowo.pl`
+  - Wysyłka client-side (FormData POST) — Web3Forms blokuje server-side requesty na free plan
 
-- **Weryfikacja:**
-  ```bash
-  npm run build  # ✅ 28/28 stron, 0 błędów
-  ```
+- **BLOKADA:** Web3Forms zwraca 403 na localhost. Prawdopodobnie zadziała po deploy na docelową domenę. Do przetestowania po hostingu.
 
 - **Następny krok:** Faza 3 — Poprawa wizualna i konwersji
   - Zadania: Oswald font, uproszczenie hero, focus-visible styling
   - Uruchom: `/dev-docs-execute Faza 3`
 
-**Status Fazy 2:** ✅ COMPLETE
-- [x] Server action z walidacją i wysyłką email
-- [x] ContactForm client component z useActionState
+**Status Fazy 2:** 🟡 CZĘŚCIOWO
+- [x] ContactForm client component z walidacją
 - [x] Stany: pending (spinner), success (zielony), error (czerwony)
 - [x] Honeypot antyspam
 - [x] aria-live, aria-invalid, role="alert"
 - [x] npm run build przechodzi
-- [ ] Test end-to-end z RESEND_API_KEY (wymaga klucza API)
+- [ ] Test end-to-end wysyłki email (wymaga deploy na hosting)
 
 ---
 

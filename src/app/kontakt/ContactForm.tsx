@@ -1,8 +1,17 @@
 "use client";
 
-import { useActionState, useRef, useEffect } from "react";
-import { sendContactEmail } from "./actions";
+import { useRef, useState, type FormEvent } from "react";
 import type { ContactFormState } from "./types";
+
+const WEB3FORMS_KEY = "7b929b5c-9b82-493c-94ed-cf874aa5860d";
+
+const subjectLabels: Record<string, string> = {
+  sponsoring: "Współpraca sponsorska",
+  mecenat: "Mecenat",
+  treningi: "Treningi",
+  media: "Media",
+  inne: "Inne",
+};
 
 const initialState: ContactFormState = {
   success: false,
@@ -11,22 +20,96 @@ const initialState: ContactFormState = {
 };
 
 export default function ContactForm() {
-  const [state, formAction, isPending] = useActionState(sendContactEmail, initialState);
+  const [state, setState] = useState<ContactFormState>(initialState);
+  const [isPending, setIsPending] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (state.success) {
-      formRef.current?.reset();
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setState(initialState);
+
+    const formData = new FormData(formRef.current!);
+
+    // Honeypot
+    if (formData.get("website")) {
+      setState({ success: true, error: null, fieldErrors: {} });
+      return;
     }
-    if (state.success || state.error) {
+
+    const name = formData.get("name")?.toString().trim() ?? "";
+    const email = formData.get("email")?.toString().trim() ?? "";
+    const subject = formData.get("subject")?.toString().trim() ?? "";
+    const message = formData.get("message")?.toString().trim() ?? "";
+
+    // Validation
+    const fieldErrors: ContactFormState["fieldErrors"] = {};
+
+    if (!name) fieldErrors.name = "Imię i nazwisko jest wymagane.";
+    if (!email) {
+      fieldErrors.email = "Adres e-mail jest wymagany.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fieldErrors.email = "Podaj poprawny adres e-mail.";
+    }
+    if (!subject) fieldErrors.subject = "Wybierz temat wiadomości.";
+    if (!message) {
+      fieldErrors.message = "Wiadomość jest wymagana.";
+    } else if (message.length < 10) {
+      fieldErrors.message = "Wiadomość musi mieć co najmniej 10 znaków.";
+    }
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setState({ success: false, error: null, fieldErrors });
+      statusRef.current?.focus();
+      return;
+    }
+
+    const subjectLabel = subjectLabels[subject] ?? subject;
+
+    setIsPending(true);
+    try {
+      const submitData = new FormData();
+      submitData.append("access_key", WEB3FORMS_KEY);
+      submitData.append("subject", `[Strona WWW] ${subjectLabel} - ${name}`);
+      submitData.append("from_name", name);
+      submitData.append("replyto", email);
+      submitData.append("name", name);
+      submitData.append("email", email);
+      submitData.append("temat", subjectLabel);
+      submitData.append("message", message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submitData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setState({ success: true, error: null, fieldErrors: {} });
+        formRef.current?.reset();
+      } else {
+        setState({
+          success: false,
+          error: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
+          fieldErrors: {},
+        });
+      }
+    } catch {
+      setState({
+        success: false,
+        error: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
+        fieldErrors: {},
+      });
+    } finally {
+      setIsPending(false);
       statusRef.current?.focus();
     }
-  }, [state]);
+  }
 
   return (
-    <form ref={formRef} action={formAction} className="space-y-6" noValidate>
-      {/* Honeypot — hidden from real users, bots will fill it */}
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" noValidate>
+      {/* Honeypot */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />

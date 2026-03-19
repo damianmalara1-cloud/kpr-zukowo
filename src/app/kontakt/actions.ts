@@ -2,11 +2,11 @@
 
 import type { ContactFormState } from "./types";
 
-export async function sendContactEmail(
+export async function validateContactForm(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  // Honeypot check — bots fill this hidden field
+  // Honeypot check
   const honeypot = formData.get("website");
   if (honeypot) {
     return { success: true, error: null, fieldErrors: {} };
@@ -17,7 +17,6 @@ export async function sendContactEmail(
   const subject = formData.get("subject")?.toString().trim() ?? "";
   const message = formData.get("message")?.toString().trim() ?? "";
 
-  // Validation
   const fieldErrors: ContactFormState["fieldErrors"] = {};
 
   if (!name) {
@@ -44,58 +43,6 @@ export async function sendContactEmail(
     return { success: false, error: null, fieldErrors };
   }
 
-  const subjectLabels: Record<string, string> = {
-    sponsoring: "Współpraca sponsorska",
-    mecenat: "Mecenat",
-    treningi: "Treningi",
-    media: "Media",
-    inne: "Inne",
-  };
-
-  const subjectLabel = subjectLabels[subject] ?? subject;
-
-  try {
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-    if (!accessKey) {
-      console.error("WEB3FORMS_ACCESS_KEY is not configured");
-      return {
-        success: false,
-        error:
-          "Wysyłka wiadomości jest chwilowo niedostępna. Napisz bezpośrednio na klub@kprzukowo.pl",
-        fieldErrors: {},
-      };
-    }
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: accessKey,
-        subject: `[Strona WWW] ${subjectLabel} — ${name}`,
-        from_name: name,
-        replyto: email,
-        name,
-        email,
-        temat: subjectLabel,
-        message,
-      }),
-    });
-
-    const result = await response.json();
-
-    if (!result.success) {
-      throw new Error(result.message || "Web3Forms error");
-    }
-
-    return { success: true, error: null, fieldErrors: {} };
-  } catch (err) {
-    console.error("Failed to send contact email:", err);
-    return {
-      success: false,
-      error:
-        "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
-      fieldErrors: {},
-    };
-  }
+  // Validation passed — client will handle the Web3Forms submission
+  return { success: true, error: null, fieldErrors: {} };
 }
-
