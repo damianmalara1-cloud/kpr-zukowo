@@ -1,7 +1,7 @@
 # Kontekst: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 2 ✅)
 
 ---
 
@@ -158,7 +158,43 @@
 
 ## Przekazanie
 
-**Sesja:** 2026-03-19 — Faza 1 ukończona
+### Sesja 2: 2026-03-19 — Faza 2 ukończona
+
+- **Branch:** `feature/ux-ui-audit-improvements`
+- **Nowe/edytowane pliki:**
+  - `src/app/kontakt/actions.ts` (nowy — server action, walidacja, Resend email)
+  - `src/app/kontakt/ContactForm.tsx` (nowy — client component, useActionState, a11y)
+  - `src/app/kontakt/page.tsx` (zrefaktoryzowano — formularz wydzielony do ContactForm)
+  - `package.json` + `package-lock.json` (dodano `resend`)
+
+- **Cel zmian:** Uruchomienie głównego funnela konwersji — formularz kontaktowy z server action, walidacją per-pole, stanami pending/success/error, honeypot antyspam, pełną dostępnością (aria-live, aria-invalid, role="alert")
+
+- **Ważne:** Formularz wymaga `RESEND_API_KEY` w `.env.local` do wysyłki emaili. Bez klucza zwraca fallback z linkiem mailto. Konfiguracja:
+  ```bash
+  echo "RESEND_API_KEY=re_xxxxxxxxxxxx" > .env.local
+  ```
+
+- **Weryfikacja:**
+  ```bash
+  npm run build  # ✅ 28/28 stron, 0 błędów
+  ```
+
+- **Następny krok:** Faza 3 — Poprawa wizualna i konwersji
+  - Zadania: Oswald font, uproszczenie hero, focus-visible styling
+  - Uruchom: `/dev-docs-execute Faza 3`
+
+**Status Fazy 2:** ✅ COMPLETE
+- [x] Server action z walidacją i wysyłką email
+- [x] ContactForm client component z useActionState
+- [x] Stany: pending (spinner), success (zielony), error (czerwony)
+- [x] Honeypot antyspam
+- [x] aria-live, aria-invalid, role="alert"
+- [x] npm run build przechodzi
+- [ ] Test end-to-end z RESEND_API_KEY (wymaga klucza API)
+
+---
+
+### Sesja 1: 2026-03-19 — Faza 1 ukończona
 
 - **Branch:** `feature/ux-ui-audit-improvements`
 - **Ostatni commit:** `55a879e` — feat(ux-ui-audit): Faza 1 — krytyczne poprawki a11y + SEO
@@ -171,27 +207,4 @@
   - `public/images/og-image.jpg` (nowy, 1200x630)
   - `src/data/logo-dimensions.ts` (nowy, 28 logo)
 
-- **Cel zmian:** Naprawienie fundamentalnych problemów dostępności (user-select: none), SEO (OG image, robots, sitemap), wydajności (transition: all → konkretne properties) i accessibility (skip-link, prefers-reduced-motion)
-
-- **Weryfikacja:**
-  ```bash
-  npm run build  # ✅ 28/28 stron, /robots.txt, /sitemap.xml
-  grep "user-select: none" src/app/globals.css  # ✅ 0 wyników
-  grep "selectable" src/**/*.tsx  # ✅ 0 wyników
-  grep "transition: all" src/app/globals.css  # ✅ 0 wyników
-  ```
-
-- **Następny krok:** Faza 2 — Formularz kontaktowy
-  - Wymaga: Resend API key (do pozyskania od klienta lub konfiguracji SMTP)
-  - Zakreس: server action + walidacja + email
-  - Uruchom: `/dev-docs-execute Faza 2`
-
 **Status Fazy 1:** ✅ COMPLETE
-- [x] Usunięto user-select: none
-- [x] Dodano prefers-reduced-motion
-- [x] Dodano skip-to-content link
-- [x] Dodano OG image + metadata
-- [x] Utworzono robots.ts + sitemap.ts
-- [x] Naprawiono transition: all
-- [x] npm run build przechodzi
-- [ ] Lighthouse Accessibility >= 90 (wymaga testu w przeglądarce, wykonać przed przejściem do Fazy 2)

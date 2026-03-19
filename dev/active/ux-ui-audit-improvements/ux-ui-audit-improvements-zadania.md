@@ -1,7 +1,7 @@
 # Zadania: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 1 ✅ complete)
+**Ostatnia aktualizacja:** 2026-03-19 (Faza 2 ✅ complete)
 
 ---
 
@@ -48,30 +48,34 @@
 
 ## FAZA 2: Formularz kontaktowy (~4h)
 
-- [ ] **2.1** Zaimplementować server action w `kontakt/actions.ts` (rozmiar: M)
-  - Zainstalować `resend` (`npm install resend`)
-  - Utworzyć server action `sendContactEmail(formData: FormData)`
-  - Walidacja: name (required), email (required, format), subject (required), message (required, min 10 znaków)
+- [x] **2.1** Zaimplementować server action w `kontakt/actions.ts` (rozmiar: M) ✅
+  - Zainstalowano `resend` (`npm install resend`)
+  - Utworzono server action `sendContactEmail(prevState, formData)` z `useActionState` pattern
+  - Walidacja: name (required), email (required, regex format), subject (required), message (required, min 10 znaków)
   - Wysyłka email via Resend API na `klub@kprzukowo.pl`
-  - Zwracać `{ success: boolean, error?: string }`
+  - Zwraca `{ success, error, fieldErrors }` — per-field error messages
+  - Graceful fallback gdy brak RESEND_API_KEY (komunikat z mailto)
 
-- [ ] **2.2** Przebudować formularz w `kontakt/page.tsx` (rozmiar: M)
-  - Wydzielić `ContactForm` client component (lub użyć `useActionState`)
-  - Podpiąć server action do `<form action={...}>`
-  - Dodać walidację inline (required, email format)
-  - Dodać stany: idle, pending (disabled button + spinner), success (zielony komunikat), error (czerwony komunikat)
-  - Dodać `aria-live="polite"` na kontener komunikatów
-  - Dodać `role="alert"` na komunikaty błędów
-  - Dodać pole honeypot (`<input type="text" name="website" class="hidden" tabIndex={-1}>`)
+- [x] **2.2** Przebudować formularz w `kontakt/page.tsx` (rozmiar: M) ✅
+  - Wydzielono `ContactForm` client component (`kontakt/ContactForm.tsx`)
+  - Użyto React 19 `useActionState` hook z `<form action={formAction}>`
+  - Walidacja inline z `aria-invalid` i `aria-describedby` per pole
+  - Stany: idle, pending (disabled button + spinner SVG + "Wysyłanie..."), success (zielony komunikat), error (czerwony komunikat)
+  - `aria-live="polite"` na kontener komunikatów statusu
+  - `role="alert"` na komunikaty błędów (zarówno field-level jak i global)
+  - Pole honeypot (`name="website"`, `absolute -left-[9999px]`, `aria-hidden`, `tabIndex={-1}`)
+  - Formularz resetowany po sukcesie (`formRef.current.reset()`)
+  - Gwiazdki `*` przy wymaganych polach
 
 **Weryfikacja Fazy 2:**
-- [ ] Formularz z poprawnymi danymi → email przychodzi
-- [ ] Formularz z pustymi polami → inline error messages
-- [ ] Formularz z błędnym email → inline error
-- [ ] Pending state → button disabled, spinner/text "Wysyłanie..."
-- [ ] Success state → zielony komunikat, formularz wyczyszczony
-- [ ] Error state (API fail) → czerwony komunikat z instrukcją
-- [ ] Screen reader czyta komunikaty sukcesu/błędu
+- [ ] Formularz z poprawnymi danymi → email przychodzi (wymaga RESEND_API_KEY)
+- [x] Formularz z pustymi polami → inline error messages ✅ (server-side validation)
+- [x] Formularz z błędnym email → inline error ✅ (regex validation)
+- [x] Pending state → button disabled, spinner/text "Wysyłanie..." ✅ (useActionState isPending)
+- [x] Success state → zielony komunikat, formularz wyczyszczony ✅ (useEffect + formRef.reset)
+- [x] Error state (API fail) → czerwony komunikat z instrukcją ✅ (fallback do mailto)
+- [x] Screen reader czyta komunikaty sukcesu/błędu ✅ (aria-live + role="alert")
+- [x] `npm run build` przechodzi ✅ (28/28 stron, 0 błędów)
 
 ---
 

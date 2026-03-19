@@ -1,4 +1,5 @@
 import { LocationIcon, MailIcon, PhoneIcon } from "@/components/Icons";
+import ContactForm from "./ContactForm";
 
 export const metadata = {
   title: "Kontakt | KPR Fit Dieta Żukowo",
@@ -130,76 +131,7 @@ export default function KontaktPage() {
           {/* Formularz kontaktowy */}
           <div>
             <h2 className="text-2xl font-bold text-navy mb-8">Napisz do nas</h2>
-
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Imię i nazwisko
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
-                  placeholder="Jan Kowalski"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
-                  placeholder="jan@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Temat
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all"
-                >
-                  <option value="">Wybierz temat</option>
-                  <option value="sponsoring">Współpraca sponsorska</option>
-                  <option value="mecenat">Mecenat</option>
-                  <option value="treningi">Treningi</option>
-                  <option value="media">Media</option>
-                  <option value="inne">Inne</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Wiadomość
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent transition-all resize-none"
-                  placeholder="Treść wiadomości..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-red hover:bg-red-dark text-white font-semibold py-4 px-6 rounded-lg transition-all hover:scale-[1.02] hover:shadow-lg"
-              >
-                Wyślij wiadomość
-              </button>
-
-              <p className="text-sm text-gray-500 text-center">
-                Odpowiadamy zazwyczaj w ciągu 24-48 godzin.
-              </p>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>
