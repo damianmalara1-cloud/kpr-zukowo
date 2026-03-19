@@ -20,7 +20,6 @@ const latoBody = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kprzukowo.pl"),
   title: "KPR Fit Dieta Żukowo | Piłka ręczna, emocje i społeczność",
   description: "Oficjalna strona klubu piłki ręcznej KPR Fit Dieta Żukowo. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością. Darmowe wejście, pełna hala i prawdziwe emocje.",
   keywords: ["KPR Żukowo", "piłka ręczna", "Żukowo", "handball", "Fit Dieta", "sport", "Pomorze"],
