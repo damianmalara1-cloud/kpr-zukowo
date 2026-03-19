@@ -153,3 +153,45 @@
 | Weryfikacja domeny w Resend | DNS | 2 (opcjonalne, ale rekomendowane) |
 | `@vercel/analytics` (npm) | Nowy package | 5 |
 | OG image (grafika) | Asset | 1 |
+
+---
+
+## Przekazanie
+
+**Sesja:** 2026-03-19 — Faza 1 ukończona
+
+- **Branch:** `feature/ux-ui-audit-improvements`
+- **Ostatni commit:** `55a879e` — feat(ux-ui-audit): Faza 1 — krytyczne poprawki a11y + SEO
+- **Edytowane pliki:**
+  - `src/app/globals.css` (user-select, transition, prefers-reduced-motion, skip-link styles)
+  - `src/app/layout.tsx` (skip-link, metadataBase, OG, twitter metadata)
+  - `src/app/kontakt/page.tsx` (usunięto selectable)
+  - `src/app/robots.ts` (nowy)
+  - `src/app/sitemap.ts` (nowy)
+  - `public/images/og-image.jpg` (nowy, 1200x630)
+  - `src/data/logo-dimensions.ts` (nowy, 28 logo)
+
+- **Cel zmian:** Naprawienie fundamentalnych problemów dostępności (user-select: none), SEO (OG image, robots, sitemap), wydajności (transition: all → konkretne properties) i accessibility (skip-link, prefers-reduced-motion)
+
+- **Weryfikacja:**
+  ```bash
+  npm run build  # ✅ 28/28 stron, /robots.txt, /sitemap.xml
+  grep "user-select: none" src/app/globals.css  # ✅ 0 wyników
+  grep "selectable" src/**/*.tsx  # ✅ 0 wyników
+  grep "transition: all" src/app/globals.css  # ✅ 0 wyników
+  ```
+
+- **Następny krok:** Faza 2 — Formularz kontaktowy
+  - Wymaga: Resend API key (do pozyskania od klienta lub konfiguracji SMTP)
+  - Zakreس: server action + walidacja + email
+  - Uruchom: `/dev-docs-execute Faza 2`
+
+**Status Fazy 1:** ✅ COMPLETE
+- [x] Usunięto user-select: none
+- [x] Dodano prefers-reduced-motion
+- [x] Dodano skip-to-content link
+- [x] Dodano OG image + metadata
+- [x] Utworzono robots.ts + sitemap.ts
+- [x] Naprawiono transition: all
+- [x] npm run build przechodzi
+- [ ] Lighthouse Accessibility >= 90 (wymaga testu w przeglądarce, wykonać przed przejściem do Fazy 2)
