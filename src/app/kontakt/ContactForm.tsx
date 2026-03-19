@@ -1,7 +1,8 @@
 "use client";
 
 import { useActionState, useRef, useEffect } from "react";
-import { sendContactEmail, type ContactFormState } from "./actions";
+import { sendContactEmail } from "./actions";
+import type { ContactFormState } from "./types";
 
 const initialState: ContactFormState = {
   success: false,

@@ -1,15 +1,6 @@
 "use server";
 
-interface ContactFormState {
-  success: boolean;
-  error: string | null;
-  fieldErrors: {
-    name?: string;
-    email?: string;
-    subject?: string;
-    message?: string;
-  };
-}
+import type { ContactFormState } from "./types";
 
 export async function sendContactEmail(
   _prevState: ContactFormState,
@@ -108,4 +99,3 @@ export async function sendContactEmail(
   }
 }
 
-export type { ContactFormState };
