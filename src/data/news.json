@@ -1,16 +1,6 @@
 {
   "news": [
     {
-      "id": "4",
-      "title": "HALA W ŻUKOWIE ZNÓW ODPALIŁA 🔥",
-      "date": "2026-03-20",
-      "excerpt": "Od pierwszych minut było widać, że nasi zawodnicy wyszli na parkiet z jednym celem - zdominować to spotkanie. Twarda obrona, szybkie kontry i ogromna energia od pierwszego gwizdka.",
-      "content": "Trzeba jednak oddać rywalom, że Tytani Wejherowo dzielnie stawiali opór do przerwy, nie pozwalając nam odskoczyć na bezpieczną przewagę. Po zmianie stron Żuksa wrzuciła jednak wyższy bieg. Tempo wzrosło, bramki zaczęły wpadać seriami, a przewaga rosła z minuty na minutę.\n\nOstatecznie kończymy mecz pewnym zwycięstwem 44:27.\n\nDziękujemy kibicom za atmosferę oraz Żucovia Dance z Ośrodek Kultury i Sportu w Żukowie za piękny pokaz w przerwie! 💙❤️\n\nGramy dalej i patrzymy przed siebie.\n\nPS. Wszędzie dobrze, ale na swoim najlepiej ☝️😉\n\n#GramyDlaŻukowa #TuZaczynaSięHistoria",
-      "image": null,
-      "category": "Mecz",
-      "facebookEmbed": null
-    },
-    {
       "id": "5",
       "title": "Wracamy z Morąga z kompletem punktów! 💪",
       "date": "2026-03-20",
@@ -19,6 +9,16 @@
       "image": null,
       "category": "Mecz",
       "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid0krhArTJysmvjbfGC6xmSBQSAQNHymskB7veTEKbpQ7a8WPp5JwvXjDj6n2QsiuGml&show_text=true&width=500\" width=\"500\" height=\"718\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
+    },
+    {
+      "id": "4",
+      "title": "HALA W ŻUKOWIE ZNÓW ODPALIŁA 🔥",
+      "date": "2026-03-20",
+      "excerpt": "Od pierwszych minut było widać, że nasi zawodnicy wyszli na parkiet z jednym celem - zdominować to spotkanie. Twarda obrona, szybkie kontry i ogromna energia od pierwszego gwizdka.",
+      "content": "Trzeba jednak oddać rywalom, że Tytani Wejherowo dzielnie stawiali opór do przerwy, nie pozwalając nam odskoczyć na bezpieczną przewagę. Po zmianie stron Żuksa wrzuciła jednak wyższy bieg. Tempo wzrosło, bramki zaczęły wpadać seriami, a przewaga rosła z minuty na minutę.\n\nOstatecznie kończymy mecz pewnym zwycięstwem 44:27.\n\nDziękujemy kibicom za atmosferę oraz Żucovia Dance z Ośrodek Kultury i Sportu w Żukowie za piękny pokaz w przerwie! 💙❤️\n\nGramy dalej i patrzymy przed siebie.\n\nPS. Wszędzie dobrze, ale na swoim najlepiej ☝️😉\n\n#GramyDlaŻukowa #TuZaczynaSięHistoria",
+      "image": null,
+      "category": "Mecz",
+      "facebookEmbed": null
     },
     {
       "id": "6",
