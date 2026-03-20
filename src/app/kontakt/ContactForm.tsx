@@ -3,7 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import type { ContactFormState } from "./types";
 
-const WEB3FORMS_KEY = "7b929b5c-9b82-493c-94ed-cf874aa5860d";
+const WEB3FORMS_KEY = "73fe924b-b6d3-4ce0-a401-6fd6fce64310";
 
 const subjectLabels: Record<string, string> = {
   sponsoring: "Współpraca sponsorska",
