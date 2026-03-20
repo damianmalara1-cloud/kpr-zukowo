@@ -1,16 +1,6 @@
 {
   "news": [
     {
-      "id": "5",
-      "title": "Wracamy z Morąga z kompletem punktów! 💪",
-      "date": "2026-03-20",
-      "excerpt": "Po twardym i wymagającym meczu wygrywamy z UKS Jedynką Morąg 33:26.",
-      "content": "To ważne zwycięstwo na trudnym terenie, gdzie gospodarze od początku postawili nam trudne warunki i do końca walczyli o korzystny wynik.\nDziękujemy drużynie z Morąga za dobre, sportowe widowisko i walkę na parkiecie. 👊\nZa tydzień wracamy do gry u siebie. Widzimy się na naszej hali! 🔥\n#GramyDlaŻukowa #TuZaczynaSięHistoria",
-      "image": null,
-      "category": "Mecz",
-      "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid0krhArTJysmvjbfGC6xmSBQSAQNHymskB7veTEKbpQ7a8WPp5JwvXjDj6n2QsiuGml&show_text=true&width=500\" width=\"500\" height=\"718\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
-    },
-    {
       "id": "6",
       "title": "47 BRAMEK. MOC Z ŻUKOWA. 🔥",
       "date": "2026-03-20",
@@ -19,6 +9,16 @@
       "image": null,
       "category": "Mecz",
       "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid026PChyMYxuiafY9HAxXiEmsFz72JSGZF1rog4uA6mTMv3BLaasEGE6bvUWp4Qfm8Ul&show_text=true&width=500\" width=\"500\" height=\"633\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
+    },
+    {
+      "id": "5",
+      "title": "Wracamy z Morąga z kompletem punktów! 💪",
+      "date": "2026-03-20",
+      "excerpt": "Po twardym i wymagającym meczu wygrywamy z UKS Jedynką Morąg 33:26.",
+      "content": "To ważne zwycięstwo na trudnym terenie, gdzie gospodarze od początku postawili nam trudne warunki i do końca walczyli o korzystny wynik.\nDziękujemy drużynie z Morąga za dobre, sportowe widowisko i walkę na parkiecie. 👊\nZa tydzień wracamy do gry u siebie. Widzimy się na naszej hali! 🔥\n#GramyDlaŻukowa #TuZaczynaSięHistoria",
+      "image": null,
+      "category": "Mecz",
+      "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid0krhArTJysmvjbfGC6xmSBQSAQNHymskB7veTEKbpQ7a8WPp5JwvXjDj6n2QsiuGml&show_text=true&width=500\" width=\"500\" height=\"718\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
     },
     {
       "id": "7",
