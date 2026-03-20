@@ -6,5 +6,6 @@ export interface ContactFormState {
     email?: string;
     subject?: string;
     message?: string;
+    captcha?: string;
   };
 }

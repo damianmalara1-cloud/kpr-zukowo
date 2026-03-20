@@ -1,5 +1,6 @@
 "use client";
 
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useRef, useState, type FormEvent } from "react";
 import type { ContactFormState } from "./types";
 
@@ -22,8 +23,10 @@ const initialState: ContactFormState = {
 export default function ContactForm() {
   const [state, setState] = useState<ContactFormState>(initialState);
   const [isPending, setIsPending] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
+  const captchaRef = useRef<HCaptcha>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -58,6 +61,10 @@ export default function ContactForm() {
       fieldErrors.message = "Wiadomość musi mieć co najmniej 10 znaków.";
     }
 
+    if (!captchaToken) {
+      fieldErrors.captcha = "Potwierdź, że nie jesteś robotem.";
+    }
+
     if (Object.keys(fieldErrors).length > 0) {
       setState({ success: false, error: null, fieldErrors });
       statusRef.current?.focus();
@@ -73,7 +80,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          botcheck: "",
+          "h-captcha-response": captchaToken,
           subject: `[Strona WWW] ${subjectLabel} - ${name}`,
           from_name: name,
           replyto: email,
@@ -109,6 +116,8 @@ export default function ContactForm() {
       if (result.success) {
         setState({ success: true, error: null, fieldErrors: {} });
         formRef.current?.reset();
+        captchaRef.current?.resetCaptcha();
+        setCaptchaToken(null);
       } else {
         setState({
           success: false,
@@ -240,6 +249,20 @@ export default function ContactForm() {
         {state.fieldErrors.message && (
           <p id="message-error" role="alert" className="text-red text-sm mt-1">
             {state.fieldErrors.message}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <HCaptcha
+          ref={captchaRef}
+          sitekey="50b2fe65-b00b-4ea0-8157-518c96c5f8c9"
+          onVerify={(token) => setCaptchaToken(token)}
+          onExpire={() => setCaptchaToken(null)}
+        />
+        {state.fieldErrors.captcha && (
+          <p role="alert" className="text-red text-sm mt-1">
+            {state.fieldErrors.captcha}
           </p>
         )}
       </div>
