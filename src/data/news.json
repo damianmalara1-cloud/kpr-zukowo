@@ -31,15 +31,6 @@
       "facebookEmbed": null
     },
     {
-      "id": "1",
-      "title": "Witamy na nowej stronie KPR Fit Dieta Żukowo!",
-      "date": "2025-01-26",
-      "excerpt": "Z przyjemnością prezentujemy nową stronę internetową naszego klubu. Znajdziecie tu wszystkie informacje o meczach, drużynie i możliwościach współpracy.",
-      "content": "Z przyjemnością prezentujemy nową stronę internetową KPR Fit Dieta Żukowo!\n\nTo nowy rozdział w historii naszego klubu. Strona została stworzona, aby ułatwić kibicom dostęp do informacji o meczach, poznać naszą drużynę i dowiedzieć się więcej o możliwościach współpracy.\n\nZapraszamy do regularnego odwiedzania i śledzenia nas w mediach społecznościowych!",
-      "image": null,
-      "category": "Klub"
-    },
-    {
       "id": "5",
       "title": "Wracamy z Morąga z kompletem punktów! 💪",
       "date": "2026-03-20",
@@ -48,6 +39,15 @@
       "image": null,
       "category": "Mecz",
       "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid0krhArTJysmvjbfGC6xmSBQSAQNHymskB7veTEKbpQ7a8WPp5JwvXjDj6n2QsiuGml&show_text=true&width=500\" width=\"500\" height=\"718\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
+    },
+    {
+      "id": "1",
+      "title": "Witamy na nowej stronie KPR Fit Dieta Żukowo!",
+      "date": "2025-01-26",
+      "excerpt": "Z przyjemnością prezentujemy nową stronę internetową naszego klubu. Znajdziecie tu wszystkie informacje o meczach, drużynie i możliwościach współpracy.",
+      "content": "Z przyjemnością prezentujemy nową stronę internetową KPR Fit Dieta Żukowo!\n\nTo nowy rozdział w historii naszego klubu. Strona została stworzona, aby ułatwić kibicom dostęp do informacji o meczach, poznać naszą drużynę i dowiedzieć się więcej o możliwościach współpracy.\n\nZapraszamy do regularnego odwiedzania i śledzenia nas w mediach społecznościowych!",
+      "image": null,
+      "category": "Klub"
     },
     {
       "id": "6",
