@@ -53,7 +53,7 @@ const packages = [
       "Sponsor Meczu w cenie preferencyjnej: 1 200 zł (maks. 1/sezon)",
     ],
     highlighted: false,
-    limit: "Limit: 10 firm",
+    limit: "Limit: 15 firm",
     cta: "Porozmawiajmy o partnerstwie strategicznym",
   },
 ];

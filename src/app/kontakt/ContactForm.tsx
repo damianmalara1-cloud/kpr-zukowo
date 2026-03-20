@@ -83,6 +83,15 @@ export default function ContactForm() {
         body: submitData,
       });
 
+      if (!response.ok) {
+        setState({
+          success: false,
+          error: `Błąd serwera (${response.status}). Spróbuj ponownie lub napisz na klub@kprzukowo.pl`,
+          fieldErrors: {},
+        });
+        return;
+      }
+
       const result = await response.json();
 
       if (result.success) {
@@ -91,14 +100,16 @@ export default function ContactForm() {
       } else {
         setState({
           success: false,
-          error: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
+          error: result.message || "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
           fieldErrors: {},
         });
       }
-    } catch {
+    } catch (err) {
       setState({
         success: false,
-        error: "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
+        error: err instanceof Error
+          ? `Błąd połączenia: ${err.message}. Sprawdź internet lub napisz na klub@kprzukowo.pl`
+          : "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
         fieldErrors: {},
       });
     } finally {

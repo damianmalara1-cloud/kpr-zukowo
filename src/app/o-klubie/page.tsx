@@ -88,23 +88,82 @@ export default function OKlubiePage() {
       {/* Historia */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-navy mb-8 text-center">Historia klubu</h2>
+          <h2 className="text-3xl font-bold text-navy mb-4 text-center">Historia klubu</h2>
+          <p className="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+            Od sekcji w klubie wielosekcyjnym do samodzielnego klubu w I Lidze — droga KPR Żukowo przez kolejne szczeble polskiej piłki ręcznej.
+          </p>
 
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-            <p className="text-gray-600 leading-relaxed mb-6">
-              KPR Żukowo to klub z tradycjami, który od lat rozwija piłkę ręczną na Pomorzu.
-              Nasza drużyna rywalizuje w rozgrywkach ligowych, budując pozycję jednego z ważniejszych
-              ośrodków szczypiorniaka w regionie.
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Współpraca z firmą Fit Dieta jako sponsorem tytularnym otworzyła nowy rozdział
-              w historii klubu. Stawiamy na profesjonalizację przy zachowaniu lokalnego charakteru
-              i bliskich relacji z kibicami.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Dziś KPR Fit Dieta Żukowo to nie tylko drużyna seniorów, ale również miejsce, gdzie
-              pasja do piłki ręcznej jest przekazywana młodym pokoleniom.
-            </p>
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-navy/20 -translate-x-1/2" />
+
+            {[
+              {
+                year: "Początki",
+                title: "Sekcja piłki ręcznej w GKS Żukowo",
+                description: "Piłka ręczna w Żukowie ma korzenie sięgające pracy trenera Krzysztofa Milewskiego, który prowadził zajęcia dla młodzieży jeszcze przed formalnym powstaniem sekcji. Szczypiorniak rozwija się w ramach Gminnego Klubu Sportowego Żukowo — wielosekcyjnego klubu zrzeszającego różne dyscypliny w gminie.",
+              },
+              {
+                year: "2004/2005",
+                title: "Pierwsze zetknięcie z I Ligą",
+                description: "Drużyna z Żukowa (pod nazwą KKKF Żukowo) po raz pierwszy występuje na poziomie I Ligi piłki ręcznej mężczyzn. Po tym sezonie klub na wiele lat wraca do niższych rozgrywek.",
+              },
+              {
+                year: "2015/2016",
+                title: "Wicemistrzostwo II Ligi i awans do I Ligi",
+                description: "GKS Żukowo zajmuje drugie miejsce w grupie II Ligi (za Stalą Gorzów) i kwalifikuje się do barażu o awans. W dwumeczu z KPR Wolsztyniak Wolsztyn żukowianie wygrywają pierwszy mecz u siebie 29:24, a mimo porażki w rewanżu 22:25 awansują przewagą dwóch bramek w dwumeczu.",
+              },
+              {
+                year: "2016/2017",
+                title: "Debiut w I Lidze",
+                description: "Jako beniaminek GKS Żukowo stawia czoła doświadczonym rywalom. Drużyna prowadzona przez trenerów Leszka Biernackiego i Jakuba Bonisławskiego utrzymuje się w lidze bez konieczności gry w barażach.",
+              },
+              {
+                year: "2017",
+                title: "Powstanie SPR GKS Żukowo",
+                description: "Drużyna seniorów zostaje wyodrębniona jako samodzielny podmiot — Stowarzyszenie Piłki Ręcznej GKS Żukowo. Prezesem zostaje Szymon Biernacki. Zmiana podyktowana wymaganiami I Ligi, które wymuszają szybsze podejmowanie decyzji. Sekcja młodzieżowa pozostaje w strukturach GKS.",
+              },
+              {
+                year: "2021",
+                title: "Awans do Ligi Centralnej",
+                description: "Żukowo awansuje do nowo utworzonej Ligi Centralnej — jako pierwsza drużyna z powiatu kartuskiego na tym poziomie rozgrywkowym. Klub potwierdza swoją pozycję wśród czołowych drużyn w kraju.",
+              },
+              {
+                year: "2022",
+                title: "KPR Żukowo Sp. z o.o. i współpraca z Wybrzeżem",
+                description: "Powstaje KPR Żukowo jako spółka z ograniczoną odpowiedzialnością. Klub formalizuje współpracę z Torus Wybrzeże Gdańsk (Superliga), otwierając drogę do wymiany doświadczeń i rozwoju zawodników na najwyższym poziomie.",
+              },
+              {
+                year: "2023/2024",
+                title: "Najlepszy sezon w Lidze Centralnej",
+                description: "KPR Autoinwest Żukowo zajmuje 4. miejsce w Lidze Centralnej — najlepszy wynik w historii klubu na tym poziomie rozgrywkowym. Juniorzy zdobywają tytuł Mistrzów Polski w piłce ręcznej plażowej.",
+              },
+              {
+                year: "2024/2025",
+                title: "KPR Fit Dieta Żukowo — nowy rozdział",
+                description: "We wrześniu 2024 klub zmienia nazwę na KPR Fit Dieta Żukowo. Po sezonie w Lidze Centralnej drużyna rozpoczyna rywalizację w I Lidze. Prezesem zostaje Serge Bosca — doświadczony menedżer sportowy, wcześniej związany z PGE Wybrzeże Gdańsk i Polskim Związkiem Rugby.",
+              },
+              {
+                year: "Dziś",
+                title: "Nowa hala, nowe ambicje",
+                description: "Mecze domowe rozgrywane są w nowej hali sportowo-widowiskowej przy ul. Armii Krajowej w Żukowie, otwartej w styczniu 2024. Wstęp na mecze jest darmowy — bo wierzymy, że sport powinien łączyć, nie dzielić.",
+              },
+            ].map((item, index) => (
+              <div key={index} className={`relative flex items-start mb-10 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                {/* Dot */}
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-red rounded-full border-4 border-white shadow -translate-x-1/2 z-10 mt-1.5" />
+
+                {/* Content */}
+                <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"}`}>
+                  <span className="inline-block text-sm font-bold text-red uppercase tracking-wider mb-1">
+                    {item.year}
+                  </span>
+                  <h3 className="text-lg font-bold text-navy mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
