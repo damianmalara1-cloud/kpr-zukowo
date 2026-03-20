@@ -131,8 +131,8 @@ export default function OKlubiePage() {
               },
               {
                 year: "2022",
-                title: "KPR Żukowo Sp. z o.o. i współpraca z Wybrzeżem",
-                description: "Powstaje KPR Żukowo jako spółka z ograniczoną odpowiedzialnością. Klub formalizuje współpracę z Torus Wybrzeże Gdańsk (Superliga), otwierając drogę do wymiany doświadczeń i rozwoju zawodników na najwyższym poziomie.",
+                title: "Klub Piłki Ręcznej Żukowo Sp. z o.o.",
+                description: "Kolejny krok w profesjonalizacji — powstaje KPR Żukowo jako spółka z ograniczoną odpowiedzialnością, w pełni należąca do SPR GKS Żukowo.",
               },
               {
                 year: "2023/2024",
@@ -143,11 +143,6 @@ export default function OKlubiePage() {
                 year: "2024/2025",
                 title: "KPR Fit Dieta Żukowo — nowy rozdział",
                 description: "We wrześniu 2024 klub zmienia nazwę na KPR Fit Dieta Żukowo. Po sezonie w Lidze Centralnej drużyna rozpoczyna rywalizację w I Lidze. Prezesem zostaje Serge Bosca — doświadczony menedżer sportowy, wcześniej związany z PGE Wybrzeże Gdańsk i Polskim Związkiem Rugby.",
-              },
-              {
-                year: "Dziś",
-                title: "Nowa hala, nowe ambicje",
-                description: "Mecze domowe rozgrywane są w nowej hali sportowo-widowiskowej przy ul. Armii Krajowej w Żukowie, otwartej w styczniu 2024. Wstęp na mecze jest darmowy — bo wierzymy, że sport powinien łączyć, nie dzielić.",
               },
             ].map((item, index) => (
               <div key={index} className={`relative flex items-start mb-10 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
