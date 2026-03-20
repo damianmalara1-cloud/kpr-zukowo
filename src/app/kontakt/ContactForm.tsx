@@ -83,16 +83,27 @@ export default function ContactForm() {
         body: submitData,
       });
 
-      if (!response.ok) {
+      let result: Record<string, unknown>;
+      try {
+        result = await response.json();
+      } catch {
+        const text = await response.text().catch(() => "");
         setState({
           success: false,
-          error: `Błąd serwera (${response.status}). Spróbuj ponownie lub napisz na klub@kprzukowo.pl`,
+          error: `Błąd serwera (${response.status}): ${text || "brak odpowiedzi"}. Napisz na klub@kprzukowo.pl`,
           fieldErrors: {},
         });
         return;
       }
 
-      const result = await response.json();
+      if (!response.ok) {
+        setState({
+          success: false,
+          error: `Błąd serwera (${response.status}): ${(result.message as string) || JSON.stringify(result)}. Napisz na klub@kprzukowo.pl`,
+          fieldErrors: {},
+        });
+        return;
+      }
 
       if (result.success) {
         setState({ success: true, error: null, fieldErrors: {} });
@@ -100,7 +111,7 @@ export default function ContactForm() {
       } else {
         setState({
           success: false,
-          error: result.message || "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
+          error: (result.message as string) || "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na klub@kprzukowo.pl",
           fieldErrors: {},
         });
       }
