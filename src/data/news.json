@@ -21,15 +21,6 @@
       "facebookEmbed": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkprzukowo%2Fposts%2Fpfbid0okK8cubuW8fwAhSRpfL2LzrrDqrMxcrmDCAuLCuRY7gF6bSAXGf8wwSbXyik7z1Tl&show_text=true&width=500\" width=\"500\" height=\"715\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowfullscreen=\"true\" allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\"></iframe>"
     },
     {
-      "id": "1",
-      "title": "Witamy na nowej stronie KPR Fit Dieta Żukowo!",
-      "date": "2025-01-26",
-      "excerpt": "Z przyjemnością prezentujemy nową stronę internetową naszego klubu. Znajdziecie tu wszystkie informacje o meczach, drużynie i możliwościach współpracy.",
-      "content": "Z przyjemnością prezentujemy nową stronę internetową KPR Fit Dieta Żukowo!\n\nTo nowy rozdział w historii naszego klubu. Strona została stworzona, aby ułatwić kibicom dostęp do informacji o meczach, poznać naszą drużynę i dowiedzieć się więcej o możliwościach współpracy.\n\nZapraszamy do regularnego odwiedzania i śledzenia nas w mediach społecznościowych!",
-      "image": null,
-      "category": "Klub"
-    },
-    {
       "id": "4",
       "title": "HALA W ŻUKOWIE ZNÓW ODPALIŁA 🔥",
       "date": "2026-03-20",
@@ -38,6 +29,15 @@
       "image": null,
       "category": "Mecz",
       "facebookEmbed": null
+    },
+    {
+      "id": "1",
+      "title": "Witamy na nowej stronie KPR Fit Dieta Żukowo!",
+      "date": "2025-01-26",
+      "excerpt": "Z przyjemnością prezentujemy nową stronę internetową naszego klubu. Znajdziecie tu wszystkie informacje o meczach, drużynie i możliwościach współpracy.",
+      "content": "Z przyjemnością prezentujemy nową stronę internetową KPR Fit Dieta Żukowo!\n\nTo nowy rozdział w historii naszego klubu. Strona została stworzona, aby ułatwić kibicom dostęp do informacji o meczach, poznać naszą drużynę i dowiedzieć się więcej o możliwościach współpracy.\n\nZapraszamy do regularnego odwiedzania i śledzenia nas w mediach społecznościowych!",
+      "image": null,
+      "category": "Klub"
     },
     {
       "id": "5",
