@@ -257,7 +257,7 @@ export default async function Home() {
                     )}
                   </p>
                   {nextMatch.isHome && (
-                    <p className="flex items-center justify-center gap-3 text-green-600 font-semibold mt-4">
+                    <p className="flex items-center justify-center gap-3 text-green-700 font-semibold mt-4">
                       <TicketIcon className="w-5 h-5" />
                       <span>Wstęp wolny</span>
                     </p>

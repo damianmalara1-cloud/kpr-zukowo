@@ -12,7 +12,7 @@ const footerLinks = {
     { href: "/aktualnosci", label: "Aktualności" },
   ],
   wspolpraca: [
-    { href: "/mecenasi", label: "Klub Partnerów" },
+    { href: "/mecenasi", label: "Klub Biznesu" },
     { href: "/sponsorzy", label: "Sponsorzy" },
   ],
 };
@@ -93,7 +93,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-navy-light mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-300 text-sm">
             © {new Date().getFullYear()} KPR Fit Dieta Żukowo. Wszystkie prawa zastrzeżone.
           </p>
         </div>

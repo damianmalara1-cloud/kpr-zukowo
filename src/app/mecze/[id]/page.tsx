@@ -191,7 +191,7 @@ export default async function MatchPage({ params }: PageProps) {
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">🎟️</span>
                   <div>
-                    <p className="font-semibold text-green-600">Wstęp wolny</p>
+                    <p className="font-semibold text-green-700">Wstęp wolny</p>
                     <p className="text-gray-500">Zapraszamy wszystkich!</p>
                   </div>
                 </div>

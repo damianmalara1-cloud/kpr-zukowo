@@ -3,7 +3,7 @@ import { EyeIcon, UsersIcon, FlameIcon, HandshakeIcon, TrophyIcon, ChartIcon } f
 
 export const metadata = {
   title: "Współpraca | KPR Fit Dieta Żukowo",
-  description: "Wybierz formę współpracy z KPR Żukowo — zostań sponsorem lub dołącz do Klubu Partnerów.",
+  description: "Wybierz formę współpracy z KPR Żukowo — zostań sponsorem lub dołącz do Klubu Biznesu.",
 };
 
 export default function WspolpracaPage() {
@@ -94,7 +94,7 @@ export default function WspolpracaPage() {
               </div>
             </Link>
 
-            {/* Klub Partnerów */}
+            {/* Klub Biznesu */}
             <Link
               href="/mecenasi"
               className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-[transform,box-shadow] hover:-translate-y-2"
@@ -110,7 +110,7 @@ export default function WspolpracaPage() {
                 <div className="w-14 h-14 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors">
                   <HandshakeIcon className="w-7 h-7 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold mb-3">Klub Partnerów</h2>
+                <h2 className="text-2xl font-bold mb-3">Klub Biznesu</h2>
                 <p className="text-gray-300 mb-8 leading-relaxed">
                   Program dla lokalnych przedsiębiorców, którzy chcą budować relacje biznesowe poprzez sport. Networking, zamknięte spotkania i wspólne inicjatywy.
                 </p>
@@ -132,7 +132,7 @@ export default function WspolpracaPage() {
                 </ul>
 
                 <span className="inline-flex items-center gap-2 bg-red hover:bg-red-dark text-white font-semibold py-3 px-6 rounded-lg transition-[color,background-color,gap] group-hover:gap-3">
-                  Poznaj Klub Partnerów
+                  Poznaj Klub Biznesu
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

@@ -20,7 +20,7 @@ export default function HeroSlider() {
       <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center text-white px-4 pb-20 max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in drop-shadow-lg">
           Tu zaczyna się <span className="text-red">historia</span>
         </h1>
@@ -53,8 +53,8 @@ export default function HeroSlider() {
           </div>
           <div className="hidden sm:block w-px h-8 bg-white/30"></div>
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-white">2M+</span>
-            <span>Wyświetleń</span>
+            <span className="text-2xl font-bold text-white">Od 2017</span>
+            <span>Roku</span>
           </div>
           <div className="hidden sm:block w-px h-8 bg-white/30"></div>
           <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ export default function HeroSlider() {
       </div>
 
       {/* Decorative element */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
     </section>
   );
 }

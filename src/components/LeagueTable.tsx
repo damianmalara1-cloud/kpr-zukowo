@@ -68,7 +68,7 @@ export default function LeagueTable({ teams }: LeagueTableProps) {
                       <span
                         className={`inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full text-xs font-bold ${
                           isLeader
-                            ? "bg-amber-400 text-white"
+                            ? "bg-amber-500 text-navy"
                             : "bg-gray-100 text-gray-600"
                         }`}
                       >
@@ -83,7 +83,7 @@ export default function LeagueTable({ teams }: LeagueTableProps) {
                       {team.name}
                     </td>
                     <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-600">{team.played}</td>
-                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-green-600">{team.wins}</td>
+                    <td className="py-2.5 px-1.5 sm:px-4 text-center text-green-700">{team.wins}</td>
                     <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-500 hidden sm:table-cell">{team.draws}</td>
                     <td className="py-2.5 px-1.5 sm:px-4 text-center text-red hidden sm:table-cell">{team.losses}</td>
                     <td className="py-2.5 px-1.5 sm:px-4 text-center text-gray-500 hidden md:table-cell">
@@ -93,7 +93,7 @@ export default function LeagueTable({ teams }: LeagueTableProps) {
                       <span
                         className={`inline-block min-w-[1.75rem] sm:min-w-[2rem] py-0.5 rounded font-bold ${
                           isLeader
-                            ? "bg-amber-400 text-white"
+                            ? "bg-amber-500 text-navy"
                             : isClub
                               ? "bg-navy text-white"
                               : "text-gray-800"

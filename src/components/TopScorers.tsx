@@ -61,7 +61,7 @@ export default function TopScorers({ scorers }: TopScorersProps) {
                       <span
                         className={`inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full text-xs font-bold ${
                           isLeader
-                            ? "bg-amber-400 text-white"
+                            ? "bg-amber-500 text-navy"
                             : "bg-gray-100 text-gray-600"
                         }`}
                       >
@@ -88,7 +88,7 @@ export default function TopScorers({ scorers }: TopScorersProps) {
                       <span
                         className={`inline-block min-w-[1.75rem] sm:min-w-[2rem] py-0.5 rounded font-bold ${
                           isLeader
-                            ? "bg-amber-400 text-white"
+                            ? "bg-amber-500 text-navy"
                             : isClub
                               ? "bg-navy text-white"
                               : "text-gray-800"

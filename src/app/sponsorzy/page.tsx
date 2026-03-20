@@ -43,8 +43,8 @@ const sponsorMeczPhases = [
 
 const pricingTable = [
   { level: "Partner Strategiczny", price: "1 200 zł", limit: "1 mecz / sezon", color: "text-red" },
-  { level: "Partner Lokalny", price: "1 700 zł", limit: "1 mecz / sezon", color: "text-green-600" },
-  { level: "Spoza Klubu Partnerów KPR", price: "2 500 zł", limit: "\u2014", color: "text-gray-600" },
+  { level: "Partner Lokalny", price: "1 700 zł", limit: "1 mecz / sezon", color: "text-green-700" },
+  { level: "Spoza Klubu Biznesu KPR", price: "2 500 zł", limit: "\u2014", color: "text-gray-600" },
 ];
 
 const preferenceSteps = [
@@ -354,7 +354,7 @@ export default function SponsorzyPage() {
 
           {/* Sponsor Tytularny */}
           <div className="mb-10">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-cyan-500 font-semibold mb-4">Sponsor Tytularny</p>
+            <p className="text-center text-[11px] uppercase tracking-[0.2em] text-cyan-700 font-semibold mb-4">Sponsor Tytularny</p>
             <div className="flex justify-center">
               <div className="bg-gradient-to-b from-cyan-50 via-sky-50/50 to-transparent border border-cyan-300/50 shadow-lg shadow-cyan-200/30 rounded-2xl px-10 py-6">
                 <Image src="/images/logo/fitdietaa.png" alt="Fit Dieta" width={400} height={200} className="h-24 md:h-36 w-auto object-contain" />
@@ -364,7 +364,7 @@ export default function SponsorzyPage() {
 
           {/* Sponsor Strategiczny */}
           <div className="mb-10">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold mb-4">Sponsor Strategiczny</p>
+            <p className="text-center text-[11px] uppercase tracking-[0.2em] text-slate-600 font-semibold mb-4">Sponsor Strategiczny</p>
             <div className="flex flex-wrap justify-center items-center gap-6">
               {[
                 { name: "Gmina Żukowo", logo: "/images/logo/gmina_zukowo.png" },
@@ -379,7 +379,7 @@ export default function SponsorzyPage() {
 
           {/* Sponsor Złoty */}
           <div className="mb-10">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-amber-600 font-semibold mb-4">Sponsor Złoty</p>
+            <p className="text-center text-[11px] uppercase tracking-[0.2em] text-amber-700 font-semibold mb-4">Sponsor Złoty</p>
             <div className="flex flex-wrap justify-center items-center gap-6">
               {[
                 { name: "Świat Reklamy", logo: "/images/logo/mecenasi/świat reklamy.png" },
@@ -394,7 +394,7 @@ export default function SponsorzyPage() {
 
           {/* Sponsor Srebrny */}
           <div className="mb-10">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-gray-500 font-semibold mb-4">Sponsor Srebrny</p>
+            <p className="text-center text-[11px] uppercase tracking-[0.2em] text-gray-600 font-semibold mb-4">Sponsor Srebrny</p>
             <div className="flex flex-wrap justify-center items-center gap-6">
               {[
                 { name: "GOSZ", logo: "/images/logo/mecenasi/GOSZ.png" },
@@ -410,7 +410,7 @@ export default function SponsorzyPage() {
 
           {/* Sponsor Brązowy */}
           <div className="mb-10">
-            <p className="text-center text-[10px] uppercase tracking-[0.2em] text-orange-800 font-semibold mb-4">Sponsor Brązowy</p>
+            <p className="text-center text-[11px] uppercase tracking-[0.2em] text-orange-800 font-semibold mb-4">Sponsor Brązowy</p>
             <div className="flex flex-wrap justify-center items-center gap-4">
               {[
                 { name: "BOTERM", logo: "/images/logo/mecenasi/BOTERM.png" },

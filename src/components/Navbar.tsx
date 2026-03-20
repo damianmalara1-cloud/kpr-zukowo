@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
     label: "Współpraca",
     children: [
       { href: "/sponsorzy", label: "Sponsorzy" },
-      { href: "/mecenasi", label: "Klub Partnerów" },
+      { href: "/mecenasi", label: "Klub Biznesu" },
     ],
   },
   { href: "/aktualnosci", label: "Aktualności" },
@@ -141,6 +141,7 @@ function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void })
           onKeyDown={handleTriggerKeyDown}
           aria-expanded={isOpen}
           aria-haspopup="true"
+          aria-label={`Rozwiń podmenu ${item.label}`}
         >
           <svg
             className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}

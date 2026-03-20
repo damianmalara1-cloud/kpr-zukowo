@@ -3,8 +3,8 @@ import Image from "next/image";
 import { EyeIcon, UsersIcon, FlameIcon, HandshakeIcon, ChartIcon, TrophyIcon } from "@/components/Icons";
 
 export const metadata = {
-  title: "Klub Partnerów | KPR Fit Dieta Żukowo",
-  description: "Dołącz do Klubu Partnerów KPR Żukowo. Widoczność, relacje i realna współpraca w sercu lokalnej społeczności.",
+  title: "Klub Biznesu | KPR Fit Dieta Żukowo",
+  description: "Dołącz do Klubu Biznesu KPR Żukowo. Widoczność, relacje i realna współpraca w sercu lokalnej społeczności.",
 };
 
 const packages = [
@@ -16,7 +16,7 @@ const packages = [
       "Wyjątkowy Certyfikat Partnera",
       "Wymienienie w zbiorczej grafice \u201EPartnerzy Społeczności\u201D",
       "Podziękowanie na stronie klubu",
-      "Zaproszenie na otwarcie sezonu Klubu Partnerów",
+      "Zaproszenie na otwarcie sezonu Klubu Biznesu",
     ],
     highlighted: false,
     limit: null,
@@ -32,7 +32,7 @@ const packages = [
       "Ekspozycja na Tablicy Partnerów w hali",
       "Min. 2 publikacje rocznie w social media",
       "2 wejścia VIP w sezonie",
-      "Udział w zamkniętych spotkaniach Klubu Partnerów KPR",
+      "Udział w zamkniętych spotkaniach Klubu Biznesu KPR",
       "Sponsor Meczu w cenie preferencyjnej: 1 700 zł",
     ],
     highlighted: true,
@@ -137,7 +137,7 @@ export default function MecenasiPage() {
         <div className="absolute inset-0 bg-navy/65" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
-            Klub Partnerów KPR Żukowo
+            Klub Biznesu KPR Żukowo
           </h1>
           <p className="text-xl text-gray-200 mb-4">
             Biznes, który gra razem z nami — widoczność, relacje i realna współpraca w sercu lokalnej społeczności.
@@ -186,14 +186,14 @@ export default function MecenasiPage() {
         </div>
       </div>
 
-      {/* Klub Partnerów KPR Żukowo */}
+      {/* Klub Biznesu KPR Żukowo */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
             {/* Header */}
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
-                Klub Partnerów KPR Żukowo
+                Klub Biznesu KPR Żukowo
               </h2>
               <p className="text-lg text-gray-500 font-medium">
                 Kameralne grono firm, które łączy sport, relacje i wspólne cele biznesowe.
@@ -203,7 +203,7 @@ export default function MecenasiPage() {
             {/* Description */}
             <div className="text-gray-600 mb-12 max-w-3xl mx-auto space-y-4 leading-relaxed">
               <p>
-                Klub Partnerów KPR Żukowo to program współpracy dla firm, które chcą być widoczne tam, gdzie są emocje i ludzie — na meczach oraz w kanałach klubu. Łączymy lokalny biznes poprzez sport: dajemy ekspozycję, rekomendacje i realne kontakty.
+                Klub Biznesu KPR Żukowo to program współpracy dla firm, które chcą być widoczne tam, gdzie są emocje i ludzie — na meczach oraz w kanałach klubu. Łączymy lokalny biznes poprzez sport: dajemy ekspozycję, rekomendacje i realne kontakty.
               </p>
               <p className="font-semibold text-navy">Co zyskujesz jako Partner:</p>
               <ul className="grid sm:grid-cols-2 gap-3">
@@ -266,7 +266,7 @@ export default function MecenasiPage() {
 
             {/* Partner logos */}
             <div className="mb-10">
-              <p className="text-center text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-6">
+              <p className="text-center text-[11px] uppercase tracking-[0.2em] text-gray-500 font-semibold mb-6">
                 Partnerzy, którzy grają z KPR
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8">
@@ -293,7 +293,7 @@ export default function MecenasiPage() {
                 href="/kontakt"
                 className="inline-block bg-red hover:bg-red-dark text-white font-semibold py-4 px-10 rounded-lg transition-[color,background-color,transform,box-shadow] text-lg hover:scale-105 hover:shadow-lg"
               >
-                Dołącz do Klubu Partnerów
+                Dołącz do Klubu Biznesu
               </Link>
               <p className="text-gray-400 text-sm mt-3">
                 Porozmawiajmy o najlepszym poziomie partnerstwa dla Twojej firmy.
