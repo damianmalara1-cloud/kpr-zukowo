@@ -74,20 +74,21 @@ export default function ContactForm() {
 
     setIsPending(true);
     try {
+      const submitData = new FormData();
+      submitData.append("access_key", WEB3FORMS_KEY);
+      submitData.append("h-captcha-response", hcaptchaResponse);
+      submitData.append("subject", `[Strona WWW] ${subjectLabel} - ${name}`);
+      submitData.append("from_name", name);
+      submitData.append("replyto", email);
+      submitData.append("name", name);
+      submitData.append("email", email);
+      submitData.append("temat", subjectLabel);
+      submitData.append("message", message);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          "h-captcha-response": hcaptchaResponse,
-          subject: `[Strona WWW] ${subjectLabel} - ${name}`,
-          from_name: name,
-          replyto: email,
-          name,
-          email,
-          temat: subjectLabel,
-          message,
-        }),
+        headers: { Accept: "application/json" },
+        body: submitData,
       });
 
       let result: Record<string, unknown>;
