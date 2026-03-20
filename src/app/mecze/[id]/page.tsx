@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import matches from "@/data/matches.json";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -28,6 +29,13 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `KPR Fit Dieta Żukowo vs ${match.opponent} | Mecze`,
     description: match.description,
+    openGraph: {
+      title: `KPR Fit Dieta Żukowo vs ${match.opponent}`,
+      description: match.description,
+      type: "article",
+      locale: "pl_PL",
+      siteName: "KPR Fit Dieta Żukowo",
+    },
   };
 }
 
@@ -89,6 +97,12 @@ export default async function MatchPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Mecze", href: "/mecze" },
+          { name: `KPR Żukowo vs ${match.opponent}` },
+        ]}
       />
       {/* Header */}
       <div className={`${match.isHome ? "bg-navy" : "bg-gray-700"} text-white py-12`}>

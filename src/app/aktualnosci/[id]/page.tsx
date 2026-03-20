@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import news from "@/data/news.json";
 import { CalendarIcon } from "@/components/Icons";
 import type { NewsArticle } from "@/app/admin/actions";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -24,6 +26,17 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${article.title} | KPR Fit Dieta Żukowo`,
     description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      publishedTime: article.date,
+      locale: "pl_PL",
+      siteName: "KPR Fit Dieta Żukowo",
+      ...(article.image
+        ? { images: [{ url: article.image, alt: article.title }] }
+        : {}),
+    },
   };
 }
 
@@ -33,8 +46,46 @@ export default async function ArticlePage({ params }: PageProps) {
 
   if (!article) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Organization",
+      "@id": "https://kprzukowo.pl/#organization",
+      name: "KPR Fit Dieta Żukowo",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://kprzukowo.pl/#organization",
+      name: "KPR Fit Dieta Żukowo",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://kprzukowo.pl/images/logo/kpr_zukowo_beztla.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://kprzukowo.pl/aktualnosci/${id}`,
+    },
+    ...(article.image && { image: article.image }),
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Aktualności", href: "/aktualnosci" },
+          { name: article.title },
+        ]}
+      />
       {/* Header */}
       <div className="bg-navy text-white py-12">
         <div className="max-w-3xl mx-auto px-4">
@@ -58,11 +109,16 @@ export default async function ArticlePage({ params }: PageProps) {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 py-12">
         {article.image && (
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full rounded-2xl shadow-lg mb-8 object-cover max-h-[400px]"
-          />
+          <div className="relative w-full h-[400px] mb-8">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              className="rounded-2xl shadow-lg object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+          </div>
         )}
 
         <div className="bg-white rounded-2xl shadow-sm p-6 md:p-10">

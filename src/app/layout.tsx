@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lato, Oswald } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ConditionalSponsorsBar from "@/components/ConditionalSponsorsBar";
@@ -20,9 +21,9 @@ const latoBody = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kprzukowo.pl"),
   title: "KPR Fit Dieta Żukowo | Piłka ręczna, emocje i społeczność",
   description: "Oficjalna strona klubu piłki ręcznej KPR Fit Dieta Żukowo. Budujemy klub, który łączy sportową rywalizację z lokalną społecznością. Darmowe wejście, pełna hala i prawdziwe emocje.",
-  keywords: ["KPR Żukowo", "piłka ręczna", "Żukowo", "handball", "Fit Dieta", "sport", "Pomorze"],
   authors: [{ name: "KPR Fit Dieta Żukowo" }],
   openGraph: {
     title: "KPR Fit Dieta Żukowo",
@@ -85,10 +86,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <GoogleAnalytics gaId="G-YQ1VRE9VVG" />
       <head>
+        <link rel="preconnect" href="https://rozgrywki.zprp.pl" />
+        <link rel="dns-prefetch" href="https://rozgrywki.zprp.pl" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "KPR Fit Dieta Żukowo",
+              url: "https://kprzukowo.pl",
+            }),
+          }}
         />
       </head>
       <body

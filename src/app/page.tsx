@@ -1,11 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import matches from "@/data/matches.json";
 import HeroSlider from "@/components/HeroSlider";
 import MatchCountdown from "@/components/MatchCountdown";
 import LeagueTable from "@/components/LeagueTable";
 import TopScorers from "@/components/TopScorers";
 import { CalendarIcon, ClockIcon, LocationIcon, TicketIcon } from "@/components/Icons";
+
+export const metadata: Metadata = {
+  title: "KPR Fit Dieta Żukowo | Klub piłki ręcznej z Żukowa — I Liga",
+  description:
+    "Oficjalna strona KPR Fit Dieta Żukowo — klubu piłki ręcznej z Żukowa na Pomorzu. Terminarz meczów, wyniki, aktualności, drużyna I Ligi. Darmowe wejście na mecze domowe!",
+};
 
 // Znajdź najbliższy mecz
 function getNextMatch() {
