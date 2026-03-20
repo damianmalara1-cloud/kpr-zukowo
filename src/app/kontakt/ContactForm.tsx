@@ -3,6 +3,8 @@
 import { useRef, useState, type FormEvent } from "react";
 import type { ContactFormState } from "./types";
 
+const WEB3FORMS_KEY = "7b929b5c-9b82-493c-94ed-cf874aa5860d";
+
 const subjectLabels: Record<string, string> = {
   sponsoring: "Współpraca sponsorska",
   mecenat: "Mecenat",
@@ -62,27 +64,39 @@ export default function ContactForm() {
       return;
     }
 
+    const subjectLabel = subjectLabels[subject] ?? subject;
+
     setIsPending(true);
     try {
-      const response = await fetch("/api/contact", {
+      const submitData = new FormData();
+      submitData.append("access_key", WEB3FORMS_KEY);
+      submitData.append("subject", `[Strona WWW] ${subjectLabel} - ${name}`);
+      submitData.append("from_name", name);
+      submitData.append("replyto", email);
+      submitData.append("name", name);
+      submitData.append("email", email);
+      submitData.append("temat", subjectLabel);
+      submitData.append("message", message);
+      // Honeypot for Web3Forms
+      submitData.append("botcheck", "");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: submitData,
       });
 
       const result = await response.json();
 
-      if (!response.ok) {
+      if (result.success) {
+        setState({ success: true, error: null, fieldErrors: {} });
+        formRef.current?.reset();
+      } else {
         setState({
           success: false,
-          error: result.error || "Nie udało się wysłać wiadomości. Napisz na klub@kprzukowo.pl",
+          error: (result.message as string) || "Nie udało się wysłać wiadomości. Napisz na klub@kprzukowo.pl",
           fieldErrors: {},
         });
-        return;
       }
-
-      setState({ success: true, error: null, fieldErrors: {} });
-      formRef.current?.reset();
     } catch {
       setState({
         success: false,
