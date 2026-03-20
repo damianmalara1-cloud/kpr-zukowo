@@ -8,6 +8,7 @@ import {
   addArticle,
   editArticle,
   deleteArticle,
+  moveArticle,
   type NewsArticle,
 } from "./actions";
 
@@ -220,17 +221,14 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
   const [showForm, setShowForm] = useState(false);
   const [editingArticle, setEditingArticle] = useState<NewsArticle | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [moving, setMoving] = useState<string | null>(null);
   const [error, setError] = useState("");
 
   const fetchNews = useCallback(async () => {
     setLoading(true);
     const result = await getNews();
     if (result.success) {
-      setNews(
-        [...result.news].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        )
-      );
+      setNews(result.news);
     } else {
       setError("error" in result ? String(result.error) : "Nie udało się pobrać artykułów.");
     }
@@ -251,6 +249,17 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       alert(result.error || "Błąd usuwania");
     }
     setDeleting(null);
+  }
+
+  async function handleMove(id: string, direction: "up" | "down") {
+    setMoving(id);
+    const result = await moveArticle(id, direction);
+    if (result.success) {
+      await fetchNews();
+    } else {
+      alert(result.error || "Błąd przesuwania");
+    }
+    setMoving(null);
   }
 
   async function handleLogout() {
@@ -333,11 +342,33 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
           </div>
         ) : (
           <div className="space-y-4">
-            {news.map((article) => (
+            {news.map((article, idx) => (
               <div
                 key={article.id}
                 className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-start justify-between gap-4"
               >
+                <div className="flex flex-col gap-1 shrink-0">
+                  <button
+                    onClick={() => handleMove(article.id, "up")}
+                    disabled={idx === 0 || moving === article.id}
+                    className="text-gray-300 hover:text-navy disabled:opacity-20 disabled:hover:text-gray-300 transition-colors p-0.5"
+                    title="Przesuń w górę"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => handleMove(article.id, "down")}
+                    disabled={idx === news.length - 1 || moving === article.id}
+                    className="text-gray-300 hover:text-navy disabled:opacity-20 disabled:hover:text-gray-300 transition-colors p-0.5"
+                    title="Przesuń w dół"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] uppercase tracking-wider font-semibold bg-navy/10 text-navy px-2 py-0.5 rounded">

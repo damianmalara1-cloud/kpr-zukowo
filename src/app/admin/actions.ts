@@ -196,6 +196,34 @@ export async function editArticle(
   }
 }
 
+export async function moveArticle(id: string, direction: "up" | "down") {
+  const isAuth = await checkAuth();
+  if (!isAuth) return { success: false, error: "Brak autoryzacji" };
+
+  try {
+    const { content, sha } = await getFileFromGitHub();
+    const index = content.news.findIndex((n: NewsArticle) => n.id === id);
+    if (index === -1) return { success: false, error: "Nie znaleziono artykułu" };
+
+    const swapIndex = direction === "up" ? index - 1 : index + 1;
+    if (swapIndex < 0 || swapIndex >= content.news.length) {
+      return { success: false, error: "Nie można przesunąć dalej" };
+    }
+
+    [content.news[index], content.news[swapIndex]] = [content.news[swapIndex], content.news[index]];
+
+    await updateFileOnGitHub(
+      content,
+      sha,
+      `Zmieniono kolejność: ${content.news[swapIndex].title}`
+    );
+
+    return { success: true };
+  } catch (e) {
+    return { success: false, error: String(e) };
+  }
+}
+
 export async function deleteArticle(id: string) {
   const isAuth = await checkAuth();
   if (!isAuth) return { success: false, error: "Brak autoryzacji" };
