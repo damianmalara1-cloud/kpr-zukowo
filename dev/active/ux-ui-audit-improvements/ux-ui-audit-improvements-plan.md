@@ -1,8 +1,8 @@
 # Plan: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 4 ✅)
-**Status:** Faza 4 ✅ COMPLETE — JSON-LD, keyboard nav, Image migration, transition-all cleanup
+**Ostatnia aktualizacja:** 2026-03-20 (Faza 5 ✅)
+**Status:** Faza 5 ✅ COMPLETE — A11Y contrast, hero mobile fix, logo optimization, Klub Biznesu rename
 **Preview URL:** https://kpr-zukowo-4ym5annur-damians-projects-00b2acae.vercel.app
 
 ---
@@ -197,4 +197,27 @@ Po wdrożeniu planu strona będzie:
 ### Wewnętrzne
 - Dostęp do repozytorium (jest)
 - Node.js + npm (jest)
+
+---
+
+## Faza 5 — QA, poprawki post-testów (✅ 2026-03-20)
+
+**Commit:** `33d074d` — fix(ux-ui-audit): Faza 5 — a11y contrast, hero social proof, logo optimization, Klub Biznesu rename
+
+### Wykonane:
+- [x] **Hero mobile fix:** pb-20 + gradient h-24→h-16 (social proof nie nachodzi na sekcję poniżej)
+- [x] **Social proof content:** "2M+ Wyświetleń" → "Od 2017" (rok założenia klubu)
+- [x] **A11Y button-name:** aria-label na dropdown buttons w Navbar
+- [x] **A11Y color-contrast:** 6 plików (green-600→700, amber-400→500 text-navy, section labels cyan/slate/amber/gray ciemniejsze + 11px, footer gray-300)
+- [x] **Performance logo:** 15 PNG zoptymalizowane sharp (6.2MB→1.2MB, 81% redukcja)
+- [x] **Branding rename:** "Klub Partnerów" → "Klub Biznesu" (Navbar, Footer, mecenasi, sponsorzy, wspolpraca)
+
+### Post-deploy checklist (dla następnej sesji):
+- [ ] Rich Results test na https://kprzukowo.pl (Google Search Console)
+- [ ] Lighthouse mobile performance >= 75 (z 65-68)
+- [ ] Lighthouse SEO >= 92 (z 66 — Vercel preview blokuje crawlery)
+- [ ] Lighthouse A11Y >= 95 (z 88-91)
+- Zapisano w `memory/project_postdeploy_tests.md`
+
+**Status Fazy 5:** ✅ COMPLETE
 - Przeglądarka do testowania responsywności (jest)

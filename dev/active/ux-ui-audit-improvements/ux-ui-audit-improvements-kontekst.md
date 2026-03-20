@@ -1,7 +1,7 @@
 # Kontekst: Wdrożenie rekomendacji audytu UX/UI
 
 **Branch:** `feature/ux-ui-audit-improvements`
-**Ostatnia aktualizacja:** 2026-03-19 (Faza 4 ✅)
+**Ostatnia aktualizacja:** 2026-03-20 (Faza 5 ✅ COMPLETE)
 
 ---
 
@@ -157,6 +157,55 @@
 ---
 
 ## Przekazanie
+
+### Sesja 6: 2026-03-20 — Faza 5 ✅ COMPLETE (A11Y + Hero + Logo optimization + Klub Biznesu)
+
+- **Branch:** `feature/ux-ui-audit-improvements`
+- **Ostatni commit:** `33d074d` — fix(ux-ui-audit): Faza 5 — a11y contrast, hero social proof, logo optimization, Klub Biznesu rename
+
+- **Edytowane pliki:**
+  - `src/components/HeroSlider.tsx` (social proof "2M+ Wyświetleń"→"Od 2017", pb-20, gradient h-24→h-16)
+  - `src/components/Navbar.tsx` (aria-label na dropdown button, "Klub Partnerów"→"Klub Biznesu")
+  - `src/components/Footer.tsx` (text-gray-400→gray-300, "Klub Partnerów"→"Klub Biznesu")
+  - `src/components/LeagueTable.tsx` (text-green-600→700, bg-amber-400 text-white→bg-amber-500 text-navy)
+  - `src/components/TopScorers.tsx` (bg-amber-400 text-white→bg-amber-500 text-navy)
+  - `src/app/page.tsx` (text-green-600→700)
+  - `src/app/mecze/[id]/page.tsx` (text-green-600→700)
+  - `src/app/sponsorzy/page.tsx` (section labels: cyan-500→cyan-700, slate-400→600, amber-600→700, gray-500→600, orange-800 bez zmian; text-[10px]→[11px]; "Klub Partnerów"→"Klub Biznesu")
+  - `src/app/mecenasi/page.tsx` (section label gray-400→500, text-[10px]→[11px]; "Klub Partnerów"→"Klub Biznesu")
+  - `src/app/wspolpraca/page.tsx` ("Klub Partnerów"→"Klub Biznesu")
+  - `public/images/logo/**/*.png` (15 plików — optymalizacja sharp: 6.2MB→1.2MB, 81% redukcja, max 600px)
+
+- **Cel zmian (Faza 5):** Poprawki po testerze UX — accessibility contrast, hero mobile overlap fix, performance logo, rebranding "Klub Partnerów"→"Klub Biznesu"
+
+- **Rezultaty (post-optimization):**
+  - A11Y: button-name (✅ aria-label), color-contrast (✅ green-700, amber-500, section labels 11px)
+  - Hero mobile: social proof nie nachodzi na gradient (pb-20 + h-16)
+  - Social proof content: "24+ Partnerów | Od 2017 | 100% Darmowe wejście" (zmiana z "2M+ Wyświetleń")
+  - Performance: logo PNG 81% mniejsze (LCP mobile powinno spaść z 6.8s)
+  - Branding: wszędzie "Klub Biznesu"
+
+- **Weryfikacja:**
+  - `npm run build` ✅ (28/28 stron, 0 błędów)
+  - `git status` ✅ (wszystkie pliki staged i committed)
+  - Build size PNG before: 6.2MB, after: 1.2MB ✅
+
+- **Post-deploy checklist (na kprzukowo.pl):**
+  - Rich Results test (Google) — "SportsTeam", "SportsEvent", "FAQPage" powinne przejść (na preview nie działa bo Vercel blokuje `x-robots-tag: noindex`)
+  - Lighthouse mobile — performance powinno wzrosnąć z 65-68 na wyżej (logo optimization)
+  - Lighthouse SEO — powinno wzrosnąć z 66 na ~92+ (is-crawlable pass)
+  - Zapisy w memory: `project_postdeploy_tests.md`
+
+- **Status Fazy 5:** ✅ COMPLETE
+  - [x] A11Y: button-name aria-label
+  - [x] A11Y: color-contrast fixes (6 plików)
+  - [x] Hero: social proof content zmiana + mobile fix
+  - [x] Logo PNG: 81% redukcja via sharp
+  - [x] Branding: "Klub Partnerów"→"Klub Biznesu" (wszędzie)
+  - [x] npm run build przechodzi
+  - ⏳ Post-deploy testy (Rich Results, Lighthouse na publicznej domenie)
+
+---
 
 ### Sesja 5: 2026-03-19 — Faza 4 ✅ COMPLETE
 
