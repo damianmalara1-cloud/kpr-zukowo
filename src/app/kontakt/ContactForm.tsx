@@ -142,7 +142,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <Script src="https://web3forms.com/client/script.js" strategy="lazyOnload" />
+      <Script src="https://js.hcaptcha.com/1/api.js" strategy="lazyOnload" />
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" noValidate>
         {/* Honeypot */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -257,7 +257,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <div className="h-captcha" data-captcha="true" />
+          <div className="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" />
           {state.fieldErrors.captcha && (
             <p role="alert" className="text-red text-sm mt-1">
               {state.fieldErrors.captcha}
