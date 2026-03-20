@@ -60,9 +60,9 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend error:", JSON.stringify(error));
       return NextResponse.json(
-        { error: "Nie udało się wysłać wiadomości." },
+        { error: `Nie udało się wysłać wiadomości: ${error.message}` },
         { status: 500 },
       );
     }
