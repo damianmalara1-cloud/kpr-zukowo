@@ -68,19 +68,20 @@ export default function ContactForm() {
 
     setIsPending(true);
     try {
-      const submitData = new FormData();
-      submitData.append("access_key", WEB3FORMS_KEY);
-      submitData.append("subject", `[Strona WWW] ${subjectLabel} - ${name}`);
-      submitData.append("from_name", name);
-      submitData.append("replyto", email);
-      submitData.append("name", name);
-      submitData.append("email", email);
-      submitData.append("temat", subjectLabel);
-      submitData.append("message", message);
-
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: submitData,
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          botcheck: "",
+          subject: `[Strona WWW] ${subjectLabel} - ${name}`,
+          from_name: name,
+          replyto: email,
+          name,
+          email,
+          temat: subjectLabel,
+          message,
+        }),
       });
 
       let result: Record<string, unknown>;
