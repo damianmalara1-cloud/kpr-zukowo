@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const subjectLabels: Record<string, string> = {
   sponsoring: "Współpraca sponsorska",
   mecenat: "Mecenat",
@@ -45,6 +43,7 @@ export async function POST(request: Request) {
 
     const subjectLabel = subjectLabels[subject] ?? subject;
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: "Formularz KPR <onboarding@resend.dev>",
       to: "klub@kprzukowo.pl",
