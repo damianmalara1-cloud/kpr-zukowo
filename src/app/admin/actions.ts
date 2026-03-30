@@ -6,6 +6,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const GITHUB_REPO = "damianmalara1-cloud/kpr-zukowo";
 const NEWS_PATH = "src/data/news.json";
+const MATCHES_PATH = "src/data/matches.json";
 
 // --- AUTH ---
 
@@ -35,11 +36,11 @@ export async function checkAuth() {
 
 // --- GITHUB API ---
 
-async function getFileFromGitHub() {
+async function getFileFromGitHub(filePath: string = NEWS_PATH) {
   if (!GITHUB_TOKEN) throw new Error("Brak GITHUB_TOKEN");
 
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/${NEWS_PATH}`,
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`,
     {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
@@ -61,12 +62,13 @@ async function getFileFromGitHub() {
 async function updateFileOnGitHub(
   content: Record<string, unknown>,
   sha: string,
-  message: string
+  message: string,
+  filePath: string = NEWS_PATH
 ) {
   if (!GITHUB_TOKEN) throw new Error("Brak GITHUB_TOKEN");
 
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/${NEWS_PATH}`,
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`,
     {
       method: "PUT",
       headers: {
@@ -216,6 +218,62 @@ export async function moveArticle(id: string, direction: "up" | "down") {
       content,
       sha,
       `Zmieniono kolejność: ${content.news[swapIndex].title}`
+    );
+
+    return { success: true };
+  } catch (e) {
+    return { success: false, error: String(e) };
+  }
+}
+
+// --- MATCHES ---
+
+export interface Match {
+  id: string;
+  date: string;
+  time: string;
+  opponent: string;
+  opponentLogo: string;
+  venue: string;
+  isHome: boolean;
+  score: string | null;
+  description: string;
+  matchSponsor: string | null;
+}
+
+export async function getMatches() {
+  const isAuth = await checkAuth();
+  if (!isAuth) return { success: false as const, matches: [] };
+
+  try {
+    const { content } = await getFileFromGitHub(MATCHES_PATH);
+    return { success: true as const, matches: content.matches as Match[] };
+  } catch (e) {
+    return { success: false as const, matches: [], error: String(e) };
+  }
+}
+
+export async function updateMatchScore(id: string, score: string) {
+  const isAuth = await checkAuth();
+  if (!isAuth) return { success: false, error: "Brak autoryzacji" };
+
+  const scoreRegex = /^\d{1,3}:\d{1,3}$/;
+  if (!scoreRegex.test(score)) {
+    return { success: false, error: "Nieprawidłowy format wyniku (np. 35:28)" };
+  }
+
+  try {
+    const { content, sha } = await getFileFromGitHub(MATCHES_PATH);
+    const index = content.matches.findIndex((m: Match) => m.id === id);
+    if (index === -1) return { success: false, error: "Nie znaleziono meczu" };
+
+    content.matches[index].score = score;
+
+    await updateFileOnGitHub(
+      content,
+      sha,
+      `Wynik meczu: KPR Żukowo vs ${content.matches[index].opponent} — ${score}`,
+      MATCHES_PATH
     );
 
     return { success: true };
