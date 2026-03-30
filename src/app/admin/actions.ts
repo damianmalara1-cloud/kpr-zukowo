@@ -145,7 +145,7 @@ export async function addArticle(formData: {
       facebookEmbed: formData.facebookEmbed?.trim() || null,
     };
 
-    content.news.push(newArticle);
+    content.news.unshift(newArticle);
 
     await updateFileOnGitHub(
       content,
