@@ -11,6 +11,7 @@ import {
   moveArticle,
   getMatches,
   updateMatchScore,
+  updateMatchDateTime,
   type NewsArticle,
   type Match,
 } from "./actions";
@@ -235,6 +236,10 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
   const [scoreHome, setScoreHome] = useState("");
   const [scoreAway, setScoreAway] = useState("");
   const [savingScore, setSavingScore] = useState(false);
+  const [editingDateTimeId, setEditingDateTimeId] = useState<string | null>(null);
+  const [editDate, setEditDate] = useState("");
+  const [editTime, setEditTime] = useState("");
+  const [savingDateTime, setSavingDateTime] = useState(false);
   const [matchError, setMatchError] = useState("");
 
   const fetchNews = useCallback(async () => {
@@ -292,6 +297,30 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       fetchMatches();
     } else {
       setMatchError(result.error || "Błąd zapisu wyniku");
+    }
+  }
+
+  function startEditDateTime(match: Match) {
+    setEditingDateTimeId(match.id);
+    setMatchError("");
+    setEditDate(match.date);
+    setEditTime(match.time);
+  }
+
+  async function handleSaveDateTime(matchId: string) {
+    if (!editDate.trim() || !editTime.trim()) {
+      setMatchError("Wpisz datę i godzinę.");
+      return;
+    }
+    setSavingDateTime(true);
+    setMatchError("");
+    const result = await updateMatchDateTime(matchId, editDate.trim(), editTime.trim());
+    setSavingDateTime(false);
+    if (result.success) {
+      setEditingDateTimeId(null);
+      fetchMatches();
+    } else {
+      setMatchError(result.error || "Błąd zapisu terminu");
     }
   }
 
@@ -529,17 +558,25 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                     month: "short",
                   });
 
+                  const isEditingDateTime = editingDateTimeId === match.id;
+
                   return (
                     <div
                       key={match.id}
                       className={`bg-white rounded-xl shadow-sm border p-4 ${
-                        isEditing ? "border-navy" : "border-gray-100"
+                        isEditing || isEditingDateTime ? "border-navy" : "border-gray-100"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-3">
                         {/* Match info */}
                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <span className="text-xs text-gray-400 w-14 shrink-0">{matchDate}</span>
+                          <button
+                            onClick={() => startEditDateTime(match)}
+                            className="text-xs text-gray-400 hover:text-navy w-14 shrink-0 transition-colors underline decoration-dotted"
+                            title="Zmień datę/godzinę"
+                          >
+                            {matchDate}
+                          </button>
                           <span className={`text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded shrink-0 ${
                             match.isHome ? "bg-navy/10 text-navy" : "bg-gray-100 text-gray-500"
                           }`}>
@@ -614,6 +651,40 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                           </button>
                           <button
                             onClick={() => { setEditingMatchId(null); setMatchError(""); }}
+                            className="text-gray-400 hover:text-gray-600 transition-colors text-sm"
+                          >
+                            Anuluj
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Inline date/time edit form */}
+                      {isEditingDateTime && (
+                        <div className="mt-3 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-3">
+                          <label className="text-sm text-gray-500">Data:</label>
+                          <input
+                            type="date"
+                            value={editDate}
+                            onChange={(e) => setEditDate(e.target.value)}
+                            className="px-2 py-1.5 border border-gray-300 rounded-lg text-navy focus:ring-2 focus:ring-navy focus:border-navy outline-none text-sm"
+                            autoFocus
+                          />
+                          <label className="text-sm text-gray-500">Godz.:</label>
+                          <input
+                            type="time"
+                            value={editTime}
+                            onChange={(e) => setEditTime(e.target.value)}
+                            className="px-2 py-1.5 border border-gray-300 rounded-lg text-navy focus:ring-2 focus:ring-navy focus:border-navy outline-none text-sm"
+                          />
+                          <button
+                            onClick={() => handleSaveDateTime(match.id)}
+                            disabled={savingDateTime}
+                            className="ml-auto bg-navy hover:bg-navy-dark disabled:bg-gray-300 text-white font-semibold py-1.5 px-4 rounded-lg transition-colors text-sm"
+                          >
+                            {savingDateTime ? "Zapisuję..." : "Zapisz"}
+                          </button>
+                          <button
+                            onClick={() => { setEditingDateTimeId(null); setMatchError(""); }}
                             className="text-gray-400 hover:text-gray-600 transition-colors text-sm"
                           >
                             Anuluj

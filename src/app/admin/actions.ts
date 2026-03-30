@@ -282,6 +282,41 @@ export async function updateMatchScore(id: string, score: string) {
   }
 }
 
+export async function updateMatchDateTime(id: string, date: string, time: string) {
+  const isAuth = await checkAuth();
+  if (!isAuth) return { success: false, error: "Brak autoryzacji" };
+
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(date)) {
+    return { success: false, error: "Nieprawidłowy format daty (YYYY-MM-DD)" };
+  }
+
+  const timeRegex = /^\d{2}:\d{2}$/;
+  if (!timeRegex.test(time)) {
+    return { success: false, error: "Nieprawidłowy format godziny (HH:MM)" };
+  }
+
+  try {
+    const { content, sha } = await getFileFromGitHub(MATCHES_PATH);
+    const index = content.matches.findIndex((m: Match) => m.id === id);
+    if (index === -1) return { success: false, error: "Nie znaleziono meczu" };
+
+    content.matches[index].date = date;
+    content.matches[index].time = time;
+
+    await updateFileOnGitHub(
+      content,
+      sha,
+      `Zmiana terminu: KPR Żukowo vs ${content.matches[index].opponent} — ${date} ${time}`,
+      MATCHES_PATH
+    );
+
+    return { success: true };
+  } catch (e) {
+    return { success: false, error: String(e) };
+  }
+}
+
 export async function deleteArticle(id: string) {
   const isAuth = await checkAuth();
   if (!isAuth) return { success: false, error: "Brak autoryzacji" };
