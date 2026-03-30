@@ -213,17 +213,6 @@ export default async function MatchPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Zapowiedź / Relacja */}
-          <div className="bg-white rounded-xl shadow-md p-6">
-            <h2 className="text-xl font-bold text-navy mb-4">
-              {isPast ? "Relacja" : "Zapowiedź"}
-            </h2>
-            <div className="text-gray-600 leading-relaxed space-y-4">
-              {match.description.split("\n\n").map((paragraph: string, i: number) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Sponsor meczu */}
@@ -236,15 +225,6 @@ export default async function MatchPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* Galeria (placeholder) */}
-        {isPast && (
-          <div className="mt-8">
-            <h2 className="text-xl font-bold text-navy mb-4">Galeria zdjęć</h2>
-            <div className="bg-white rounded-xl shadow-md p-8 text-center text-gray-400">
-              <p>Galeria zdjęć z meczu będzie dostępna wkrótce.</p>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
