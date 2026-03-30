@@ -100,7 +100,7 @@ export default function OKlubiePage() {
 
             {[
               {
-                year: "Początki",
+                year: "2002",
                 title: "Sekcja piłki ręcznej w GKS Żukowo",
                 description: "Piłka ręczna w Żukowie ma korzenie sięgające pracy trenera Krzysztofa Milewskiego, który prowadził zajęcia dla młodzieży jeszcze przed formalnym powstaniem sekcji. Szczypiorniak rozwija się w ramach Gminnego Klubu Sportowego Żukowo — wielosekcyjnego klubu zrzeszającego różne dyscypliny w gminie.",
               },
