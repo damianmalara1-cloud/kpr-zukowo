@@ -6,6 +6,7 @@ import HeroSlider from "@/components/HeroSlider";
 import MatchCountdown from "@/components/MatchCountdown";
 import LeagueTable from "@/components/LeagueTable";
 import TopScorers from "@/components/TopScorers";
+import VotingBanner from "@/components/VotingBanner";
 import { CalendarIcon, ClockIcon, LocationIcon, TicketIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -144,6 +145,9 @@ export default async function Home() {
     <div>
       {/* HERO SECTION */}
       <HeroSlider />
+
+      {/* GŁOSOWANIE NA KOSZULKĘ (auto-hide po 7 maja 2026) */}
+      <VotingBanner />
 
       {/* NAJBLIŻSZY MECZ */}
       {nextMatch && (
