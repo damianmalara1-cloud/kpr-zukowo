@@ -24,16 +24,23 @@ export const metadata = {
   description: "Terminarz meczów KPR Fit Dieta Żukowo. Sprawdź kiedy gramy!",
 };
 
+// Mecz jest "nadchodzący" dopóki nie minęło 3h od początku — wtedy wpada do "rozegranych".
+const MATCH_DURATION_MS = 3 * 60 * 60 * 1000;
+
+function getMatchEndTime(match: { date: string; time: string }) {
+  return new Date(`${match.date}T${match.time}:00`).getTime() + MATCH_DURATION_MS;
+}
+
 export default function MeczePage() {
-  const now = new Date();
+  const now = Date.now();
 
   const upcomingMatches = matches.matches
-    .filter((match) => new Date(match.date) >= now)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .filter((match) => getMatchEndTime(match) >= now)
+    .sort((a, b) => getMatchEndTime(a) - getMatchEndTime(b));
 
   const pastMatches = matches.matches
-    .filter((match) => new Date(match.date) < now)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .filter((match) => getMatchEndTime(match) < now)
+    .sort((a, b) => getMatchEndTime(b) - getMatchEndTime(a));
 
   return (
     <div className="min-h-screen bg-gray-50">

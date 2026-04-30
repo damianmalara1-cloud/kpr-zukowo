@@ -15,12 +15,19 @@ export const metadata: Metadata = {
     "Oficjalna strona KPR Fit Dieta Żukowo — klubu piłki ręcznej z Żukowa na Pomorzu. Terminarz meczów, wyniki, aktualności, drużyna I Ligi. Darmowe wejście na mecze domowe!",
 };
 
-// Znajdź najbliższy mecz
+// Znajdź najbliższy mecz — uwzględniamy datę + godzinę + 3h marginesu (czas trwania meczu),
+// żeby mecz nie znikał z widgetu o północy w dniu rozgrywki.
+const MATCH_DURATION_MS = 3 * 60 * 60 * 1000;
+
+function getMatchEndTime(match: { date: string; time: string }) {
+  return new Date(`${match.date}T${match.time}:00`).getTime() + MATCH_DURATION_MS;
+}
+
 function getNextMatch() {
-  const now = new Date();
+  const now = Date.now();
   const upcomingMatches = matches.matches
-    .filter((match) => new Date(match.date) >= now)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .filter((match) => getMatchEndTime(match) >= now)
+    .sort((a, b) => getMatchEndTime(a) - getMatchEndTime(b));
   return upcomingMatches[0] || null;
 }
 
