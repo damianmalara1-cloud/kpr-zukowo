@@ -21,6 +21,7 @@ const navItems: NavItem[] = [
       { href: "/druzyna", label: "Drużyna" },
     ],
   },
+  { href: "/turniej-mistrzow", label: "Turniej Mistrzów" },
   { href: "/kibice", label: "Kibice" },
   {
     href: "/wspolpraca",
@@ -33,6 +34,10 @@ const navItems: NavItem[] = [
   { href: "/aktualnosci", label: "Aktualności" },
   { href: "/kontakt", label: "Kontakt" },
 ];
+
+// Turniej trwa 22-24.05; LIVE badge w tym przedziale
+const TURNIEJ_START = new Date("2026-05-22T00:00:00").getTime();
+const TURNIEJ_END = new Date("2026-05-25T00:00:00").getTime();
 
 function DropdownMenu({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -242,9 +247,24 @@ function MobileDropdown({ item, onClose }: { item: NavItem; onClose: () => void 
   );
 }
 
+function LiveBadge() {
+  return (
+    <span className="ml-2 inline-flex items-center gap-1 bg-red text-white text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-sm">
+      <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse-subtle" />
+      Live
+    </span>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [turniejLive, setTurniejLive] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const now = Date.now();
+    setTurniejLive(now >= TURNIEJ_START && now < TURNIEJ_END);
+  }, []);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -284,10 +304,11 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href!}
-                  className="px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors"
+                  className="px-4 py-2 text-base font-medium hover:bg-navy-light rounded-md transition-colors inline-flex items-center"
                   onClick={item.href === "/" ? handleHomeClick : undefined}
                 >
                   {item.label}
+                  {item.href === "/turniej-mistrzow" && turniejLive && <LiveBadge />}
                 </Link>
               )
             )}
@@ -337,6 +358,7 @@ export default function Navbar() {
                 onClick={item.href === "/" ? handleHomeClick : closeMenu}
               >
                 {item.label}
+                {item.href === "/turniej-mistrzow" && turniejLive && <LiveBadge />}
               </Link>
             )
           )}

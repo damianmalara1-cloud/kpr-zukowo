@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Lato, Oswald } from "next/font/google";
+import { Lato, Oswald, Archivo_Black } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ConditionalSponsorsBar from "@/components/ConditionalSponsorsBar";
 import Footer from "@/components/Footer";
+import ScrollRevealController from "@/components/turniej/ScrollRevealController";
+import SmoothScrollProvider from "@/components/turniej/SmoothScrollProvider";
 
 const oswaldHeading = Oswald({
   variable: "--font-heading",
@@ -17,6 +19,13 @@ const latoBody = Lato({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "700"],
+  display: "swap",
+});
+
+const archivoDisplay = Archivo_Black({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -107,12 +116,14 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${oswaldHeading.variable} ${latoBody.variable} antialiased`}
+        className={`${oswaldHeading.variable} ${latoBody.variable} ${archivoDisplay.variable} antialiased`}
       >
         <a href="#main-content" className="skip-link">
           Przejdź do treści
         </a>
         <Navbar />
+        <SmoothScrollProvider />
+        <ScrollRevealController />
         <main id="main-content" className="min-h-screen">
           {children}
         </main>

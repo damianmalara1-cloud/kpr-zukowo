@@ -1,0 +1,115 @@
+{
+  "name": "Turniej Mistrzów ZPRP",
+  "edition": "Sezon 2025/26",
+  "city": "Kielce",
+  "venue": "Hala sportowa ZPO nr 2 (Hala SMS)",
+  "venueAddress": "ul. Jagiellońska 90, Kielce",
+  "venueMapUrl": "https://maps.google.com/?q=Hala+SMS+Jagiellońska+90+Kielce",
+  "dateStart": "2026-05-22",
+  "dateEnd": "2026-05-24",
+  "stake": "Awans do Ligi Centralnej Mężczyzn 2026/27",
+  "stakeShort": "Awans do Ligi Centralnej",
+  "format": "Każdy z każdym, 4 drużyny, 3 mecze na drużynę",
+  "tieBreaker": "Bez dogrywek — remisy rozstrzygają rzuty karne",
+  "broadcast": {
+    "url": "",
+    "platform": "TBA",
+    "label": "Oglądaj online"
+  },
+  "firstKprMatch": {
+    "date": "2026-05-22",
+    "time": "19:30",
+    "label": "Pierwszy mecz KPR"
+  },
+  "teams": [
+    {
+      "name": "KPR Fit Dieta Żukowo",
+      "shortName": "KPR Fit Dieta Żukowo",
+      "city": "Żukowo, Pomorze",
+      "color": "#dc2626",
+      "logo": "/images/logo/kpr_zukowo_beztla.png",
+      "isKpr": true
+    },
+    {
+      "name": "SPR PURINA Kąty Wrocławskie",
+      "shortName": "PURINA Kąty Wrocławskie",
+      "city": "Kąty Wrocławskie, Dolny Śląsk",
+      "color": "#1e40af",
+      "logo": "/images/opponents/purina-katy.png",
+      "isKpr": false
+    },
+    {
+      "name": "KSSPR Końskie",
+      "shortName": "KSSPR Końskie",
+      "city": "Końskie, Świętokrzyskie",
+      "color": "#16a34a",
+      "logo": "/images/opponents/ksspr-konskie.png",
+      "isKpr": false
+    },
+    {
+      "name": "MKS Olimpia MEDEX Piekary Śląskie",
+      "shortName": "Olimpia MEDEX Piekary Śląskie",
+      "city": "Piekary Śląskie, Śląsk",
+      "color": "#eab308",
+      "logo": "/images/opponents/olimpia-piekary.png",
+      "isKpr": false
+    }
+  ],
+  "matches": [
+    {
+      "date": "2026-05-22",
+      "time": "17:00",
+      "home": "SPR PURINA Kąty Wrocławskie",
+      "away": "KSSPR Końskie",
+      "isKpr": false,
+      "result": null
+    },
+    {
+      "date": "2026-05-22",
+      "time": "19:30",
+      "home": "KPR Fit Dieta Żukowo",
+      "away": "MKS Olimpia MEDEX Piekary Śląskie",
+      "isKpr": true,
+      "result": null
+    },
+    {
+      "date": "2026-05-23",
+      "time": "16:00",
+      "home": "MKS Olimpia MEDEX Piekary Śląskie",
+      "away": "SPR PURINA Kąty Wrocławskie",
+      "isKpr": false,
+      "result": null
+    },
+    {
+      "date": "2026-05-23",
+      "time": "18:30",
+      "home": "KPR Fit Dieta Żukowo",
+      "away": "KSSPR Końskie",
+      "isKpr": true,
+      "result": null
+    },
+    {
+      "date": "2026-05-24",
+      "time": "10:00",
+      "home": "KSSPR Końskie",
+      "away": "MKS Olimpia MEDEX Piekary Śląskie",
+      "isKpr": false,
+      "result": null
+    },
+    {
+      "date": "2026-05-24",
+      "time": "12:30",
+      "home": "KPR Fit Dieta Żukowo",
+      "away": "SPR PURINA Kąty Wrocławskie",
+      "isKpr": true,
+      "result": null
+    }
+  ],
+  "hashtagi": [
+    "#GramyDlaŻukowa",
+    "#TuZaczynaSięHistoria",
+    "#TurniejMistrzów",
+    "#LigaCentralna",
+    "#Husaria"
+  ]
+}
